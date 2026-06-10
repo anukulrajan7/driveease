@@ -1,0 +1,17 @@
+{
+  "name": "DriveEase",
+  "tagline": "Discover North East India",
+  "description": "Handpicked North East India tours, destination guides, and travel stories — planned end to end with local hosts so you can just pack and go.",
+  "contact": {
+    "email": "hello@driveease.example",
+    "phone": "+91 98765 43210",
+    "hours": "24×7 trip support"
+  },
+  "stats": [
+    { "value": "75,000+", "label": "Happy travellers" },
+    { "value": "120+", "label": "Curated NE tours" },
+    { "value": "4.8/5", "label": "Average rating" },
+    { "value": "24×7", "label": "On-trip support" }
+  ],
+  "awards": ["North East India's Most Loved Tour Platform 2025", "Travellers' Choice — Himalayan Holidays"]
+}

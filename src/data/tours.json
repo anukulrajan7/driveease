@@ -1,0 +1,612 @@
+[
+  {
+    "id": "1",
+    "slug": "meghalaya-waterfalls-root-bridges",
+    "title": "Meghalaya Waterfalls & Root Bridges",
+    "destination": "Shillong & Cherrapunji",
+    "country": "India",
+    "category": "Mountains",
+    "durationDays": 5,
+    "pricePerPerson": 18999,
+    "rating": 4.8,
+    "reviewsCount": 312,
+    "image": "https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1200&q=70",
+    "shortDescription": "Five days through the wettest place on earth — living root bridges, glowing Dawki river, and the cleanest village in Asia.",
+    "highlights": [
+      "Trek to Nongriat double-decker living root bridge",
+      "Boat ride on the crystal-clear Dawki river",
+      "Sunrise at Umiam Lake and Elephant Falls",
+      "Walk through Mawlynnong, Asia's cleanest village"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival in Shillong",
+        "description": "Arrive at Shillong, check in, and head to Umiam Lake for a serene lakeside evening with views of the surrounding hills."
+      },
+      {
+        "day": 2,
+        "title": "Elephant Falls & Cherrapunji",
+        "description": "Visit the three-tiered Elephant Falls in the morning, then drive to Cherrapunji — one of the wettest places on earth — and explore the Nohkalikai waterfall viewpoint."
+      },
+      {
+        "day": 3,
+        "title": "Nongriat Root Bridge Trek",
+        "description": "Descend 3,500 steps into the valley at Nongriat to reach the iconic double-decker living root bridge, grown over 500 years from Ficus elastica roots by the Khasi people."
+      },
+      {
+        "day": 4,
+        "title": "Dawki & Mawlynnong",
+        "description": "Take a coracle boat on the glass-clear Dawki river along the Bangladesh border, then walk the spotless bamboo-paved lanes of Mawlynnong village."
+      },
+      {
+        "day": 5,
+        "title": "Local Market & Departure",
+        "description": "Morning browse at Shillong's Bara Bazaar for local produce and handwoven textiles, then depart with a farewell meal."
+      }
+    ],
+    "included": [
+      "4 nights accommodation (breakfast included)",
+      "Private AC vehicle for all transfers & sightseeing",
+      "Local guide for Nongriat trek",
+      "Dawki river boat ride",
+      "All monument and waterfall entry fees"
+    ],
+    "excluded": [
+      "Flights to/from Shillong or Guwahati",
+      "Lunches & dinners",
+      "Porter charges on trek",
+      "Personal expenses"
+    ],
+    "maxGroupSize": 10,
+    "destinationSlug": "meghalaya",
+    "badge": "Bestseller",
+    "originalPricePerPerson": 24999
+  },
+  {
+    "id": "2",
+    "slug": "kaziranga-rhino-safari",
+    "title": "Kaziranga Rhino Safari",
+    "destination": "Kaziranga",
+    "country": "India",
+    "category": "Wildlife",
+    "durationDays": 3,
+    "pricePerPerson": 14999,
+    "rating": 4.7,
+    "reviewsCount": 228,
+    "image": "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?auto=format&fit=crop&w=1200&q=70",
+    "shortDescription": "Jeep and elephant-back safaris in the UNESCO-listed grasslands that shelter two-thirds of the world's one-horned rhinos.",
+    "highlights": [
+      "Elephant-back safari at dawn through tall elephant grass",
+      "Jeep safari in the Central and Western ranges",
+      "Spot Indian one-horned rhino, wild buffalo, and tigers",
+      "Visit to the Kaziranga Orchid and Biodiversity Park"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival & Evening Briefing",
+        "description": "Arrive at Kaziranga, check in to the jungle-edge resort, and attend an evening naturalist briefing on wildlife behaviour and safari zones."
+      },
+      {
+        "day": 2,
+        "title": "Elephant Safari & Jeep Safari",
+        "description": "Pre-dawn elephant-back safari through the misty Central Range floodplains, followed by a jeep safari in the Western Range with chances to see rhino, wild elephant, and swamp deer."
+      },
+      {
+        "day": 3,
+        "title": "Orchid Park & Departure",
+        "description": "Morning visit to the Kaziranga Orchid and Biodiversity Park showcasing over 500 orchid species, then depart after brunch."
+      }
+    ],
+    "included": [
+      "2 nights jungle resort (all meals)",
+      "1 elephant-back safari with forest permit",
+      "1 shared jeep safari with naturalist",
+      "Orchid Park entry fee"
+    ],
+    "excluded": [
+      "Travel to/from Kaziranga",
+      "Camera fees inside the park",
+      "Private jeep upgrade",
+      "Tips and personal expenses"
+    ],
+    "maxGroupSize": 8,
+    "destinationSlug": "kaziranga",
+    "badge": "Top Rated",
+    "originalPricePerPerson": 19999
+  },
+  {
+    "id": "3",
+    "slug": "tawang-monastery-expedition",
+    "title": "Tawang Monastery Expedition",
+    "destination": "Tawang",
+    "country": "India",
+    "category": "Mountains",
+    "durationDays": 7,
+    "pricePerPerson": 28999,
+    "rating": 4.9,
+    "reviewsCount": 142,
+    "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=70",
+    "shortDescription": "A high-altitude journey through Arunachal Pradesh to India's largest monastery, crossing the 13,700 ft Sela Pass and the mythical Madhuri Lake.",
+    "highlights": [
+      "Cross the Sela Pass at 13,700 ft with frozen lake views",
+      "Explore Tawang Monastery, the largest in India",
+      "Bum La border pass visit (permits arranged)",
+      "Reflections at the serene Madhuri Lake"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Guwahati to Bhalukpong",
+        "description": "Fly into Guwahati and drive east into Arunachal Pradesh, crossing the permit checkpoint at Bhalukpong and arriving in the foothills by evening."
+      },
+      {
+        "day": 2,
+        "title": "Bhalukpong to Dirang",
+        "description": "Drive through sub-tropical forest to Dirang, visiting the ancient stone Dirang Dzong and the apple orchards that line the Kameng River."
+      },
+      {
+        "day": 3,
+        "title": "Sela Pass & Tawang",
+        "description": "Cross the iconic Sela Pass at 13,700 ft beside a frozen alpine lake and descend into Tawang Valley for check-in and acclimatisation."
+      },
+      {
+        "day": 4,
+        "title": "Tawang Monastery",
+        "description": "Full morning at the 400-year-old Tawang Monastery — one of the largest Buddhist gompas in Asia — and the Tawang War Memorial honouring the 1962 battle."
+      },
+      {
+        "day": 5,
+        "title": "Bum La Pass",
+        "description": "Permitted day excursion to the Bum La border pass on the Indo-China Line of Actual Control at 15,200 ft, surrounded by barren high-altitude terrain."
+      },
+      {
+        "day": 6,
+        "title": "Madhuri Lake & Shonga-tser",
+        "description": "Morning at the turquoise Madhuri Lake (Shonga-tser), set against a panorama of snow peaks made famous in Bollywood — one of Arunachal's most photogenic spots."
+      },
+      {
+        "day": 7,
+        "title": "Return & Departure",
+        "description": "Begin the long drive back toward Guwahati or Tezpur for onward flights, passing the pine forests of the Eastern Himalayan foothills."
+      }
+    ],
+    "included": [
+      "6 nights accommodation (breakfast & dinner)",
+      "Private SUV with experienced mountain driver",
+      "Inner Line Permit (ILP) and Bum La permits",
+      "Local guide throughout",
+      "All entry fees and monastery visits"
+    ],
+    "excluded": [
+      "Flights to Guwahati or Tezpur",
+      "Lunches",
+      "Personal trekking gear",
+      "Travel insurance"
+    ],
+    "maxGroupSize": 8,
+    "destinationSlug": "tawang",
+    "badge": null,
+    "originalPricePerPerson": 37999
+  },
+  {
+    "id": "4",
+    "slug": "gangtok-north-sikkim-explorer",
+    "title": "Gangtok & North Sikkim Explorer",
+    "destination": "Gangtok & Lachung",
+    "country": "India",
+    "category": "Mountains",
+    "durationDays": 6,
+    "pricePerPerson": 24999,
+    "rating": 4.8,
+    "reviewsCount": 287,
+    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=70",
+    "shortDescription": "From Gangtok's MG Marg to the flower valleys of Yumthang and the snow desert at Zero Point — Sikkim in full colour.",
+    "highlights": [
+      "Tsomgo Lake and Nathu La pass on the Silk Road",
+      "Yumthang Valley Valley of Flowers at 11,800 ft",
+      "Zero Point snowfields at 15,100 ft",
+      "Evening stroll on Gangtok's car-free MG Marg"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival in Gangtok",
+        "description": "Check in to your hotel in Gangtok and spend the evening on MG Marg — Sikkim's pedestrian promenade lined with cafés, craft shops, and mountain views."
+      },
+      {
+        "day": 2,
+        "title": "Tsomgo Lake & Nathu La",
+        "description": "Drive up to the glacial Tsomgo Lake at 12,400 ft and then to Nathu La, the ancient Silk Road mountain pass on the India-China border at 14,140 ft."
+      },
+      {
+        "day": 3,
+        "title": "Gangtok to Lachung",
+        "description": "Drive north into Lachung Valley, passing the Naga Falls and Seven Sisters Waterfalls cascade along a dramatic gorge road."
+      },
+      {
+        "day": 4,
+        "title": "Yumthang Valley",
+        "description": "Morning excursion into Yumthang Valley, a high-altitude meadow filled with rhododendrons, primulas, and hot springs, ringed by Himalayan peaks."
+      },
+      {
+        "day": 5,
+        "title": "Zero Point",
+        "description": "Drive to Zero Point at 15,100 ft — the last Indian outpost before the Tibet border — a barren snowfield with sweeping views of glaciated peaks."
+      },
+      {
+        "day": 6,
+        "title": "Return to Gangtok & Departure",
+        "description": "Drive back to Gangtok for a farewell lunch, pick up local cardamom and chhurpi cheese at the market, and transfer for departure."
+      }
+    ],
+    "included": [
+      "5 nights accommodation (breakfast & dinner)",
+      "Private vehicle for all transfers and excursions",
+      "Protected Area Permit (PAP) for North Sikkim",
+      "Local guide throughout",
+      "All permit and entry fees"
+    ],
+    "excluded": [
+      "Flights to Bagdogra or train to NJP",
+      "Lunches",
+      "Personal expenses",
+      "Travel insurance"
+    ],
+    "maxGroupSize": 10,
+    "destinationSlug": "sikkim",
+    "badge": "Bestseller",
+    "originalPricePerPerson": 32999
+  },
+  {
+    "id": "5",
+    "slug": "hornbill-festival-nagaland",
+    "title": "Hornbill Festival Nagaland",
+    "destination": "Kohima",
+    "country": "India",
+    "category": "Culture",
+    "durationDays": 4,
+    "pricePerPerson": 19999,
+    "rating": 4.7,
+    "reviewsCount": 165,
+    "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=70",
+    "shortDescription": "Experience all 17 Naga tribes under one roof at Kisama Heritage Village during India's most vibrant tribal festival.",
+    "highlights": [
+      "Kisama Heritage Village — morungs of all 17 Naga tribes",
+      "Traditional Naga cuisine tasting and cooking demo",
+      "Kohima War Cemetery — one of WW2's most moving memorials",
+      "Khonoma green village, Asia's first conservation village"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival in Kohima",
+        "description": "Arrive in Kohima, settle in, and visit the Kohima War Cemetery where Allied soldiers from the decisive 1944 battle rest among the hills."
+      },
+      {
+        "day": 2,
+        "title": "Hornbill Festival — Kisama",
+        "description": "Full day at the Hornbill Festival grounds in Kisama Heritage Village, watching dance performances, warrior demonstrations, and traditional games across the tribal morungs (community halls)."
+      },
+      {
+        "day": 3,
+        "title": "Naga Cuisine & Cultural Immersion",
+        "description": "Morning Naga food trail — smoked pork, Naga chilli chutneys, and fermented bamboo shoot dishes — followed by a weaving and craft demonstration with local artisans."
+      },
+      {
+        "day": 4,
+        "title": "Khonoma Village & Departure",
+        "description": "Visit Khonoma, the 600-year-old fortified village famed as Asia's first green village with community-managed forests, then depart after lunch."
+      }
+    ],
+    "included": [
+      "3 nights hotel in Kohima (breakfast included)",
+      "Hornbill Festival entry passes (2 days)",
+      "Private vehicle for all transfers",
+      "Local Naga guide throughout",
+      "Naga cuisine tasting meal"
+    ],
+    "excluded": [
+      "Flights to Dimapur",
+      "Lunches and most dinners",
+      "Inner Line Permit (arranged on arrival)",
+      "Personal expenses"
+    ],
+    "maxGroupSize": 12,
+    "destinationSlug": "nagaland",
+    "badge": null,
+    "originalPricePerPerson": 25999
+  },
+  {
+    "id": "6",
+    "slug": "majuli-river-island-retreat",
+    "title": "Majuli River Island Retreat",
+    "destination": "Majuli",
+    "country": "India",
+    "category": "Rivers & Lakes",
+    "durationDays": 3,
+    "pricePerPerson": 11999,
+    "rating": 4.6,
+    "reviewsCount": 118,
+    "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=70",
+    "shortDescription": "Slow travel on the world's largest river island — Vaishnavite satras, Mising stilt houses, and sunrise cycling along the Brahmaputra.",
+    "highlights": [
+      "Ferry crossing on the Brahmaputra to reach the island",
+      "Samaguri Satra — live mask-making by resident monks",
+      "Overnight stay in a Mising community stilt house",
+      "Sunrise bicycle ride along the river embankment"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Jorhat to Majuli by Ferry",
+        "description": "Drive to Neamati Ghat and take the public ferry across the mighty Brahmaputra — a 1-hour crossing through braided river channels and sandbanks — then cycle to your eco-stay."
+      },
+      {
+        "day": 2,
+        "title": "Satras & Mising Village",
+        "description": "Visit the 500-year-old Auniati and Kamalabari Vaishnavite satras (monasteries), watch monks create the island's famous papier-mâché masks at Samaguri Satra, and spend the night in a Mising stilt house above the floodplain."
+      },
+      {
+        "day": 3,
+        "title": "Sunrise Ride & Departure",
+        "description": "Early morning cycling along the embankment roads as egrets and storks lift off the wetlands, then return ferry and departure from Jorhat."
+      }
+    ],
+    "included": [
+      "2 nights accommodation (1 homestay + 1 eco-lodge) with breakfast",
+      "Ferry crossing (both ways)",
+      "Bicycle hire for the island",
+      "Local guide and satra entry donations"
+    ],
+    "excluded": [
+      "Travel to/from Jorhat",
+      "Lunches & dinners",
+      "Personal expenses",
+      "Tips"
+    ],
+    "maxGroupSize": 8,
+    "destinationSlug": "majuli",
+    "badge": null,
+    "originalPricePerPerson": 15999
+  },
+  {
+    "id": "7",
+    "slug": "ziro-valley-culture-trail",
+    "title": "Ziro Valley Culture Trail",
+    "destination": "Ziro",
+    "country": "India",
+    "category": "Culture",
+    "durationDays": 4,
+    "pricePerPerson": 16999,
+    "rating": 4.7,
+    "reviewsCount": 98,
+    "image": "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1200&q=70",
+    "shortDescription": "Walk through the pine-clad UNESCO-nominated Ziro Valley, sleep in Apatani villages, and learn the unique paddy-cum-fish farming system.",
+    "highlights": [
+      "Village walks in Hong and Hija Apatani settlements",
+      "Paddy-cum-fish integrated field system — unique to the Apatani",
+      "Talley Valley Wildlife Sanctuary forest walk",
+      "Home-cooked meal with an Apatani family"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival in Ziro",
+        "description": "Fly into Itanagar and drive to Ziro, arriving in the valley famous for its cool climate, pine forests, and the Apatani tribal homeland."
+      },
+      {
+        "day": 2,
+        "title": "Hong & Hija Village Walk",
+        "description": "Walk through the traditional Apatani villages of Hong and Hija, observing the intricately planned paddy-cum-fish fields where rice and fish are cultivated together in the same terraced plots."
+      },
+      {
+        "day": 3,
+        "title": "Talley Valley",
+        "description": "Day hike into Talley Valley Wildlife Sanctuary, a pristine subtropical broadleaf forest with orchids, hornbills, and the Talley River cascading through undisturbed jungle."
+      },
+      {
+        "day": 4,
+        "title": "Local Kitchen & Departure",
+        "description": "Morning in a local Apatani kitchen learning to prepare pika pila (preserved mustard leaf) and apong (rice beer), then depart for Itanagar or Naharlagun."
+      }
+    ],
+    "included": [
+      "3 nights guesthouse in Ziro (breakfast & dinner)",
+      "Private vehicle for transfers",
+      "Local Apatani cultural guide",
+      "Talley Valley forest trek with naturalist"
+    ],
+    "excluded": [
+      "Flights to Itanagar",
+      "Inner Line Permit",
+      "Lunches",
+      "Personal expenses"
+    ],
+    "maxGroupSize": 8,
+    "destinationSlug": "ziro",
+    "badge": null,
+    "originalPricePerPerson": 21999
+  },
+  {
+    "id": "8",
+    "slug": "dzukou-valley-trek",
+    "title": "Dzukou Valley Trek",
+    "destination": "Dzukou Valley",
+    "country": "India",
+    "category": "Trekking",
+    "durationDays": 4,
+    "pricePerPerson": 12999,
+    "rating": 4.8,
+    "reviewsCount": 134,
+    "image": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=70",
+    "shortDescription": "Trek into the 'valley of flowers of the North East' — a remote highland meadow famous for Dzukou lilies, stream crossings, and pristine caves.",
+    "highlights": [
+      "Ascent from Viswema trailhead through rhododendron forest",
+      "Overnight camp in the heart of Dzukou Valley",
+      "Dzukou lily bloom (June–August) carpeting the valley",
+      "Cave exploration and stream crossings along the ridge"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Kohima to Viswema",
+        "description": "Drive to Viswema village — the southern trailhead for Dzukou — meet your trek guide and porters, and acclimatise with a short evening walk."
+      },
+      {
+        "day": 2,
+        "title": "Ascent to Dzukou Valley",
+        "description": "Trek 8 km through bamboo groves and rhododendron forest, gaining 1,100 ft to the valley floor at 7,800 ft; set up camp beside the Dzukou stream."
+      },
+      {
+        "day": 3,
+        "title": "Valley Exploration",
+        "description": "Full day exploring the valley ridgeline — Dzukou lily meadows, natural limestone caves, and the sweeping views toward the Japfü Peak range."
+      },
+      {
+        "day": 4,
+        "title": "Descent & Departure",
+        "description": "Early descent back to Viswema, drive to Kohima for a celebratory Naga meal, then depart."
+      }
+    ],
+    "included": [
+      "3 nights accommodation (1 guesthouse + 2 valley camp)",
+      "Trek guide and porter",
+      "All meals during the trek",
+      "Camping equipment (tent, sleeping bag)"
+    ],
+    "excluded": [
+      "Travel to/from Kohima",
+      "Personal trekking boots and clothing",
+      "Travel insurance",
+      "Personal expenses"
+    ],
+    "maxGroupSize": 10,
+    "destinationSlug": "nagaland",
+    "badge": null,
+    "originalPricePerPerson": 16999
+  },
+  {
+    "id": "9",
+    "slug": "loktak-lake-imphal-discovery",
+    "title": "Loktak Lake & Imphal Discovery",
+    "destination": "Imphal & Loktak",
+    "country": "India",
+    "category": "Rivers & Lakes",
+    "durationDays": 4,
+    "pricePerPerson": 15999,
+    "rating": 4.6,
+    "reviewsCount": 109,
+    "image": "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?auto=format&fit=crop&w=1200&q=70",
+    "shortDescription": "Explore Imphal's warrior heritage and the floating phumdis of Loktak — home to the world's only floating national park and the endangered sangai deer.",
+    "highlights": [
+      "Boat ride over the phumdis (floating biomass islands) of Loktak",
+      "Keibul Lamjao National Park — the world's only floating national park",
+      "Ima Keithel, the all-women market in Imphal",
+      "Kangla Fort — the ancient seat of Manipuri kings"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival in Imphal",
+        "description": "Arrive at Imphal airport, check in, and spend the afternoon at Kangla Fort — the historic citadel of the Meitei kingdom overlooking the Imphal River."
+      },
+      {
+        "day": 2,
+        "title": "Ima Keithel & Cultural Imphal",
+        "description": "Morning at Ima Keithel (Mothers' Market), run entirely by women for 500 years, followed by the Manipur State Museum and a Ras Lila dance performance in the evening."
+      },
+      {
+        "day": 3,
+        "title": "Loktak Lake & Keibul Lamjao",
+        "description": "Drive to Loktak Lake and take a boat across the phumdis — floating mats of vegetation that support entire communities — into Keibul Lamjao National Park in search of the sangai (brow-antlered deer)."
+      },
+      {
+        "day": 4,
+        "title": "Sendra Island & Departure",
+        "description": "Morning visit to Sendra Island hilltop for panoramic lake views, then transfer to Imphal airport for departure."
+      }
+    ],
+    "included": [
+      "3 nights hotel in Imphal (breakfast included)",
+      "Private vehicle for all sightseeing",
+      "Loktak boat ride and park entry fee",
+      "Local guide throughout"
+    ],
+    "excluded": [
+      "Flights to/from Imphal",
+      "Lunches & dinners",
+      "Inner Line Permit (ILP)",
+      "Personal expenses"
+    ],
+    "maxGroupSize": 10,
+    "destinationSlug": "manipur",
+    "badge": null,
+    "originalPricePerPerson": 20999
+  },
+  {
+    "id": "10",
+    "slug": "namdapha-wilderness-trail",
+    "title": "Namdapha Wilderness Trail",
+    "destination": "Namdapha",
+    "country": "India",
+    "category": "Wildlife",
+    "durationDays": 5,
+    "pricePerPerson": 21999,
+    "rating": 4.9,
+    "reviewsCount": 91,
+    "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=70",
+    "shortDescription": "Venture into India's easternmost wilderness — a biodiversity hotspot in Arunachal Pradesh where four big-cat species and hoolock gibbons share the rainforest.",
+    "highlights": [
+      "Rainforest walks from Deban forest camp",
+      "Noa-Dehing river crossing and riverside camp",
+      "Spot hornbills, hoolock gibbons, and rare Namdapha flying squirrel",
+      "Drive through Miao — gateway to one of India's least-visited parks"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Dibrugarh to Miao",
+        "description": "Fly to Dibrugarh and drive into Arunachal Pradesh to Miao, the small market town at the edge of Namdapha Tiger Reserve, arriving by evening."
+      },
+      {
+        "day": 2,
+        "title": "Miao to Deban",
+        "description": "Drive the forest road into the park core, arriving at Deban forest camp — the main base inside Namdapha — set beside the Noa-Dehing river with views of the Patkai range."
+      },
+      {
+        "day": 3,
+        "title": "Rainforest Trails",
+        "description": "Full day of guided walks on the Deban forest trails, listening for the whooping calls of hoolock gibbons overhead and scanning the canopy for great Indian hornbills and Blyth's kingfishers."
+      },
+      {
+        "day": 4,
+        "title": "Noa-Dehing River Walk",
+        "description": "Follow the Noa-Dehing river upstream through bamboo forest and rocky stream crossings — one of eastern India's most pristine river corridors — with chances of elephant and gaur sightings."
+      },
+      {
+        "day": 5,
+        "title": "Return to Miao & Departure",
+        "description": "Early morning bird walk around Deban, then drive back to Miao and onward to Dibrugarh for departure."
+      }
+    ],
+    "included": [
+      "4 nights accommodation (forest rest house & camp)",
+      "All meals during the trek and camp stay",
+      "Expert naturalist guide and forest entry permits",
+      "Private vehicle Miao–Deban–Miao",
+      "River crossing equipment"
+    ],
+    "excluded": [
+      "Flights to Dibrugarh",
+      "Inner Line Permit for Arunachal Pradesh",
+      "Personal trekking gear",
+      "Travel insurance"
+    ],
+    "maxGroupSize": 6,
+    "destinationSlug": "namdapha",
+    "badge": null,
+    "originalPricePerPerson": 28999
+  }
+]

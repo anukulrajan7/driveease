@@ -1,0 +1,452 @@
+[
+  {
+    "slug": "meghalaya",
+    "name": "Meghalaya",
+    "country": "India",
+    "tagline": "The abode of clouds — living bridges, sacred forests, and crystal rivers",
+    "image": "https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1200&q=70",
+    "intro": "Meghalaya sits atop a plateau in the heart of North East India, draped in some of the world's heaviest rainfall and a canopy of subtropical forest. The Khasi and Jaintia Hills shelter double-decker living root bridges, plunging waterfalls, and the impossibly clear Umngot River at Dawki. Villages like Mawlynnong — Asia's cleanest — reveal a matrilineal society that has lived in harmony with this landscape for centuries.",
+    "facts": {
+      "bestTime": "October – April",
+      "idealDuration": "4 – 6 days",
+      "language": "Khasi, Garo, English",
+      "currency": "INR (₹)"
+    },
+    "attractions": [
+      {
+        "name": "Nongriat Double-Decker Root Bridge",
+        "description": "A 3,000-step descent into the Cherrapunji gorge leads to a two-tiered living bridge woven from the aerial roots of rubber fig trees — a feat of bio-engineering centuries in the making.",
+        "image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Nohkalikai Falls",
+        "description": "At 340 m, Nohkalikai is India's tallest plunge waterfall; the pool at its base turns an eerie turquoise-green and is visible from a dramatic clifftop viewpoint near Cherrapunji.",
+        "image": "https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Dawki & Umngot River",
+        "description": "The Umngot River at Dawki is so transparent that the boats appear to float on glass — a morning coracle ride here is one of the most surreal experiences in North East India.",
+        "image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Mawlynnong Village",
+        "description": "Declared Asia's cleanest village, Mawlynnong is a model of community-led conservation, with bamboo dustbins on every path, a sky-walk through the forest canopy, and a living root bridge close by.",
+        "image": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=70"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Do I need a permit to visit Meghalaya?",
+        "answer": "No inner-line permit is required for Indian nationals visiting Meghalaya. Foreign nationals should register with the Foreigners' Registration Office within 24 hours of arrival if staying longer than 24 hours."
+      },
+      {
+        "question": "When is the best time to visit Meghalaya?",
+        "answer": "October to April offers the clearest skies and best waterfall views. The monsoon (June–September) turns the hills intensely green but roads can be disrupted; the root bridge trek is slippery."
+      },
+      {
+        "question": "How do I reach Meghalaya?",
+        "answer": "The nearest airport is Shillong Airport (SHL) with connections to Kolkata, or fly into Guwahati (GAU) in Assam and drive 2.5 hours to Shillong. Our tours include airport transfers from both cities."
+      }
+    ]
+  },
+  {
+    "slug": "kaziranga",
+    "name": "Kaziranga",
+    "country": "India",
+    "tagline": "Fortress of the one-horned rhino — wild Assam at its rawest",
+    "image": "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?auto=format&fit=crop&w=1200&q=70",
+    "intro": "Kaziranga National Park and Tiger Reserve spreads across the floodplain of the Brahmaputra in central Assam, sheltering two-thirds of the world's remaining greater one-horned rhinoceros population. Elephants, wild water buffalo, swamp deer, and Bengal tigers share the tall elephant grass and alluvial forest, while the wetlands draw hundreds of migratory bird species each winter. A UNESCO World Heritage Site since 1985, Kaziranga is non-negotiable on any North East India itinerary.",
+    "facts": {
+      "bestTime": "November – April",
+      "idealDuration": "2 – 3 days",
+      "language": "Assamese, Bengali, English",
+      "currency": "INR (₹)"
+    },
+    "attractions": [
+      {
+        "name": "Central Range Jeep & Elephant Safari",
+        "description": "The Central Range offers the highest rhino density in the park; combine a pre-dawn elephant-back ride through the grasslands with a jeep safari for a complete Kaziranga experience.",
+        "image": "https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Western (Burapahar) Range",
+        "description": "Quieter than the central zone, the Burapahar Range rewards patient visitors with wild elephant herds, tigers, and the scarce hoolock gibbon in the adjacent hill forest.",
+        "image": "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Hoollongapar Gibbon Sanctuary",
+        "description": "A 20 km detour east of Kaziranga, this forest patch is home to India's only ape — the western hoolock gibbon — along with capped langurs and slow loris, best spotted at dawn.",
+        "image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Brahmaputra River Cruise",
+        "description": "A late-afternoon boat ride on the Brahmaputra reveals the park's northern boundary, Gangetic river dolphins, and sweeping views of the flood-plain grasslands against the Karbi Anglong hills.",
+        "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=70"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "When does Kaziranga National Park close?",
+        "answer": "The park closes from around 1 May through 31 October due to the Brahmaputra floods. The best season is November to April; February and March offer the finest wildlife sightings."
+      },
+      {
+        "question": "How many safari zones are there?",
+        "answer": "Kaziranga has five safari ranges: Central, Eastern (Agoratoli), Western (Burapahar), Kohora, and Ghorakati. Each has a distinct landscape; our 3-day package covers three ranges."
+      },
+      {
+        "question": "How do I reach Kaziranga?",
+        "answer": "Fly to Jorhat (JRH, 97 km) or Guwahati (GAU, 217 km) and drive to the park. Furkating railway junction is the nearest railhead, 75 km away. Our tours include all transfers."
+      }
+    ]
+  },
+  {
+    "slug": "tawang",
+    "name": "Tawang",
+    "country": "India",
+    "tagline": "Where the Himalayas meet Tibetan sky — monasteries above the clouds",
+    "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=70",
+    "intro": "Tawang sits at 3,048 m in the far north-western corner of Arunachal Pradesh, hemmed in by the McMahon Line and the great wall of the Eastern Himalayas. The Tawang Monastery — Asia's largest Buddhist monastery after Lhasa's Potala — commands a ridge above the town and sets the spiritual tone for the entire region. Glacial lakes, war memorials, high mountain passes, and the warm Monpa Buddhist culture make this one of India's most rewarding and least-visited destinations.",
+    "facts": {
+      "bestTime": "March – October",
+      "idealDuration": "5 – 7 days",
+      "language": "Monpa, Hindi, English",
+      "currency": "INR (₹)"
+    },
+    "attractions": [
+      {
+        "name": "Tawang Monastery (Galden Namgey Lhatse)",
+        "description": "Founded in the 17th century and housing over 400 monks, this golden-roofed complex perched at 3,300 m is the largest Buddhist monastery in India and the second largest in Asia.",
+        "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Sela Pass",
+        "description": "At 4,170 m, Sela Pass is the gateway to Tawang — a high-altitude corridor flanked by frozen lakes and snow walls, often blanketed in mist and offering otherworldly landscape photography.",
+        "image": "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Madhuri Lake (Sangetsar Lake)",
+        "description": "A serene glacial lake at 4,100 m framed by snow peaks and alpine meadows, Madhuri Lake is sacred to the Monpa people and one of the most photographed landscapes in Arunachal.",
+        "image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Bumla Pass & Shungetsar Lake",
+        "description": "The India–China border post at 4,563 m is accessible on day trips from Tawang; Shungetsar Lake nearby freezes solid in winter and shimmers a brilliant sapphire blue in summer.",
+        "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=70"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Do I need a permit to visit Tawang?",
+        "answer": "Yes — all visitors (Indian and foreign nationals) require an Inner Line Permit (ILP) to enter Arunachal Pradesh, including Tawang. Our tour package obtains the ILP on your behalf before departure."
+      },
+      {
+        "question": "What is the best time to visit Tawang?",
+        "answer": "March to June offers blooming rhododendrons and clear mountain views; September and October bring crisp skies post-monsoon. Sela Pass may be closed by heavy snow from December to February."
+      },
+      {
+        "question": "How do I reach Tawang?",
+        "answer": "The nearest airport is Tezpur (TEZ) in Assam, about 325 km away via Sela Pass (10–12 hours by road). Guwahati is also a common starting point. There is no railway to Tawang; road travel is the only option."
+      }
+    ]
+  },
+  {
+    "slug": "sikkim",
+    "name": "Sikkim",
+    "country": "India",
+    "tagline": "Himalayan kingdom of monasteries, orchids, and glacial lakes",
+    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=70",
+    "intro": "Sikkim is a former Himalayan kingdom wedged between Nepal, Tibet, and Bhutan, now India's smallest and most ecologically pristine state. Kangchenjunga — the world's third-highest peak — presides over a landscape of Buddhist monasteries, high-altitude lakes, and valleys carpeted with 600 species of orchid. The Tibetan cultural heartland of North Sikkim offers high passes and nomadic grazing valleys, while Gangtok's hillside cafés and monasteries keep the soul close to the mountains.",
+    "facts": {
+      "bestTime": "March – May, October – December",
+      "idealDuration": "5 – 7 days",
+      "language": "Nepali, Sikkimese, Lepcha, Hindi, English",
+      "currency": "INR (₹)"
+    },
+    "attractions": [
+      {
+        "name": "Tsomgo (Changu) Lake",
+        "description": "This oval glacial lake at 3,753 m freezes solid in winter and mirrors the surrounding snow peaks in summer; yaks and Tibetan ponies dot the shoreline for a quintessential Himalayan scene.",
+        "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Nathu La Pass",
+        "description": "A historic Silk Road trade point at 4,310 m on the Indo-China border, Nathu La offers close views of Chinese border infrastructure and snow-covered mountain terrain accessible from Gangtok.",
+        "image": "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Yumthang Valley",
+        "description": "Known as the Valley of Flowers of the East, Yumthang blooms with primula, rhododendron, and poppies between March and May at 3,564 m, backed by snow-draped ridgelines.",
+        "image": "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Rumtek Monastery",
+        "description": "The seat of the Kagyu school of Tibetan Buddhism, Rumtek is one of the largest and most important monasteries in Sikkim, housing sacred relics and an ornate assembly hall.",
+        "image": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=70"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Do I need a permit to visit Sikkim?",
+        "answer": "Indian nationals do not need a permit to enter Sikkim but require a Protected Area Permit (PAP) for North Sikkim, Nathu La, and border areas — obtained easily in Gangtok. Foreign nationals need an Inner Line Permit. Our package handles all permits."
+      },
+      {
+        "question": "When is the best time to visit Sikkim?",
+        "answer": "March to May is ideal for rhododendron blooms and clear mountain views; October to December brings post-monsoon clarity and the best photography conditions. North Sikkim roads may be closed November to March."
+      },
+      {
+        "question": "How do I reach Gangtok?",
+        "answer": "Bagdogra Airport (IXB) in West Bengal is the main gateway, 124 km from Gangtok (3.5 hours by road). The nearest railway station is New Jalpaiguri (NJP). Our tours include shared and private transfers from both."
+      }
+    ]
+  },
+  {
+    "slug": "nagaland",
+    "name": "Nagaland",
+    "country": "India",
+    "tagline": "Land of the headhunters — warrior tribes, hornbill dances, and mist-wrapped hills",
+    "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=70",
+    "intro": "Nagaland is home to 16 major Naga tribes, each with distinct weaving traditions, war dances, and village customs that have survived centuries of isolation in the forested hills bordering Myanmar. The Hornbill Festival each December draws all tribes into a week-long celebration of traditional song, morung architecture, indigenous food, and ceremonial performance at Kisama Heritage Village. Beyond the festival, Kohima's World War II cemetery, the Dzukou Valley trek, and the untouched villages of Mon district reveal a culture of extraordinary depth.",
+    "facts": {
+      "bestTime": "October – May",
+      "idealDuration": "3 – 5 days",
+      "language": "Nagamese, English, tribal dialects",
+      "currency": "INR (₹)"
+    },
+    "attractions": [
+      {
+        "name": "Hornbill Festival, Kisama",
+        "description": "Held annually in the first week of December, the Hornbill Festival brings all Naga tribes together at the Heritage Village for traditional dances, chants, indigenous cuisine, and craft markets.",
+        "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Kohima War Cemetery",
+        "description": "The meticulously maintained WWII cemetery on Garrison Hill honours the Allied soldiers who turned the tide against the Japanese advance at the Battle of Kohima in 1944 — one of the war's pivotal engagements.",
+        "image": "https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Dzukou Valley",
+        "description": "A day-trek from Viswema village leads to this hidden valley at 2,438 m, carpeted with seasonal wildflowers, bamboo groves, and streams — one of North East India's finest highland walking destinations.",
+        "image": "https://images.unsplash.com/photo-1455156218388-5e61b526818b?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Longwa Village, Mon District",
+        "description": "The chief's longhouse at Longwa straddles the India–Myanmar border; the Konyak Naga elder here, adorned with traditional tattoos and hornbill feather headgear, is one of the last custodians of headhunting legacy.",
+        "image": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=1200&q=70"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Do I need a permit to visit Nagaland?",
+        "answer": "Indian nationals do not need an Inner Line Permit (ILP) to visit Kohima and Dimapur, but an ILP is required for restricted districts such as Mon, Tuensang, and Longleng. Foreign nationals require a Protected Area Permit for all of Nagaland. We arrange all permits."
+      },
+      {
+        "question": "When is the Hornbill Festival held?",
+        "answer": "The Hornbill Festival runs from 1 to 10 December each year at Kisama Heritage Village, 12 km from Kohima. Accommodation books out months in advance — our package includes pre-reserved homestays."
+      },
+      {
+        "question": "How do I reach Kohima?",
+        "answer": "Dimapur Airport (DMU) is the only commercial airport in Nagaland, 74 km from Kohima. Direct flights connect to Kolkata, Guwahati, and Delhi. A 3-hour road transfer connects Dimapur to Kohima."
+      }
+    ]
+  },
+  {
+    "slug": "majuli",
+    "name": "Majuli",
+    "country": "India",
+    "tagline": "The world's largest river island — Vaishnavite culture on a shrinking paradise",
+    "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=70",
+    "intro": "Majuli is the world's largest freshwater river island, floating in the Brahmaputra in upper Assam at an elevation barely above the waterline. Home to the Mising, Deori, and Sonowal Kachari tribes, it is also the spiritual heartland of Assam's Vaishnavite sattra monastery tradition, where centuries-old masked dance-dramas and manuscript arts survive in thatched compounds. As the Brahmaputra erodes its edges each monsoon, Majuli's fragile beauty becomes all the more precious.",
+    "facts": {
+      "bestTime": "October – March",
+      "idealDuration": "2 – 3 days",
+      "language": "Assamese, Mising, English",
+      "currency": "INR (₹)"
+    },
+    "attractions": [
+      {
+        "name": "Kamalabari & Auniati Sattras",
+        "description": "These 16th-century Vaishnavite monasteries are living centres of Assamese culture, preserving antique masks, jewellery, and rare manuscripts, and staging Bhortal and Ojapali dance performances for visitors.",
+        "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Mising Tribal Villages",
+        "description": "Stilted bamboo homes in Mising villages reveal an indigenous floodplain architecture adapted to annual floods; weavers produce distinctive Mising textiles on back-strap looms under every house.",
+        "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Brahmaputra Sunset Boat Ride",
+        "description": "As dusk turns the Brahmaputra copper-gold, a country boat ride through the island's wetland margins reveals river dolphins, migratory birds, and a horizon unbroken by development.",
+        "image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Pottery & Mask-Making Workshops",
+        "description": "Majuli's Samaguri Satra is the last place in Assam where the traditional art of making Bhaona dance masks from clay, cloth, and bamboo is still practised and taught to visitors.",
+        "image": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=70"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How do I reach Majuli?",
+        "answer": "Take a train or drive to Jorhat (3 km from Nimati Ghat), then cross by government ferry to Majuli — the crossing takes about 1–1.5 hours depending on water levels. Our tours include ferry tickets and transfers."
+      },
+      {
+        "question": "Is Majuli accessible during the monsoon?",
+        "answer": "The island floods significantly from June to September and ferry timings become unpredictable. October to March is the best and safest window, when the water recedes and the sattras hold their major festivals."
+      },
+      {
+        "question": "Where do I stay on Majuli?",
+        "answer": "Majuli has no large hotels; accommodation is in bamboo eco-lodges and family-run guesthouses near the sattras. Our package books verified properties with clean rooms and authentic home-cooked Assamese meals."
+      }
+    ]
+  },
+  {
+    "slug": "ziro",
+    "name": "Ziro Valley",
+    "country": "India",
+    "tagline": "The Apatani plateau — pine-scented valleys, rice fields, and living tradition",
+    "image": "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1200&q=70",
+    "intro": "Ziro Valley in the Lower Subansiri district of Arunachal Pradesh is one of the oldest inhabited valleys in North East India, home to the Apatani tribe whose integrated rice-fish cultivation system has been nominated for UNESCO World Heritage status. Pine forests ring the flat plateau at 1,700 m, and the Apatani villages of Hari, Hong, and Bamin are living museums of a society that practised sustainable agriculture centuries before the term existed. The Ziro Music Festival each September adds a contemporary creative layer to this ageless landscape.",
+    "facts": {
+      "bestTime": "September – November, March – May",
+      "idealDuration": "3 – 4 days",
+      "language": "Apatani, Hindi, English",
+      "currency": "INR (₹)"
+    },
+    "attractions": [
+      {
+        "name": "Apatani Villages (Hari, Hong, Bamin)",
+        "description": "Walking through Apatani villages reveals bamboo houses on stilts, intricate woven textiles, and elder women with traditional facial tattoos and nose plugs — the last generation to bear these distinctive marks.",
+        "image": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Talley Valley Wildlife Sanctuary",
+        "description": "A 337 sq km forest reserve adjacent to the valley shelters clouded leopards, red pandas, hoolock gibbons, and an extraordinary range of butterflies and orchids rarely seen elsewhere.",
+        "image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Ziro Music Festival",
+        "description": "Held in late September against a backdrop of mist-draped rice paddies, this four-day independent music festival is one of India's most atmospheric — combining indie, folk, and world music with Apatani cultural performances.",
+        "image": "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Kile Pakho Ridge Walk",
+        "description": "A pine-forest trail above the valley floor leads to the Kile Pakho ridge, offering a panoramic view of the entire Ziro plateau — rice terraces, clusters of village rooftops, and the forested hills beyond.",
+        "image": "https://images.unsplash.com/photo-1455156218388-5e61b526818b?auto=format&fit=crop&w=1200&q=70"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Do I need a permit to visit Ziro Valley?",
+        "answer": "Yes — Ziro is in Arunachal Pradesh, which requires an Inner Line Permit (ILP) for all Indian nationals and a Protected Area Permit (PAP) for foreign nationals. Our package arranges permits before your departure."
+      },
+      {
+        "question": "When is the best time to visit Ziro?",
+        "answer": "September and October offer golden harvest-season rice fields and coincide with the Ziro Music Festival. March to May brings clear skies and blooming orchids. The monsoon (June–August) makes roads difficult."
+      },
+      {
+        "question": "How do I reach Ziro Valley?",
+        "answer": "Lilabari Airport (IXI) near North Lakhimpur in Assam is the nearest airport (100 km from Ziro). Buses and shared taxis connect to the valley. Alternatively, drive from Itanagar (115 km). Our tours include all transfers."
+      }
+    ]
+  },
+  {
+    "slug": "manipur",
+    "name": "Manipur",
+    "country": "India",
+    "tagline": "The jewelled land — floating lakes, classical dance, and the cradle of polo",
+    "image": "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?auto=format&fit=crop&w=1200&q=70",
+    "intro": "Manipur — the jewelled land — is a valley ringed by forested hills in the heart of North East India, where Meitei culture has produced one of the world's great classical dance traditions in Manipuri Raas Leela. Loktak Lake, the largest freshwater lake in North East India, hosts floating phumdis where the endangered sangai deer grazes in Keibul Lamjao National Park. Imphal's Ima Keithel — the world's only all-women market — and the ancient Kangla Fort speak of a civilisation centuries deep.",
+    "facts": {
+      "bestTime": "October – March",
+      "idealDuration": "3 – 5 days",
+      "language": "Meitei (Manipuri), English, Hindi",
+      "currency": "INR (₹)"
+    },
+    "attractions": [
+      {
+        "name": "Loktak Lake & Sendra Island",
+        "description": "The largest freshwater lake in North East India is dotted with circular phumdis — floating islands of vegetation — and the hillside Sendra Island tourist bungalow offers sweeping views across the water.",
+        "image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Keibul Lamjao National Park",
+        "description": "The world's only floating national park sits on the phumdis of Loktak Lake and is the last natural refuge of the sangai, Manipur's state animal — a brow-antlered deer found nowhere else on earth.",
+        "image": "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Kangla Fort",
+        "description": "The ancient seat of Meitei kings in Imphal, Kangla Fort contains sacred temples, the iconic Kangla Sha dragon sentinels, and a deeply layered history stretching back over two millennia.",
+        "image": "https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Ima Keithel (Mother's Market)",
+        "description": "Operating for over 500 years in the heart of Imphal, Ima Keithel is the world's only market run entirely by women — thousands of Meitei mothers trade textiles, fish, vegetables, and pottery here daily.",
+        "image": "https://images.unsplash.com/photo-1455156218388-5e61b526818b?auto=format&fit=crop&w=1200&q=70"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Do I need a permit to visit Manipur?",
+        "answer": "Indian nationals do not require an Inner Line Permit to visit Imphal and the main valley. Some hill districts require additional permits. Foreign nationals need a Protected Area Permit, which we arrange before your tour."
+      },
+      {
+        "question": "When is the best time to visit Manipur?",
+        "answer": "October to March is the ideal season — skies are clear, Loktak Lake is at its most scenic, and the Manipur Sangai Festival (late November) celebrates the sangai deer and the state's cultural heritage."
+      },
+      {
+        "question": "How do I reach Imphal?",
+        "answer": "Imphal Airport (IMF) has direct flights from Kolkata, Delhi, Guwahati, and other major cities. The airport is 8 km from the city centre. Our tours include airport transfers and all ground transport."
+      }
+    ]
+  },
+  {
+    "slug": "namdapha",
+    "name": "Namdapha",
+    "country": "India",
+    "tagline": "The last wilderness — India's richest biodiversity hotspot",
+    "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=70",
+    "intro": "Namdapha National Park in Arunachal Pradesh's Changlang district is India's third-largest national park and one of the richest biodiversity zones on earth, spanning from the subtropical Noa-Dehing River at 200 m to glacial peaks above 4,500 m within a single protected area. It is the only park in the world to shelter all four large cat species — tiger, leopard, clouded leopard, and snow leopard — along with red panda, hoolock gibbon, and over 1,000 plant species. The Lisu and Chakma communities living at its margins offer a glimpse into the human side of this ancient forest.",
+    "facts": {
+      "bestTime": "October – April",
+      "idealDuration": "4 – 6 days",
+      "language": "Lisu, Chakma, Hindi, English",
+      "currency": "INR (₹)"
+    },
+    "attractions": [
+      {
+        "name": "Noa-Dehing River Corridor",
+        "description": "The fast-flowing Noa-Dehing and its tributaries form the life-giving spine of the park; guided nature walks along the riverbanks reveal hornbills, river otters, and fresh big-cat pugmarks in the sand.",
+        "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Miao–Deban Wildlife Trail",
+        "description": "The trail from Miao town to Deban base camp traverses a transition zone of tropical and subtropical forest that is among the most biodiverse per square kilometre of any protected area in South Asia.",
+        "image": "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Hornbill & Bird-Watching at Deban",
+        "description": "Namdapha records over 600 bird species — great hornbill, white-winged wood duck, and Blyth's kingfisher among them; the canopy walks near Deban camp are exceptional for dawn bird-watching.",
+        "image": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Lisu Village Cultural Visit",
+        "description": "The Lisu people — related to communities in Myanmar and China — maintain a distinctive hunter-gatherer and shifting-cultivation lifestyle in the buffer zone; a guided village visit includes traditional weaving and rice-beer ceremonies.",
+        "image": "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=1200&q=70"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Do I need a permit to visit Namdapha?",
+        "answer": "Yes — Namdapha is in Arunachal Pradesh and requires an Inner Line Permit (ILP) for Indian nationals and a Protected Area Permit (PAP) for foreign nationals. A separate forest entry permit is needed at the park gate. Our package handles everything."
+      },
+      {
+        "question": "What wildlife can I realistically expect to see?",
+        "answer": "Hoolock gibbons, hornbills, deer, and a wide variety of birds are reliably spotted. Large cats are present but rarely seen due to the dense forest. The experience here is about the forest ecosystem as a whole, not single-species sightings."
+      },
+      {
+        "question": "How do I reach Namdapha?",
+        "answer": "The nearest airport is Dibrugarh (DIB) in Assam, 150 km from Miao (the park gateway town). A long but scenic road transfer follows. Dibrugarh is connected to Kolkata, Delhi, and Guwahati. Our tours include all transfers from Dibrugarh."
+      }
+    ]
+  }
+]

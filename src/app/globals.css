@@ -1,26 +1,136 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-fraunces);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/*
+ * DriveEase design tokens (North East India theme).
+ * brand  = forest green: tea gardens & misty hills (structure, links, primary CTAs)
+ * accent = dawn orange: "land of the dawn-lit mountains" (action, deals, savings)
+ * emerald/rose stay semantic-only (included/excluded, errors).
+ */
+@theme {
+  --color-brand-50: #f0fdf4;
+  --color-brand-100: #dcfce7;
+  --color-brand-200: #bbf7d0;
+  --color-brand-300: #86efac;
+  --color-brand-400: #4ade80;
+  --color-brand-500: #22c55e;
+  --color-brand-600: #16a34a;
+  --color-brand-700: #15803d;
+  --color-brand-800: #166534;
+  --color-brand-900: #14532d;
+
+  --color-accent-50: #fff7ed;
+  --color-accent-100: #ffedd5;
+  --color-accent-200: #fed7aa;
+  --color-accent-400: #fb923c;
+  --color-accent-500: #f97316;
+  --color-accent-600: #ea580c;
+  --color-accent-700: #c2410c;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--color-brand-200);
+}
+
+/* anchor sections shouldn't hide under the sticky header */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* ---------- Motion & micro-interactions ---------- */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ken-burns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+/* Hero entrance stagger — apply .hero-stagger to a container */
+.hero-stagger > * {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.hero-stagger > *:nth-child(2) { animation-delay: 0.12s; }
+.hero-stagger > *:nth-child(3) { animation-delay: 0.24s; }
+.hero-stagger > *:nth-child(4) { animation-delay: 0.36s; }
+.hero-stagger > *:nth-child(5) { animation-delay: 0.48s; }
+
+.animate-ken-burns {
+  animation: ken-burns 18s ease-out both;
+}
+
+/* Scroll reveal — toggled by the <Reveal> component */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Pressable feedback for all buttons & link-buttons */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+button:active,
+a:active {
+  transform: scale(0.98);
+}
+
+/* Slider helpers (research: snap + peek + hidden scrollbar + edge fade) */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.edge-fade-x {
+  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .hero-stagger > *,
+  .animate-ken-burns {
+    animation: none;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  button:active,
+  a:active {
+    transform: none;
+  }
 }

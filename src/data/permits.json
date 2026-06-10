@@ -1,0 +1,86 @@
+[
+  {
+    "region": "Arunachal Pradesh (Tawang, Ziro, Namdapha)",
+    "destinationSlugs": ["tawang", "ziro", "namdapha"],
+    "indian": {
+      "permit": "ILP (Inner Line Permit)",
+      "details": "Apply online for an e-ILP before travel. Valid 15–30 days. Needs a photo ID and passport photo. DriveEase files this for you within 48 hours of booking.",
+      "required": true
+    },
+    "foreigner": {
+      "permit": "PAP (Protected Area Permit)",
+      "details": "Groups of 2+ travelling via a registered tour operator with a fixed itinerary. DriveEase is a registered operator and arranges PAP.",
+      "required": true
+    }
+  },
+  {
+    "region": "Nagaland (Kohima, Dzukou Valley, Hornbill)",
+    "destinationSlugs": ["nagaland"],
+    "indian": {
+      "permit": "ILP (Inner Line Permit)",
+      "details": "Required for all Indian nationals entering Nagaland. Apply online via the Nagaland e-ILP portal. DriveEase files this for you within 48 hours of booking.",
+      "required": true
+    },
+    "foreigner": {
+      "permit": "Arrival registration",
+      "details": "Foreign nationals register on arrival at the Foreigners Registration Office (FRO) at the point of entry. No Protected Area Permit required since 2011. DriveEase provides all guidance and accompaniment through the process.",
+      "required": false
+    }
+  },
+  {
+    "region": "Manipur (Imphal, Loktak Lake)",
+    "destinationSlugs": ["manipur"],
+    "indian": {
+      "permit": "ILP (Inner Line Permit)",
+      "details": "Required for Indian nationals entering Manipur. Apply online via the Manipur ILP portal. DriveEase files this on your behalf within 48 hours of booking.",
+      "required": true
+    },
+    "foreigner": {
+      "permit": "Arrival registration",
+      "details": "Foreign nationals must register with the Foreigners Registration Office (FRO) within 24 hours of arrival. DriveEase accompanies you through registration and ensures compliance.",
+      "required": false
+    }
+  },
+  {
+    "region": "Sikkim (Gangtok, North Sikkim, Tsomgo, Nathu La)",
+    "destinationSlugs": ["sikkim"],
+    "indian": {
+      "permit": "Special area permits (operator-arranged)",
+      "details": "No ILP needed to enter Sikkim. However, Tsomgo Lake, Nathu La Pass, and North Sikkim require separate special permits arranged through a registered operator. DriveEase handles all zone-specific permits as part of your itinerary.",
+      "required": false
+    },
+    "foreigner": {
+      "permit": "RAP + PAP for restricted zones",
+      "details": "A Restricted Area Permit (RAP) is required for all of Sikkim; a Protected Area Permit (PAP) is additionally needed for North Sikkim and border zones. Both are arranged by DriveEase as a registered operator. Apply at least 21 days before departure.",
+      "required": true
+    }
+  },
+  {
+    "region": "Meghalaya (Shillong, Cherrapunji, Dawki)",
+    "destinationSlugs": ["meghalaya"],
+    "indian": {
+      "permit": "No permit required",
+      "details": "No Inner Line Permit or special permit is needed for Meghalaya. Carry a valid government-issued photo ID (Aadhaar, passport, or voter card) at all times.",
+      "required": false
+    },
+    "foreigner": {
+      "permit": "No permit required",
+      "details": "No special permit is required for foreign nationals visiting Meghalaya. Carry your passport and a valid Indian visa. Standard customs and immigration rules apply.",
+      "required": false
+    }
+  },
+  {
+    "region": "Assam (Guwahati, Kaziranga, Majuli)",
+    "destinationSlugs": ["kaziranga", "majuli"],
+    "indian": {
+      "permit": "No permit required",
+      "details": "No Inner Line Permit or special permit is needed for Assam. Carry a valid government-issued photo ID. Entry to Kaziranga National Park requires a park entry fee paid at the gate.",
+      "required": false
+    },
+    "foreigner": {
+      "permit": "No permit required",
+      "details": "No special permit is required for foreign nationals visiting Assam. Carry your passport and a valid Indian visa. Park entry fees apply at Kaziranga.",
+      "required": false
+    }
+  }
+]

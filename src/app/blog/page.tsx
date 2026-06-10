@@ -29,7 +29,7 @@ export default async function BlogPage({
   return (
     <div className="mx-auto max-w-6xl px-4 pt-10 pb-16 sm:px-6 md:pb-24">
       <div className="mb-10">
-        <h1 className="text-4xl font-serif font-bold tracking-tight text-slate-900">
+        <h1 className="text-3xl font-serif font-bold tracking-tight text-slate-900 sm:text-4xl">
           Travel stories &amp; guides
         </h1>
         <p className="mt-2 max-w-2xl text-slate-500">

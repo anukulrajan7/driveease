@@ -105,26 +105,26 @@ export default function ToursExplorer({
           ))}
         </div>
 
-        <div className="mt-3 flex flex-wrap items-center gap-3">
+        <div className="mt-3 grid grid-cols-1 gap-3 sm:flex sm:flex-wrap sm:items-center">
           <label className="flex items-center gap-2 text-sm text-slate-600">
-            Price
-            <Select value={priceIdx} onChange={(e) => setPriceIdx(Number(e.target.value))} wrapperClassName="min-w-40">
+            <span className="w-16 shrink-0 sm:w-auto">Price</span>
+            <Select value={priceIdx} onChange={(e) => setPriceIdx(Number(e.target.value))} wrapperClassName="flex-1 sm:flex-initial sm:min-w-40">
               {PRICE_BUCKETS.map((b, i) => (
                 <option key={b.label} value={i}>{b.label}</option>
               ))}
             </Select>
           </label>
           <label className="flex items-center gap-2 text-sm text-slate-600">
-            Duration
-            <Select value={durationIdx} onChange={(e) => setDurationIdx(Number(e.target.value))} wrapperClassName="min-w-40">
+            <span className="w-16 shrink-0 sm:w-auto">Duration</span>
+            <Select value={durationIdx} onChange={(e) => setDurationIdx(Number(e.target.value))} wrapperClassName="flex-1 sm:flex-initial sm:min-w-40">
               {DURATION_BUCKETS.map((b, i) => (
                 <option key={b.label} value={i}>{b.label}</option>
               ))}
             </Select>
           </label>
           <label className="flex items-center gap-2 text-sm text-slate-600">
-            Sort by
-            <Select value={sort} onChange={(e) => setSort(e.target.value as SortKey)} wrapperClassName="min-w-40">
+            <span className="w-16 shrink-0 sm:w-auto">Sort by</span>
+            <Select value={sort} onChange={(e) => setSort(e.target.value as SortKey)} wrapperClassName="flex-1 sm:flex-initial sm:min-w-40">
               <option value="popular">Most popular</option>
               <option value="price-asc">Price: low to high</option>
               <option value="price-desc">Price: high to low</option>
@@ -134,7 +134,7 @@ export default function ToursExplorer({
           <button
             type="button"
             onClick={resetFilters}
-            className="ml-auto text-sm font-medium text-brand-700 hover:underline"
+            className="justify-self-start text-sm font-medium text-brand-700 hover:underline sm:ml-auto"
           >
             Reset filters
           </button>

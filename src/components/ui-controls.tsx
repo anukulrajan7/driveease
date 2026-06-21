@@ -10,22 +10,33 @@
  *   `e.target.value` keep working), plus keyboard nav and click-outside.
  * - `DateField` renders a styled calendar popover instead of the native
  *   date input. `Input type="date"` delegates here automatically.
+ *
+ * Both popovers are portaled to <body> with fixed positioning so they
+ * escape any `overflow: hidden` ancestor or backdrop-blur stacking context
+ * (e.g. the hero search bar and the car-rental form card).
  */
 
 import { CalendarDays, Check, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import React, { useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { inputClass } from "./ui-styles";
 
 /* ------------------------------------------------------------------ */
-/* Shared: close on outside click / Escape                             */
+/* Shared: dismiss + portal positioning                                */
 /* ------------------------------------------------------------------ */
 
-function useDismiss(open: boolean, close: () => void) {
-  const ref = useRef<HTMLDivElement>(null);
+/** Close when clicking outside *any* of the given elements (trigger + portaled panel). */
+function useDismiss(
+  open: boolean,
+  close: () => void,
+  refs: React.RefObject<HTMLElement | null>[],
+) {
   useEffect(() => {
     if (!open) return;
     const onDown = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) close();
+      const t = e.target as Node;
+      if (refs.some((r) => r.current?.contains(t))) return;
+      close();
     };
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
@@ -36,16 +47,62 @@ function useDismiss(open: boolean, close: () => void) {
       document.removeEventListener("mousedown", onDown);
       document.removeEventListener("keydown", onKey);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, close]);
-  return ref;
+}
+
+type Rect = { top: number; bottom: number; left: number; width: number };
+
+/** Track the trigger's viewport rect while open (recomputes on scroll/resize). */
+function useAnchorRect(anchorRef: React.RefObject<HTMLElement | null>, open: boolean) {
+  const [rect, setRect] = useState<Rect | null>(null);
+  useEffect(() => {
+    if (!open) return;
+    const measure = () => {
+      const el = anchorRef.current;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      setRect({ top: r.top, bottom: r.bottom, left: r.left, width: r.width });
+    };
+    measure();
+    window.addEventListener("scroll", measure, true);
+    window.addEventListener("resize", measure);
+    return () => {
+      window.removeEventListener("scroll", measure, true);
+      window.removeEventListener("resize", measure);
+    };
+  }, [open, anchorRef]);
+  return rect;
+}
+
+/** Fixed-position style for a panel anchored under (or over) the trigger. */
+function panelStyle(rect: Rect, desiredHeight: number, fixedWidth?: number): React.CSSProperties {
+  const gap = 4;
+  const margin = 8;
+  const vh = window.innerHeight;
+  const vw = window.innerWidth;
+  const spaceBelow = vh - rect.bottom;
+  const spaceAbove = rect.top;
+  const below = spaceBelow >= desiredHeight || spaceBelow >= spaceAbove;
+  const width = fixedWidth ?? rect.width;
+  const left = Math.max(margin, Math.min(rect.left, vw - width - margin));
+  const style: React.CSSProperties = { position: "fixed", left, width, zIndex: 1000 };
+  if (below) {
+    style.top = rect.bottom + gap;
+    style.maxHeight = Math.max(140, spaceBelow - gap - margin);
+  } else {
+    style.bottom = vh - rect.top + gap;
+    style.maxHeight = Math.max(140, spaceAbove - gap - margin);
+  }
+  return style;
 }
 
 const triggerClass = (invalid?: boolean, className = "") =>
   inputClass(invalid, `flex items-center justify-between gap-2 text-left ${className}`);
 
 const panelClass =
-  "absolute left-0 right-0 z-50 mt-1 overflow-hidden rounded-lg border border-slate-200 " +
-  "bg-white py-1 shadow-lg shadow-slate-900/10 ring-1 ring-black/5";
+  "overflow-hidden rounded-lg border border-slate-200 bg-white shadow-lg " +
+  "shadow-slate-900/10 ring-1 ring-black/5";
 
 /* ------------------------------------------------------------------ */
 /* Select                                                              */
@@ -95,8 +152,10 @@ export function Select({
 
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
-  const ref = useDismiss(open, () => setOpen(false));
-  const listRef = useRef<HTMLUListElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLUListElement>(null);
+  useDismiss(open, () => setOpen(false), [triggerRef, panelRef]);
+  const rect = useAnchorRect(triggerRef, open);
   const reactId = useId();
   const listId = `${id ?? reactId}-listbox`;
 
@@ -108,7 +167,7 @@ export function Select({
   };
 
   const openWith = (idx: number) => {
-    setActive(idx);
+    setActive(idx < 0 ? 0 : idx);
     setOpen(true);
   };
 
@@ -138,7 +197,7 @@ export function Select({
       case " ":
         e.preventDefault();
         if (open && options[active]) choose(options[active]);
-        else openWith(Math.max(0, options.findIndex((o) => o.value === current)));
+        else openWith(options.findIndex((o) => o.value === current));
         break;
       case "Tab":
         setOpen(false);
@@ -149,20 +208,21 @@ export function Select({
   // Keep the highlighted option scrolled into view.
   useEffect(() => {
     if (!open) return;
-    const node = listRef.current?.children[active] as HTMLElement | undefined;
+    const node = panelRef.current?.children[active] as HTMLElement | undefined;
     node?.scrollIntoView({ block: "nearest" });
   }, [open, active]);
 
   return (
-    <div ref={ref} className={`relative block ${wrapperClassName}`}>
+    <div className={`relative block ${wrapperClassName}`}>
       <button
         type="button"
         id={id}
+        ref={triggerRef}
         disabled={disabled}
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={open ? listId : undefined}
-        onClick={() => (open ? setOpen(false) : openWith(Math.max(0, options.findIndex((o) => o.value === current))))}
+        onClick={() => (open ? setOpen(false) : openWith(options.findIndex((o) => o.value === current)))}
         onKeyDown={onKey}
         className={triggerClass(invalid, className)}
       >
@@ -177,42 +237,46 @@ export function Select({
 
       {name != null && <input type="hidden" name={name} value={current} required={required} />}
 
-      {open && (
-        <ul
-          ref={listRef}
-          id={listId}
-          role="listbox"
-          tabIndex={-1}
-          className={`${panelClass} max-h-60 overflow-auto`}
-        >
-          {options.map((opt, i) => {
-            const isSel = opt.value === current;
-            return (
-              <li
-                key={`${opt.value}-${i}`}
-                role="option"
-                aria-selected={isSel}
-                aria-disabled={opt.disabled || undefined}
-                onMouseEnter={() => setActive(i)}
-                onMouseDown={(e) => {
-                  e.preventDefault();
-                  choose(opt);
-                }}
-                className={`flex cursor-pointer items-center justify-between gap-2 px-3 py-2 text-sm ${
-                  opt.disabled
-                    ? "cursor-not-allowed text-slate-300"
-                    : i === active
-                      ? "bg-brand-50 text-brand-900"
-                      : "text-slate-700"
-                }`}
-              >
-                <span className="truncate">{opt.label}</span>
-                {isSel && <Check size={15} className="shrink-0 text-brand-600" />}
-              </li>
-            );
-          })}
-        </ul>
-      )}
+      {open &&
+        rect &&
+        createPortal(
+          <ul
+            ref={panelRef}
+            id={listId}
+            role="listbox"
+            tabIndex={-1}
+            style={{ ...panelStyle(rect, Math.min(options.length * 40 + 8, 264)), overflowY: "auto" }}
+            className={panelClass + " py-1"}
+          >
+            {options.map((opt, i) => {
+              const isSel = opt.value === current;
+              return (
+                <li
+                  key={`${opt.value}-${i}`}
+                  role="option"
+                  aria-selected={isSel}
+                  aria-disabled={opt.disabled || undefined}
+                  onMouseEnter={() => setActive(i)}
+                  onMouseDown={(e) => {
+                    e.preventDefault();
+                    choose(opt);
+                  }}
+                  className={`flex cursor-pointer items-center justify-between gap-2 px-3 py-2 text-sm ${
+                    opt.disabled
+                      ? "cursor-not-allowed text-slate-300"
+                      : i === active
+                        ? "bg-brand-50 text-brand-900"
+                        : "text-slate-700"
+                  }`}
+                >
+                  <span className="truncate">{opt.label}</span>
+                  {isSel && <Check size={15} className="shrink-0 text-brand-600" />}
+                </li>
+              );
+            })}
+          </ul>,
+          document.body,
+        )}
     </div>
   );
 }
@@ -263,7 +327,10 @@ export function DateField({
     const anchor = selected ?? minDate ?? new Date();
     return new Date(anchor.getFullYear(), anchor.getMonth(), 1);
   });
-  const ref = useDismiss(open, () => setOpen(false));
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  useDismiss(open, () => setOpen(false), [triggerRef, panelRef]);
+  const rect = useAnchorRect(triggerRef, open);
 
   // Re-anchor the grid on the selected month when opening.
   const toggle = () => {
@@ -295,7 +362,9 @@ export function DateField({
   ];
 
   const stepMonth = (delta: number) => setView(new Date(year, month + delta, 1));
-  const prevDisabled = minDate ? new Date(year, month, 1) <= new Date(minDate.getFullYear(), minDate.getMonth(), 1) : false;
+  const prevDisabled = minDate
+    ? new Date(year, month, 1) <= new Date(minDate.getFullYear(), minDate.getMonth(), 1)
+    : false;
   const nextDisabled = maxDate ? new Date(year, month + 1, 1) > maxDate : false;
 
   const display = selected
@@ -303,10 +372,11 @@ export function DateField({
     : "";
 
   return (
-    <div ref={ref} className="relative block">
+    <div className="relative block">
       <button
         type="button"
         id={id}
+        ref={triggerRef}
         disabled={disabled}
         aria-haspopup="dialog"
         aria-expanded={open}
@@ -317,72 +387,83 @@ export function DateField({
         <CalendarDays size={16} className="shrink-0 text-slate-400" />
       </button>
 
-      {name != null && <input type="hidden" name={name} value={typeof value === "string" ? value : ""} required={required} />}
-
-      {open && (
-        <div className={`${panelClass} w-72 px-3 pb-3 pt-2`} role="dialog" aria-label="Choose date">
-          <div className="flex items-center justify-between">
-            <button
-              type="button"
-              onClick={() => stepMonth(-1)}
-              disabled={prevDisabled}
-              aria-label="Previous month"
-              className="rounded-md p-1.5 text-slate-500 hover:bg-slate-100 disabled:opacity-30 disabled:hover:bg-transparent"
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <span className="text-sm font-semibold text-slate-800">
-              {MONTHS[month]} {year}
-            </span>
-            <button
-              type="button"
-              onClick={() => stepMonth(1)}
-              disabled={nextDisabled}
-              aria-label="Next month"
-              className="rounded-md p-1.5 text-slate-500 hover:bg-slate-100 disabled:opacity-30 disabled:hover:bg-transparent"
-            >
-              <ChevronRight size={18} />
-            </button>
-          </div>
-
-          <div className="mt-2 grid grid-cols-7 gap-0.5 text-center text-[11px] font-medium text-slate-400">
-            {WEEKDAYS.map((w) => (
-              <div key={w} className="py-1">
-                {w}
-              </div>
-            ))}
-          </div>
-
-          <div className="grid grid-cols-7 gap-0.5">
-            {cells.map((d, i) => {
-              if (!d) return <div key={`e${i}`} />;
-              const off = isDisabled(d);
-              const isSel = selected && toYMD(d) === toYMD(selected);
-              const isToday = toYMD(d) === toYMD(today);
-              return (
-                <button
-                  key={toYMD(d)}
-                  type="button"
-                  disabled={off}
-                  onClick={() => pick(d)}
-                  aria-current={isSel ? "date" : undefined}
-                  className={`flex h-9 items-center justify-center rounded-md text-sm transition-colors ${
-                    isSel
-                      ? "bg-brand-600 font-semibold text-white"
-                      : off
-                        ? "cursor-not-allowed text-slate-300"
-                        : isToday
-                          ? "font-semibold text-brand-700 ring-1 ring-inset ring-brand-300 hover:bg-brand-50"
-                          : "text-slate-700 hover:bg-brand-50"
-                  }`}
-                >
-                  {d.getDate()}
-                </button>
-              );
-            })}
-          </div>
-        </div>
+      {name != null && (
+        <input type="hidden" name={name} value={typeof value === "string" ? value : ""} required={required} />
       )}
+
+      {open &&
+        rect &&
+        createPortal(
+          <div
+            ref={panelRef}
+            style={panelStyle(rect, 360, 288)}
+            className={`${panelClass} px-3 pb-3 pt-2`}
+            role="dialog"
+            aria-label="Choose date"
+          >
+            <div className="flex items-center justify-between">
+              <button
+                type="button"
+                onClick={() => stepMonth(-1)}
+                disabled={prevDisabled}
+                aria-label="Previous month"
+                className="rounded-md p-1.5 text-slate-500 hover:bg-slate-100 disabled:opacity-30 disabled:hover:bg-transparent"
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <span className="text-sm font-semibold text-slate-800">
+                {MONTHS[month]} {year}
+              </span>
+              <button
+                type="button"
+                onClick={() => stepMonth(1)}
+                disabled={nextDisabled}
+                aria-label="Next month"
+                className="rounded-md p-1.5 text-slate-500 hover:bg-slate-100 disabled:opacity-30 disabled:hover:bg-transparent"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
+
+            <div className="mt-2 grid grid-cols-7 gap-0.5 text-center text-[11px] font-medium text-slate-400">
+              {WEEKDAYS.map((w) => (
+                <div key={w} className="py-1">
+                  {w}
+                </div>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-7 gap-0.5">
+              {cells.map((d, i) => {
+                if (!d) return <div key={`e${i}`} />;
+                const off = isDisabled(d);
+                const isSel = selected && toYMD(d) === toYMD(selected);
+                const isToday = toYMD(d) === toYMD(today);
+                return (
+                  <button
+                    key={toYMD(d)}
+                    type="button"
+                    disabled={off}
+                    onClick={() => pick(d)}
+                    aria-current={isSel ? "date" : undefined}
+                    className={`flex h-9 items-center justify-center rounded-md text-sm transition-colors ${
+                      isSel
+                        ? "bg-brand-600 font-semibold text-white"
+                        : off
+                          ? "cursor-not-allowed text-slate-300"
+                          : isToday
+                            ? "font-semibold text-brand-700 ring-1 ring-inset ring-brand-300 hover:bg-brand-50"
+                            : "text-slate-700 hover:bg-brand-50"
+                    }`}
+                  >
+                    {d.getDate()}
+                  </button>
+                );
+              })}
+            </div>
+          </div>,
+          document.body,
+        )}
     </div>
   );
 }

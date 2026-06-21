@@ -30,6 +30,8 @@ export const CAB_ROUTES: CabRoute[] = [
 
 /** Coordinates for the tour destinations (used by the globe + place mini-maps). */
 export const DESTINATION_COORDS: Record<string, GeoPoint> = {
+  dooars: { name: "Dooars", lat: 26.76, lng: 88.79 },
+  bhutan: { name: "Bhutan", lat: 27.4712, lng: 89.6339 },
   meghalaya: { name: "Meghalaya", lat: 25.5788, lng: 91.8933 },
   kaziranga: { name: "Kaziranga", lat: 26.5775, lng: 93.1711 },
   tawang: { name: "Tawang", lat: 27.586, lng: 91.859 },

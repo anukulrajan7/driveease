@@ -84,7 +84,7 @@ export default function DestinationVideoCard({
         </div>
 
         <span className="absolute right-3 top-3 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold text-slate-700">
-          {tourCount} {tourCount === 1 ? "tour" : "tours"}
+          {tourCount > 0 ? `${tourCount} ${tourCount === 1 ? "tour" : "tours"}` : "Custom trips"}
         </span>
       </div>
     </Link>

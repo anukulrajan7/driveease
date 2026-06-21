@@ -5,7 +5,7 @@ import { destinations, posts, testimonials, site, formatPostDate } from "@/data/
 import TourCard from "@/components/TourCard";
 import HeroSearch from "@/components/HeroSearch";
 import HeroVideo from "@/components/HeroVideo";
-import { NE_HERO_POSTER, NE_HERO_CLIPS, SEVEN_SISTERS } from "@/data/media";
+import { NE_HERO_POSTER, NE_HERO_CLIPS, HERO_ROUTE } from "@/data/media";
 import QuickCarBook from "@/components/QuickCarBook";
 import Reviews from "@/components/Reviews";
 import CustomCursor from "@/components/CustomCursor";
@@ -57,12 +57,12 @@ export default function HomePage() {
             rental fleet. Local hosts, permits sorted, transparent pricing.
           </p>
 
-          {/* Real places marquee — the Seven Sisters + Sikkim */}
-          <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs font-medium uppercase tracking-wider text-slate-300/90">
-            {SEVEN_SISTERS.map((place, i) => (
-              <li key={place} className="inline-flex items-center gap-3">
-                {i > 0 && <span aria-hidden className="text-brand-400">•</span>}
-                {place}
+          {/* Route trail — the classic Siliguri → Darjeeling → Sikkim → … journey */}
+          <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5 text-xs font-medium uppercase tracking-wider text-slate-300/90">
+            {HERO_ROUTE.map((place, i) => (
+              <li key={place} className="inline-flex items-center gap-2">
+                {i > 0 && <ArrowRight aria-hidden size={13} className="text-brand-400" />}
+                <span className={i === 0 ? "text-white" : undefined}>{place}</span>
               </li>
             ))}
           </ul>
@@ -175,7 +175,7 @@ export default function HomePage() {
                     <ArrowRight aria-hidden size={16} className="transition-transform group-hover:translate-x-0.5" />
                   </Link>
                   <Link
-                    href="/car-rental#book"
+                    href="/car-rental#fleet"
                     className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-all hover:bg-white/20"
                   >
                     See full fleet

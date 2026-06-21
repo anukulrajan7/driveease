@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Car, MapPin, Clock, Phone, ArrowRight, Check } from "lucide-react";
-import { POPULAR_ROUTES } from "@/data/cars";
+import { POPULAR_ROUTES, cars } from "@/data/cars";
 import { site } from "@/data/content";
+import CarCard from "@/components/CarCard";
 import CarRentalForm from "@/components/CarRentalForm";
 import FareCalculator from "@/components/FareCalculator";
 import ServicesGrid from "@/components/ServicesGrid";
@@ -122,6 +123,40 @@ export default function CarRentalPage() {
           <div className="mt-8">
             <FareCalculator />
           </div>
+        </Reveal>
+      </section>
+
+      {/* Our fleet */}
+      <section id="fleet" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-14 sm:px-6 md:py-20">
+        <Reveal>
+          <div className="max-w-2xl">
+            <p className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-accent-600">
+              <Car aria-hidden size={15} /> Our fleet
+            </p>
+            <h2 className="mt-1 font-serif text-2xl font-bold sm:text-3xl">
+              Hatchbacks to 12-seater Tempo Travellers
+            </h2>
+            <p className="mt-1 text-slate-600">
+              Every vehicle is well-maintained, AC, and comes with a verified local driver who knows
+              the hill roads. Pick what fits your group — pricing is transparent and per-kilometre.
+            </p>
+          </div>
+        </Reveal>
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {cars.map((car, i) => (
+            <Reveal key={car.slug} delay={(i % 3) * 90}>
+              <CarCard car={car} />
+            </Reveal>
+          ))}
+        </div>
+        <Reveal className="mt-8">
+          <Link
+            href="#book"
+            className="group inline-flex items-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-brand-700"
+          >
+            Book any of these
+            <ArrowRight aria-hidden size={16} className="transition-transform group-hover:translate-x-0.5" />
+          </Link>
         </Reveal>
       </section>
 

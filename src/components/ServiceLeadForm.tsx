@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { loadContact } from "@/lib/customer";
 import { MessageCircle, Phone, Clock, MapPin, Check } from "lucide-react";
 import { Input, Select, Textarea } from "@/components/ui";
 import { SERVICE_TITLES } from "@/data/services";
@@ -22,6 +23,16 @@ export default function ServiceLeadForm({ defaultService }: { defaultService?: s
   const [message, setMessage] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState(false);
+
+  // Pre-fill from a previous enquiry, after mount (avoids hydration mismatch).
+  useEffect(() => {
+    const saved = loadContact();
+    /* eslint-disable react-hooks/set-state-in-effect */
+    setName((v) => v || saved.name || "");
+    setPhone((v) => v || saved.phone || "");
+    setEmail((v) => v || saved.email || "");
+    /* eslint-enable react-hooks/set-state-in-effect */
+  }, []);
 
   const phoneHref = `tel:${site.contact.phone.replace(/\s/g, "")}`;
 

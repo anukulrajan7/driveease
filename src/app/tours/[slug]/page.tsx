@@ -227,22 +227,23 @@ export default async function TourDetailPage({
             </div>
           )}
 
-          {relatedTours.length > 0 && (
-            <div className="mt-10">
-              <h2 className="text-xl font-bold text-slate-900">You may also like</h2>
-              <div className="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                {relatedTours.map((t) => (
-                  <TourCard key={t.slug} tour={t} />
-                ))}
-              </div>
-            </div>
-          )}
         </div>
 
         <aside className="lg:sticky lg:top-24 lg:self-start">
           <BookingWidget tour={tour} />
         </aside>
       </div>
+
+      {relatedTours.length > 0 && (
+        <section className="mt-12">
+          <h2 className="text-xl font-bold text-slate-900">You may also like</h2>
+          <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {relatedTours.map((t) => (
+              <TourCard key={t.slug} tour={t} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {coord && (
         <section className="mt-12">

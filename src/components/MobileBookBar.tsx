@@ -3,7 +3,7 @@ import { Tour } from "@/data/tours";
 
 export default function MobileBookBar({ tour }: { tour: Tour }) {
   return (
-    <div className="lg:hidden fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 backdrop-blur px-4 pt-3 pb-[env(safe-area-inset-bottom,12px)]">
+    <div className="lg:hidden fixed inset-x-0 bottom-14 z-40 border-t border-slate-200 bg-white/95 backdrop-blur px-4 py-3">
       <div className="flex items-center justify-between gap-4">
         <div className="min-w-0">
           <p className="truncate text-sm font-semibold text-slate-900">{tour.title}</p>

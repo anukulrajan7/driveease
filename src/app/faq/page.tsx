@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { site } from "@/data/content";
 
 export const metadata: Metadata = {
   title: "FAQs",
@@ -128,7 +129,7 @@ export default function FaqPage() {
       </h1>
       <p className="mt-3 text-slate-600">
         Can&apos;t find what you need? Call us at{" "}
-        <span className="font-medium text-slate-800">+91 98765 43210</span> — we are available
+        <span className="font-medium text-slate-800">{site.contact.phone}</span> — we are available
         around the clock.
       </p>
 

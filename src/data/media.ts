@@ -48,6 +48,8 @@ export const NE_HERO_CLIPS: HeroClip[] = [
 const DESTINATION_CLIP: Record<string, string> = {
   meghalaya: "Meghalaya",
   sikkim: "Sikkim",
+  dooars: "Assam",
+  bhutan: "Sikkim",
   kaziranga: "Assam",
   majuli: "Assam",
   tawang: "Arunachal Pradesh",
@@ -71,4 +73,19 @@ export const SEVEN_SISTERS = [
   "Mizoram",
   "Tripura",
   "Sikkim",
+];
+
+/**
+ * The classic route trail shown in the hero, in travel order:
+ * Siliguri → Darjeeling → Sikkim → the rest of the North East.
+ */
+export const HERO_ROUTE = [
+  "Siliguri",
+  "Darjeeling",
+  "Sikkim",
+  "Kalimpong",
+  "Gangtok",
+  "Assam",
+  "Meghalaya",
+  "Arunachal Pradesh",
 ];

@@ -18,6 +18,8 @@
  *   NEXT_PUBLIC_WEB3FORMS_KEY    Web3Forms access key (backup email notifier)
  */
 
+import { saveContact } from "@/lib/customer";
+
 const SHEETS_URL = process.env.NEXT_PUBLIC_SHEETS_URL;
 const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 
@@ -205,6 +207,9 @@ export async function flushLeadQueue(): Promise<void> {
  * not block the WhatsApp hand-off the caller fires right after.
  */
 export async function storeLead(payload: LeadPayload): Promise<boolean> {
+  // Remember the visitor so their next form comes pre-filled.
+  saveContact({ name: payload.name, phone: payload.phone, email: payload.email });
+
   const lead = enrich(payload);
 
   // Instant email ping in parallel — independent of the Sheet write.

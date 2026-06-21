@@ -1,7 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { loadContact } from "@/lib/customer";
 import { cars, getCarBySlug } from "@/data/cars";
 import { Input, Select, Textarea } from "@/components/ui";
 import CarCard from "@/components/CarCard";
@@ -14,6 +15,20 @@ const TRIP_TYPES = [
   "Round trip",
   "Multi-day road trip",
 ] as const;
+
+/** The trips people actually ask for — tap one to pre-fill the form. */
+const POPULAR_ROUTES: {
+  label: string;
+  pickup: string;
+  drop: string;
+  tripType: (typeof TRIP_TYPES)[number];
+}[] = [
+  { label: "Bagdogra → Gangtok", pickup: "Bagdogra Airport", drop: "Gangtok", tripType: "Round trip" },
+  { label: "Siliguri → Darjeeling", pickup: "Siliguri", drop: "Darjeeling", tripType: "Round trip" },
+  { label: "NJP → Pelling", pickup: "NJP Station", drop: "Pelling", tripType: "Round trip" },
+  { label: "Bagdogra → Darjeeling", pickup: "Bagdogra Airport", drop: "Darjeeling", tripType: "Round trip" },
+  { label: "Gangtok → Lachung", pickup: "Gangtok", drop: "Lachung", tripType: "Multi-day road trip" },
+];
 
 interface FormState {
   name: string;
@@ -46,6 +61,20 @@ export default function CarRentalForm() {
   const [errors, setErrors] = useState<Errors>({});
   const [submitting, setSubmitting] = useState(false);
 
+  // Pre-fill from a previous enquiry (client-only, after mount to avoid hydration mismatch).
+  useEffect(() => {
+    const saved = loadContact();
+    if (saved.name || saved.phone || saved.email) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setForm((f) => ({
+        ...f,
+        name: f.name || saved.name || "",
+        phone: f.phone || saved.phone || "",
+        email: f.email || saved.email || "",
+      }));
+    }
+  }, []);
+
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   const minDate = tomorrow.toISOString().split("T")[0];
@@ -57,6 +86,12 @@ export default function CarRentalForm() {
 
   const selectCar = (slug: string) => {
     set("car", slug);
+    formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const applyRoute = (route: (typeof POPULAR_ROUTES)[number]) => {
+    setForm((f) => ({ ...f, pickup: route.pickup, drop: route.drop, tripType: route.tripType }));
+    setErrors((e) => ({ ...e, pickup: undefined }));
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
@@ -130,6 +165,24 @@ export default function CarRentalForm() {
           All cars come with a verified driver, fuel-on-quote, and 24×7 support. Tap “Book” to
           pre-fill your enquiry.
         </p>
+
+        {/* One-tap popular routes — pre-fill the form with a trip people actually book. */}
+        <div className="mt-5">
+          <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Popular routes</p>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {POPULAR_ROUTES.map((route) => (
+              <button
+                key={route.label}
+                type="button"
+                onClick={() => applyRoute(route)}
+                className="rounded-full border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:border-brand-400 hover:bg-brand-50 hover:text-brand-700"
+              >
+                {route.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
         <div className="mt-6 grid gap-6 sm:grid-cols-2">
           {cars.map((car) => (
             <CarCard key={car.slug} car={car} onBook={selectCar} selected={form.car === car.slug} />

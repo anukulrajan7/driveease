@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MessageCircle } from "lucide-react";
 import { cars, getCarBySlug } from "@/data/cars";
 import { Input, Select } from "@/components/ui";
 import { sendToWhatsApp } from "@/lib/whatsapp";
 import { storeLead } from "@/lib/leads";
+import { loadContact } from "@/lib/customer";
 
 const TRIP_TYPES = ["Airport transfer", "Local sightseeing", "Round trip", "Multi-day road trip"] as const;
 
@@ -17,6 +18,14 @@ export default function QuickCarBook() {
   const [date, setDate] = useState("");
   const [phone, setPhone] = useState("");
   const [error, setError] = useState<string | null>(null);
+
+  // Pre-fill phone from a previous enquiry. localStorage is client-only, so we
+  // read it after mount (a lazy initializer would cause a hydration mismatch).
+  useEffect(() => {
+    const saved = loadContact();
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (saved.phone) setPhone((v) => v || saved.phone || "");
+  }, []);
 
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);

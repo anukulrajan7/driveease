@@ -1,10 +1,12 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Tour } from "@/data/tours";
 import { Input, Select, Textarea } from "@/components/ui";
 import { sendToWhatsApp } from "@/lib/whatsapp";
+import { storeLead } from "@/lib/leads";
+import { loadContact } from "@/lib/customer";
 
 interface FormState {
   name: string;
@@ -60,6 +62,20 @@ export default function BookingForm({
   const [errors, setErrors] = useState<Errors>({});
   const [submitting, setSubmitting] = useState(false);
 
+  // Pre-fill from a previous enquiry, after mount (avoids hydration mismatch).
+  useEffect(() => {
+    const saved = loadContact();
+    if (saved.name || saved.phone || saved.email) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setForm((f) => ({
+        ...f,
+        name: f.name || saved.name || "",
+        phone: f.phone || saved.phone || "",
+        email: f.email || saved.email || "",
+      }));
+    }
+  }, []);
+
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   const minDate = tomorrow.toISOString().split("T")[0];
@@ -101,6 +117,17 @@ export default function BookingForm({
       `Departure: ${form.date}\n` +
       `Travellers: ${form.travelers}` +
       (form.requests.trim() ? `\nRequests: ${form.requests.trim()}` : "");
+    storeLead({
+      enquiryType: "Tour",
+      reference: ref,
+      name: form.name.trim(),
+      phone: form.phone.trim(),
+      email: form.email.trim(),
+      tour: tour.title,
+      date: form.date,
+      travelers: String(form.travelers),
+      message,
+    });
     sendToWhatsApp(message);
 
     const params = new URLSearchParams({

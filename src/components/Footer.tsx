@@ -27,12 +27,12 @@ const COMPANY_LINKS = [
 ];
 
 const TOP_DESTINATIONS = [
-  { href: "/destinations/meghalaya", label: "Meghalaya" },
   { href: "/destinations/sikkim", label: "Sikkim" },
-  { href: "/destinations/tawang", label: "Tawang" },
   { href: "/destinations/kaziranga", label: "Kaziranga" },
-  { href: "/destinations/nagaland", label: "Nagaland" },
   { href: "/destinations/majuli", label: "Majuli" },
+  { href: "/destinations/meghalaya", label: "Meghalaya" },
+  { href: "/destinations/tawang", label: "Tawang" },
+  { href: "/destinations/nagaland", label: "Nagaland" },
 ];
 
 const SOCIALS = [

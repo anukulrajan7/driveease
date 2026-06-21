@@ -69,8 +69,9 @@ function doPost(e) {
     });
     sheet.appendRow(row);
 
-    sendLeadEmail(data);    // never blocks the row write — wrapped in try/catch
-    sendWhatsApp(data);     // ditto
+    sendLeadEmail(data);     // notify the business — never blocks the row write
+    sendWhatsApp(data);      // ditto
+    sendCustomerAck(data);   // instant "we got it" reply to the customer
 
     return json({ ok: true });
   } catch (err) {
@@ -115,6 +116,29 @@ function sendLeadEmail(data) {
     if (data.email) options.replyTo = data.email;
 
     MailApp.sendEmail(NOTIFY_EMAIL, subject, lines.join("\n"), options);
+  } catch (err) {
+    // swallow — the lead is safely in the sheet regardless
+  }
+}
+
+// Instant acknowledgement to the customer, so they don't go cold waiting.
+// Only fires if they left an email. Free (MailApp), best-effort.
+function sendCustomerAck(data) {
+  if (!data.email) return;
+  try {
+    var ref = data.reference || data.lead_id || "";
+    var name = (data.name || "there").split(" ")[0];
+    var body =
+      "Hi " + name + ",\n\n" +
+      "Thanks for your " + (data.enquiryType || "enquiry") + " with Siliguri Holidays! " +
+      "We've received your details" + (ref ? " (ref " + ref + ")" : "") + " and our team will " +
+      "call you back shortly.\n\n" +
+      "For anything urgent, WhatsApp or call us on +91 91447 98785.\n\n" +
+      "— Siliguri Holidays";
+    MailApp.sendEmail(data.email, "We got your enquiry — Siliguri Holidays", body, {
+      name: "Siliguri Holidays",
+      replyTo: NOTIFY_EMAIL,
+    });
   } catch (err) {
     // swallow — the lead is safely in the sheet regardless
   }

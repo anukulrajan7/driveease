@@ -116,7 +116,8 @@ export async function POST(request: Request) {
     return Response.json({ ok: true });
   } catch (err) {
     console.error("[/api/lead] write failed:", err);
-    return Response.json({ ok: false, error: "Write failed" }, { status: 500 });
+    const detail = err instanceof Error ? err.message : String(err);
+    return Response.json({ ok: false, error: "Write failed", detail }, { status: 500 });
   }
 }
 

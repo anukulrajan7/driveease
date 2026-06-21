@@ -121,10 +121,26 @@ export async function POST(request: Request) {
 }
 
 // Health check — visit /api/lead in a browser to confirm config status.
-export async function GET() {
-  return Response.json({
+// Add ?debug=1 for safe key diagnostics (never reveals the key itself).
+export async function GET(request: Request) {
+  const debug = new URL(request.url).searchParams.get("debug") === "1";
+  const body: Record<string, unknown> = {
     ok: true,
     service: "Siliguri Holidays lead sink",
     configured: Boolean(EMAIL && KEY && SHEET_ID),
-  });
+  };
+  if (debug) {
+    const k = KEY ? normalizePrivateKey(KEY) : "";
+    body.diagnostics = {
+      hasEmail: Boolean(EMAIL),
+      hasSheetId: Boolean(SHEET_ID),
+      emailEndsCorrectly: EMAIL?.endsWith(".gserviceaccount.com") ?? false,
+      keyRawLength: KEY?.length ?? 0,
+      keyNormalizedLength: k.length,
+      keyStartsWithBegin: k.startsWith("-----BEGIN PRIVATE KEY-----"),
+      keyEndsWithEnd: k.trimEnd().endsWith("-----END PRIVATE KEY-----"),
+      keyHasRealNewlines: k.includes("\n"),
+    };
+  }
+  return Response.json(body);
 }

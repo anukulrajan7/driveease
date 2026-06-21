@@ -13,6 +13,7 @@ import Globe from "@/components/Globe";
 import { ORIGIN, DESTINATION_COORDS, haversineKm } from "@/data/geo";
 import Reveal from "@/components/Reveal";
 import CountUpStat from "@/components/CountUpStat";
+import FestivalCalendar from "@/components/FestivalCalendar";
 
 const CATEGORY_ICONS: Record<TourCategory, typeof Mountain> = {
   Mountains: Mountain,
@@ -42,6 +43,7 @@ export default function HomePage() {
         {/* legibility + colour wash + drifting aurora */}
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-slate-900/85 via-slate-900/45 to-slate-900/55" />
         <div aria-hidden className="hero-aurora pointer-events-none absolute inset-0 -z-10" />
+        <div aria-hidden className="grain pointer-events-none absolute inset-0 -z-10" />
 
         <div className="hero-stagger mx-auto w-full max-w-6xl px-4 py-24 text-center sm:px-6 sm:py-32">
           <p className="text-sm font-semibold uppercase tracking-widest text-brand-300">
@@ -262,9 +264,32 @@ export default function HomePage() {
         </section>
       )}
 
+      {/* Festival calendar — time your trip around the region's best */}
+      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 md:py-24">
+        <Reveal>
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-accent-600">Time it right</p>
+              <h2 className="mt-1 font-serif text-2xl font-bold sm:text-3xl">Plan around a festival</h2>
+              <p className="mt-1 max-w-xl text-slate-600">
+                Hornbill, Bihu, Ziro, the Shillong cherry blossoms — the North East&apos;s calendar is
+                its biggest draw. Pick a date and we&apos;ll build the trip around it.
+              </p>
+            </div>
+            <Link href="/travel-info" className="hidden shrink-0 text-sm font-semibold text-brand-700 hover:underline sm:block">
+              Full calendar & permits →
+            </Link>
+          </div>
+        </Reveal>
+        <Reveal className="mt-8">
+          <FestivalCalendar />
+        </Reveal>
+      </section>
+
       {/* 3D reach globe */}
       <section className="relative overflow-hidden bg-slate-950">
         <div aria-hidden className="hero-aurora pointer-events-none absolute inset-0 opacity-60" />
+        <div aria-hidden className="grain pointer-events-none absolute inset-0" />
         <div className="mx-auto grid max-w-6xl items-center gap-8 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-2">
           <div>
             <p className="text-xs font-bold uppercase tracking-widest text-brand-400">Every trip starts in Siliguri</p>
@@ -371,6 +396,7 @@ export default function HomePage() {
           className="absolute inset-0 -z-10 h-full w-full object-cover opacity-40"
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-900/80 via-slate-900/60 to-slate-900/80" />
+        <div aria-hidden className="grain pointer-events-none absolute inset-0 -z-10" />
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-4 py-16 text-center sm:px-6 md:py-24">
           <p className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-300">
             <Star aria-hidden size={14} className="fill-amber-400 text-amber-400" />

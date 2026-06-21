@@ -5,6 +5,7 @@ import { POPULAR_ROUTES } from "@/data/cars";
 import { site } from "@/data/content";
 import CarRentalForm from "@/components/CarRentalForm";
 import FareCalculator from "@/components/FareCalculator";
+import ServicesGrid from "@/components/ServicesGrid";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Reveal from "@/components/Reveal";
 import HeroVideo from "@/components/HeroVideo";
@@ -13,10 +14,10 @@ import { NE_HERO_POSTER, NE_HERO_CLIPS } from "@/data/media";
 export const metadata: Metadata = {
   title: "Car Rental in Siliguri",
   description:
-    "Siliguri car rental with verified drivers — Bagdogra airport transfers, Darjeeling, Gangtok & Sikkim cabs, sedans, SUVs, Innova Crysta and Tempo Travellers. Transparent pricing, permits sorted, 24×7 support.",
+    "Siliguri car rental with verified drivers — Darjeeling, Gangtok & Sikkim cabs, airport & station transfers, corporate & wedding fleet, hotel and holiday bookings. Doorstep pickup, 24×7 support, no payment now.",
 };
 
-const HERO_TRUST = ["Verified drivers", "Bagdogra airport pickup", "Permits sorted", "No payment now"];
+const HERO_TRUST = ["Verified drivers", "Doorstep pickup", "Permits sorted", "24×7 support"];
 
 export default function CarRentalPage() {
   const phoneHref = `tel:${site.contact.phone.replace(/\s/g, "")}`;
@@ -74,7 +75,7 @@ export default function CarRentalPage() {
           <div>
             <p className="text-xs font-bold uppercase tracking-widest text-accent-600">From our doorstep</p>
             <h2 className="mt-1 font-serif text-2xl font-bold sm:text-3xl">Popular routes from Siliguri</h2>
-            <p className="mt-1 text-slate-600">Fixed, transparent fares on the routes we drive every day.</p>
+            <p className="mt-1 text-slate-600">Distances and drive times on the routes we run every day.</p>
           </div>
         </Reveal>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -111,10 +112,11 @@ export default function CarRentalPage() {
       <section className="mx-auto max-w-6xl px-4 pt-14 sm:px-6 md:pt-20">
         <Reveal>
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-accent-600">Plan & price it</p>
-            <h2 className="mt-1 font-serif text-2xl font-bold sm:text-3xl">See it on the map, know the fare</h2>
+            <p className="text-xs font-bold uppercase tracking-widest text-accent-600">Plan it on the map</p>
+            <h2 className="mt-1 font-serif text-2xl font-bold sm:text-3xl">See it on the map, get a quote</h2>
             <p className="mt-1 text-slate-600">
-              Pick a destination and a car for a live distance and fare estimate, plotted from Siliguri.
+              Pick a destination and a vehicle for the distance and drive time from Siliguri — then
+              request a live quote.
             </p>
           </div>
           <div className="mt-8">
@@ -126,6 +128,30 @@ export default function CarRentalPage() {
       {/* Fleet + booking */}
       <section id="book" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-14 sm:px-6 md:py-20">
         <CarRentalForm />
+      </section>
+
+      {/* More services — car booking first, then everything else */}
+      <section id="services" className="bg-slate-50 py-14 md:py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <Reveal>
+            <div className="max-w-2xl">
+              <p className="text-xs font-bold uppercase tracking-widest text-accent-600">All in one place</p>
+              <h2 className="mt-1 font-serif text-2xl font-bold sm:text-3xl">More than cabs — our services</h2>
+              <p className="mt-1 text-slate-600">
+                Start with a car, then let us handle the rest — corporate &amp; wedding fleets, hotels,
+                airport and station transfers, and full holiday planning. One team, doorstep to destination.
+              </p>
+            </div>
+          </Reveal>
+          <Reveal className="mt-8">
+            <ServicesGrid />
+          </Reveal>
+          <Reveal className="mt-6">
+            <Link href="/services" className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 hover:underline">
+              See all services &amp; enquire →
+            </Link>
+          </Reveal>
+        </div>
       </section>
 
       {/* Why choose us */}

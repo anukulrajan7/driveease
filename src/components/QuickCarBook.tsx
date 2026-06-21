@@ -5,6 +5,7 @@ import { MessageCircle } from "lucide-react";
 import { cars, getCarBySlug } from "@/data/cars";
 import { Input, Select } from "@/components/ui";
 import { sendToWhatsApp } from "@/lib/whatsapp";
+import { storeLead } from "@/lib/leads";
 
 const TRIP_TYPES = ["Airport transfer", "Local sightseeing", "Round trip", "Multi-day road trip"] as const;
 
@@ -33,14 +34,23 @@ export default function QuickCarBook() {
     }
     setError(null);
     const carName = getCarBySlug(car)?.name ?? car;
-    sendToWhatsApp(
+    const message =
       `🚗 *Quick car booking* — Siliguri Holidays\n` +
-        `Car: ${carName}\n` +
-        `Trip: ${tripType}\n` +
-        `Pickup: ${pickup.trim()}\n` +
-        `Date: ${date}\n` +
-        `Phone: ${phone.trim()}`
-    );
+      `Car: ${carName}\n` +
+      `Trip: ${tripType}\n` +
+      `Pickup: ${pickup.trim()}\n` +
+      `Date: ${date}\n` +
+      `Phone: ${phone.trim()}`;
+    storeLead({
+      enquiryType: "Car rental",
+      phone: phone.trim(),
+      vehicle: carName,
+      trip_type: tripType,
+      pickup: pickup.trim(),
+      date,
+      message,
+    });
+    sendToWhatsApp(message);
   };
 
   return (

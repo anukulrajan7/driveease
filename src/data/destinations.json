@@ -1,5 +1,55 @@
 [
   {
+    "slug": "sikkim",
+    "name": "Sikkim",
+    "country": "India",
+    "tagline": "Himalayan kingdom of monasteries, orchids, and glacial lakes",
+    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=70",
+    "intro": "Sikkim is a former Himalayan kingdom wedged between Nepal, Tibet, and Bhutan, now India's smallest and most ecologically pristine state. Kangchenjunga — the world's third-highest peak — presides over a landscape of Buddhist monasteries, high-altitude lakes, and valleys carpeted with 600 species of orchid. The Tibetan cultural heartland of North Sikkim offers high passes and nomadic grazing valleys, while Gangtok's hillside cafés and monasteries keep the soul close to the mountains.",
+    "facts": {
+      "bestTime": "March – May, October – December",
+      "idealDuration": "5 – 7 days",
+      "language": "Nepali, Sikkimese, Lepcha, Hindi, English",
+      "currency": "INR (₹)"
+    },
+    "attractions": [
+      {
+        "name": "Tsomgo (Changu) Lake",
+        "description": "This oval glacial lake at 3,753 m freezes solid in winter and mirrors the surrounding snow peaks in summer; yaks and Tibetan ponies dot the shoreline for a quintessential Himalayan scene.",
+        "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Nathu La Pass",
+        "description": "A historic Silk Road trade point at 4,310 m on the Indo-China border, Nathu La offers close views of Chinese border infrastructure and snow-covered mountain terrain accessible from Gangtok.",
+        "image": "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Yumthang Valley",
+        "description": "Known as the Valley of Flowers of the East, Yumthang blooms with primula, rhododendron, and poppies between March and May at 3,564 m, backed by snow-draped ridgelines.",
+        "image": "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Rumtek Monastery",
+        "description": "The seat of the Kagyu school of Tibetan Buddhism, Rumtek is one of the largest and most important monasteries in Sikkim, housing sacred relics and an ornate assembly hall.",
+        "image": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=70"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Do I need a permit to visit Sikkim?",
+        "answer": "Indian nationals do not need a permit to enter Sikkim but require a Protected Area Permit (PAP) for North Sikkim, Nathu La, and border areas — obtained easily in Gangtok. Foreign nationals need an Inner Line Permit. Our package handles all permits."
+      },
+      {
+        "question": "When is the best time to visit Sikkim?",
+        "answer": "March to May is ideal for rhododendron blooms and clear mountain views; October to December brings post-monsoon clarity and the best photography conditions. North Sikkim roads may be closed November to March."
+      },
+      {
+        "question": "How do I reach Gangtok?",
+        "answer": "Bagdogra Airport (IXB) in West Bengal is the main gateway, 124 km from Gangtok (3.5 hours by road). The nearest railway station is New Jalpaiguri (NJP). Our tours include shared and private transfers from both."
+      }
+    ]
+  },
+  {
     "slug": "meghalaya",
     "name": "Meghalaya",
     "country": "India",
@@ -150,56 +200,6 @@
     ]
   },
   {
-    "slug": "sikkim",
-    "name": "Sikkim",
-    "country": "India",
-    "tagline": "Himalayan kingdom of monasteries, orchids, and glacial lakes",
-    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=70",
-    "intro": "Sikkim is a former Himalayan kingdom wedged between Nepal, Tibet, and Bhutan, now India's smallest and most ecologically pristine state. Kangchenjunga — the world's third-highest peak — presides over a landscape of Buddhist monasteries, high-altitude lakes, and valleys carpeted with 600 species of orchid. The Tibetan cultural heartland of North Sikkim offers high passes and nomadic grazing valleys, while Gangtok's hillside cafés and monasteries keep the soul close to the mountains.",
-    "facts": {
-      "bestTime": "March – May, October – December",
-      "idealDuration": "5 – 7 days",
-      "language": "Nepali, Sikkimese, Lepcha, Hindi, English",
-      "currency": "INR (₹)"
-    },
-    "attractions": [
-      {
-        "name": "Tsomgo (Changu) Lake",
-        "description": "This oval glacial lake at 3,753 m freezes solid in winter and mirrors the surrounding snow peaks in summer; yaks and Tibetan ponies dot the shoreline for a quintessential Himalayan scene.",
-        "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1200&q=70"
-      },
-      {
-        "name": "Nathu La Pass",
-        "description": "A historic Silk Road trade point at 4,310 m on the Indo-China border, Nathu La offers close views of Chinese border infrastructure and snow-covered mountain terrain accessible from Gangtok.",
-        "image": "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=1200&q=70"
-      },
-      {
-        "name": "Yumthang Valley",
-        "description": "Known as the Valley of Flowers of the East, Yumthang blooms with primula, rhododendron, and poppies between March and May at 3,564 m, backed by snow-draped ridgelines.",
-        "image": "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1200&q=70"
-      },
-      {
-        "name": "Rumtek Monastery",
-        "description": "The seat of the Kagyu school of Tibetan Buddhism, Rumtek is one of the largest and most important monasteries in Sikkim, housing sacred relics and an ornate assembly hall.",
-        "image": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=70"
-      }
-    ],
-    "faqs": [
-      {
-        "question": "Do I need a permit to visit Sikkim?",
-        "answer": "Indian nationals do not need a permit to enter Sikkim but require a Protected Area Permit (PAP) for North Sikkim, Nathu La, and border areas — obtained easily in Gangtok. Foreign nationals need an Inner Line Permit. Our package handles all permits."
-      },
-      {
-        "question": "When is the best time to visit Sikkim?",
-        "answer": "March to May is ideal for rhododendron blooms and clear mountain views; October to December brings post-monsoon clarity and the best photography conditions. North Sikkim roads may be closed November to March."
-      },
-      {
-        "question": "How do I reach Gangtok?",
-        "answer": "Bagdogra Airport (IXB) in West Bengal is the main gateway, 124 km from Gangtok (3.5 hours by road). The nearest railway station is New Jalpaiguri (NJP). Our tours include shared and private transfers from both."
-      }
-    ]
-  },
-  {
     "slug": "nagaland",
     "name": "Nagaland",
     "country": "India",
@@ -246,56 +246,6 @@
       {
         "question": "How do I reach Kohima?",
         "answer": "Dimapur Airport (DMU) is the only commercial airport in Nagaland, 74 km from Kohima. Direct flights connect to Kolkata, Guwahati, and Delhi. A 3-hour road transfer connects Dimapur to Kohima."
-      }
-    ]
-  },
-  {
-    "slug": "majuli",
-    "name": "Majuli",
-    "country": "India",
-    "tagline": "The world's largest river island — Vaishnavite culture on a shrinking paradise",
-    "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=70",
-    "intro": "Majuli is the world's largest freshwater river island, floating in the Brahmaputra in upper Assam at an elevation barely above the waterline. Home to the Mising, Deori, and Sonowal Kachari tribes, it is also the spiritual heartland of Assam's Vaishnavite sattra monastery tradition, where centuries-old masked dance-dramas and manuscript arts survive in thatched compounds. As the Brahmaputra erodes its edges each monsoon, Majuli's fragile beauty becomes all the more precious.",
-    "facts": {
-      "bestTime": "October – March",
-      "idealDuration": "2 – 3 days",
-      "language": "Assamese, Mising, English",
-      "currency": "INR (₹)"
-    },
-    "attractions": [
-      {
-        "name": "Kamalabari & Auniati Sattras",
-        "description": "These 16th-century Vaishnavite monasteries are living centres of Assamese culture, preserving antique masks, jewellery, and rare manuscripts, and staging Bhortal and Ojapali dance performances for visitors.",
-        "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=70"
-      },
-      {
-        "name": "Mising Tribal Villages",
-        "description": "Stilted bamboo homes in Mising villages reveal an indigenous floodplain architecture adapted to annual floods; weavers produce distinctive Mising textiles on back-strap looms under every house.",
-        "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=70"
-      },
-      {
-        "name": "Brahmaputra Sunset Boat Ride",
-        "description": "As dusk turns the Brahmaputra copper-gold, a country boat ride through the island's wetland margins reveals river dolphins, migratory birds, and a horizon unbroken by development.",
-        "image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1200&q=70"
-      },
-      {
-        "name": "Pottery & Mask-Making Workshops",
-        "description": "Majuli's Samaguri Satra is the last place in Assam where the traditional art of making Bhaona dance masks from clay, cloth, and bamboo is still practised and taught to visitors.",
-        "image": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=70"
-      }
-    ],
-    "faqs": [
-      {
-        "question": "How do I reach Majuli?",
-        "answer": "Take a train or drive to Jorhat (3 km from Nimati Ghat), then cross by government ferry to Majuli — the crossing takes about 1–1.5 hours depending on water levels. Our tours include ferry tickets and transfers."
-      },
-      {
-        "question": "Is Majuli accessible during the monsoon?",
-        "answer": "The island floods significantly from June to September and ferry timings become unpredictable. October to March is the best and safest window, when the water recedes and the sattras hold their major festivals."
-      },
-      {
-        "question": "Where do I stay on Majuli?",
-        "answer": "Majuli has no large hotels; accommodation is in bamboo eco-lodges and family-run guesthouses near the sattras. Our package books verified properties with clean rooms and authentic home-cooked Assamese meals."
       }
     ]
   },
@@ -396,6 +346,56 @@
       {
         "question": "How do I reach Imphal?",
         "answer": "Imphal Airport (IMF) has direct flights from Kolkata, Delhi, Guwahati, and other major cities. The airport is 8 km from the city centre. Our tours include airport transfers and all ground transport."
+      }
+    ]
+  },
+  {
+    "slug": "majuli",
+    "name": "Majuli",
+    "country": "India",
+    "tagline": "The world's largest river island — Vaishnavite culture on a shrinking paradise",
+    "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=70",
+    "intro": "Majuli is the world's largest freshwater river island, floating in the Brahmaputra in upper Assam at an elevation barely above the waterline. Home to the Mising, Deori, and Sonowal Kachari tribes, it is also the spiritual heartland of Assam's Vaishnavite sattra monastery tradition, where centuries-old masked dance-dramas and manuscript arts survive in thatched compounds. As the Brahmaputra erodes its edges each monsoon, Majuli's fragile beauty becomes all the more precious.",
+    "facts": {
+      "bestTime": "October – March",
+      "idealDuration": "2 – 3 days",
+      "language": "Assamese, Mising, English",
+      "currency": "INR (₹)"
+    },
+    "attractions": [
+      {
+        "name": "Kamalabari & Auniati Sattras",
+        "description": "These 16th-century Vaishnavite monasteries are living centres of Assamese culture, preserving antique masks, jewellery, and rare manuscripts, and staging Bhortal and Ojapali dance performances for visitors.",
+        "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Mising Tribal Villages",
+        "description": "Stilted bamboo homes in Mising villages reveal an indigenous floodplain architecture adapted to annual floods; weavers produce distinctive Mising textiles on back-strap looms under every house.",
+        "image": "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Brahmaputra Sunset Boat Ride",
+        "description": "As dusk turns the Brahmaputra copper-gold, a country boat ride through the island's wetland margins reveals river dolphins, migratory birds, and a horizon unbroken by development.",
+        "image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1200&q=70"
+      },
+      {
+        "name": "Pottery & Mask-Making Workshops",
+        "description": "Majuli's Samaguri Satra is the last place in Assam where the traditional art of making Bhaona dance masks from clay, cloth, and bamboo is still practised and taught to visitors.",
+        "image": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=70"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How do I reach Majuli?",
+        "answer": "Take a train or drive to Jorhat (3 km from Nimati Ghat), then cross by government ferry to Majuli — the crossing takes about 1–1.5 hours depending on water levels. Our tours include ferry tickets and transfers."
+      },
+      {
+        "question": "Is Majuli accessible during the monsoon?",
+        "answer": "The island floods significantly from June to September and ferry timings become unpredictable. October to March is the best and safest window, when the water recedes and the sattras hold their major festivals."
+      },
+      {
+        "question": "Where do I stay on Majuli?",
+        "answer": "Majuli has no large hotels; accommodation is in bamboo eco-lodges and family-run guesthouses near the sattras. Our package books verified properties with clean rooms and authentic home-cooked Assamese meals."
       }
     ]
   },

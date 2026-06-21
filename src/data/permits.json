@@ -22,9 +22,9 @@
       "required": true
     },
     "foreigner": {
-      "permit": "Arrival registration",
-      "details": "Foreign nationals register on arrival at the Foreigners Registration Office (FRO) at the point of entry. No Protected Area Permit required since 2011. Siliguri Holidays provides all guidance and accompaniment through the process.",
-      "required": false
+      "permit": "PAP (Protected Area Permit)",
+      "details": "As of December 2024 the Protected Area Permit has been reinstated for Nagaland — the earlier on-arrival relaxation no longer applies. Foreign nationals travel in groups of 2+ via a registered operator with a fixed itinerary. Siliguri Holidays is a registered operator and arranges the PAP in advance.",
+      "required": true
     }
   },
   {
@@ -36,9 +36,9 @@
       "required": true
     },
     "foreigner": {
-      "permit": "Arrival registration",
-      "details": "Foreign nationals must register with the Foreigners Registration Office (FRO) within 24 hours of arrival. Siliguri Holidays accompanies you through registration and ensures compliance.",
-      "required": false
+      "permit": "PAP (Protected Area Permit)",
+      "details": "As of December 2024 the Protected Area Permit applies to foreign nationals visiting Manipur. Travel is arranged through a registered operator with a fixed itinerary; you should also register with the Foreigners Registration Office (FRO) on arrival. Siliguri Holidays handles the PAP and accompanies you through registration. Note: re-confirm conditions close to travel, as Manipur advisories can change.",
+      "required": true
     }
   },
   {

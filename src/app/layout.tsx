@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import LeadQueueFlusher from "@/components/LeadQueueFlusher";
 import JsonLd from "@/components/JsonLd";
 import { site } from "@/data/content";
 import { SITE_URL, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
@@ -51,6 +52,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <WhatsAppButton />
+        <LeadQueueFlusher />
         <Footer />
       </body>
     </html>

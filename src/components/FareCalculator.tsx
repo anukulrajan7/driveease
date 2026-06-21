@@ -1,13 +1,20 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { MapPin, Clock, Route, MessageCircle } from "lucide-react";
-import { cars, formatINR } from "@/data/cars";
+import { MapPin, Clock, Route, MessageCircle, Info } from "lucide-react";
+import { cars } from "@/data/cars";
 import { ORIGIN, CAB_ROUTES } from "@/data/geo";
 import { Select } from "@/components/ui";
 import { sendToWhatsApp } from "@/lib/whatsapp";
+import { storeLead } from "@/lib/leads";
 import TripMap from "@/components/TripMap";
 
+/**
+ * Plan-and-enquire tool: pick a destination + vehicle, see the real road
+ * distance and drive time on the map, then request a live quote. No fixed
+ * fares are shown — rates vary with availability and season, confirmed on
+ * the quote.
+ */
 export default function FareCalculator() {
   const [routeName, setRouteName] = useState(CAB_ROUTES[0].name);
   const [carSlug, setCarSlug] = useState(cars[0]?.slug ?? "");
@@ -16,27 +23,34 @@ export default function FareCalculator() {
   const route = CAB_ROUTES.find((r) => r.name === routeName)!;
   const car = cars.find((c) => c.slug === carSlug)!;
 
-  const { km, fare } = useMemo(() => {
-    const distance = roundTrip ? route.distanceKm * 2 : route.distanceKm;
-    return { km: distance, fare: distance * car.perKm };
-  }, [route, car, roundTrip]);
+  const km = useMemo(
+    () => (roundTrip ? route.distanceKm * 2 : route.distanceKm),
+    [route, roundTrip]
+  );
 
-  const book = () =>
-    sendToWhatsApp(
-      `🚗 *Fare enquiry* — Siliguri Holidays\n` +
-        `Route: ${ORIGIN.name} → ${route.name}${roundTrip ? " (round trip)" : ""}\n` +
-        `Car: ${car.name}\n` +
-        `Distance: ~${km} km\n` +
-        `Estimated fare: ${formatINR(fare)} + driver/permits as applicable\n` +
-        `Please confirm availability.`
-    );
+  const requestQuote = () => {
+    const message =
+      `🚗 *Cab quote request* — Siliguri Holidays\n` +
+      `Route: ${ORIGIN.name} → ${route.name}${roundTrip ? " (round trip)" : ""}\n` +
+      `Vehicle: ${car.name} (${car.seats} seats)\n` +
+      `Approx. distance: ~${km} km\n` +
+      `Please share your best available rate.`;
+    storeLead({
+      enquiryType: "Cab quote",
+      vehicle: car.name,
+      route: `${ORIGIN.name} → ${route.name}${roundTrip ? " (round trip)" : ""}`,
+      distance_km: String(km),
+      message,
+    });
+    sendToWhatsApp(message);
+  };
 
   return (
     <div className="grid gap-6 lg:grid-cols-[360px_1fr]">
       {/* Controls + result */}
       <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h3 className="text-lg font-bold">Distance &amp; fare calculator</h3>
-        <p className="mt-1 text-sm text-slate-500">Live estimate from Siliguri — driver included.</p>
+        <h3 className="text-lg font-bold">Plan your route</h3>
+        <p className="mt-1 text-sm text-slate-500">See the distance &amp; drive time, then get a live quote.</p>
 
         <div className="mt-5 space-y-4">
           <label className="block">
@@ -50,11 +64,11 @@ export default function FareCalculator() {
             </Select>
           </label>
           <label className="block">
-            <span className="mb-1 block text-sm font-medium text-slate-700">Car</span>
+            <span className="mb-1 block text-sm font-medium text-slate-700">Vehicle</span>
             <Select value={carSlug} onChange={(e) => setCarSlug(e.target.value)}>
               {cars.map((c) => (
                 <option key={c.slug} value={c.slug}>
-                  {c.name} · {formatINR(c.perKm)}/km
+                  {c.name} · {c.seats} seats
                 </option>
               ))}
             </Select>
@@ -80,28 +94,40 @@ export default function FareCalculator() {
           </div>
         </div>
 
-        <div className="mt-3 rounded-xl bg-brand-50 px-4 py-3">
-          <p className="text-xs font-medium uppercase tracking-wide text-brand-700">Estimated fare</p>
-          <p className="mt-0.5 text-2xl font-bold text-slate-900">{formatINR(fare)}</p>
-          <p className="text-xs text-slate-500">Indicative — fuel & permits confirmed on quote.</p>
+        <div className="mt-3 flex items-start gap-2 rounded-xl bg-brand-50 px-4 py-3 text-sm text-brand-900">
+          <Info aria-hidden size={16} className="mt-0.5 shrink-0 text-brand-600" />
+          <p>
+            <span className="font-semibold">Rates vary</span> with season, vehicle availability and
+            route conditions. We&apos;ll send your best price — no payment now.
+          </p>
         </div>
 
         <button
           type="button"
-          onClick={book}
+          onClick={requestQuote}
           className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] py-3 text-sm font-semibold text-white transition-colors hover:bg-[#1ebe5b]"
         >
           <MessageCircle aria-hidden size={17} />
-          Get this fare on WhatsApp
+          Get your live quote on WhatsApp
         </button>
       </div>
 
       {/* Map */}
       <div className="overflow-hidden rounded-2xl border border-slate-200 shadow-sm">
-        <TripMap origin={ORIGIN} points={CAB_ROUTES} selected={routeName} className="h-[320px] w-full lg:h-full" />
+        <TripMap
+          origin={ORIGIN}
+          points={CAB_ROUTES}
+          selected={routeName}
+          onSelect={setRouteName}
+          lineLabel={`${route.distanceKm} km · ${route.hours} by road`}
+          className="h-[320px] w-full lg:h-full"
+        />
         <p className="flex items-center gap-1.5 bg-white px-4 py-2 text-xs text-slate-500">
-          <MapPin aria-hidden size={13} className="text-accent-500" /> Siliguri → {routeName}. Map data ©
-          OpenStreetMap contributors.
+          <MapPin aria-hidden size={13} className="text-accent-500" />
+          <span>
+            <span className="font-medium text-slate-700">Tap any pin</span> to plan that route · Siliguri →{" "}
+            {routeName}. Map data © OpenStreetMap contributors.
+          </span>
         </p>
       </div>
     </div>

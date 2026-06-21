@@ -8,8 +8,15 @@ const EXPLORE_LINKS = [
   { href: "/car-rental", label: "Car Rental" },
   { href: "/destinations", label: "Destinations" },
   { href: "/blog", label: "Travel Blog" },
-  { href: "/tours?category=Wildlife", label: "Wildlife Safaris" },
-  { href: "/tours?category=Mountains", label: "Mountain Trips" },
+];
+
+const SERVICE_LINKS = [
+  { href: "/services", label: "All Services" },
+  { href: "/services/airport-transfer", label: "Airport Transfer" },
+  { href: "/services/station-transport", label: "Station Transport" },
+  { href: "/services/hotel-booking", label: "Hotel + Taxi" },
+  { href: "/services/corporate-wedding", label: "Corporate & Wedding" },
+  { href: "/services/holiday-booking", label: "Holiday Bookings" },
 ];
 
 const COMPANY_LINKS = [
@@ -138,12 +145,13 @@ export default function Footer() {
         </div>
 
         {/* Link columns + newsletter */}
-        <div className="grid gap-10 py-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-10 py-10 sm:grid-cols-2 lg:grid-cols-6">
           <FooterColumn title="Explore" links={EXPLORE_LINKS} />
+          <FooterColumn title="Services" links={SERVICE_LINKS} />
           <FooterColumn title="Company" links={COMPANY_LINKS} />
           <FooterColumn title="Top destinations" links={TOP_DESTINATIONS} />
 
-          <div>
+          <div className="lg:col-span-2">
             <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400">
               Travel inspiration
             </h3>

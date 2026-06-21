@@ -33,12 +33,13 @@ export interface Route {
   note: string;
 }
 
+// Order: Darjeeling & Gangtok first, then outward from Siliguri.
 export const POPULAR_ROUTES: Route[] = [
-  { to: "Bagdogra Airport (IXB)", distanceKm: 16, hours: "40 min", note: "Meet & greet pickup" },
   { to: "Darjeeling", distanceKm: 68, hours: "3 hrs", note: "Toy-train country" },
   { to: "Gangtok, Sikkim", distanceKm: 114, hours: "4.5 hrs", note: "Permits arranged" },
   { to: "Kalimpong", distanceKm: 70, hours: "3 hrs", note: "Quiet hill town" },
   { to: "Mirik", distanceKm: 52, hours: "2.5 hrs", note: "Lake & tea gardens" },
+  { to: "Bagdogra Airport (IXB)", distanceKm: 16, hours: "40 min", note: "Meet & greet pickup" },
   { to: "Gorubathan / Dooars", distanceKm: 80, hours: "3 hrs", note: "Wildlife & forests" },
 ];
 

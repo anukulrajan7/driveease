@@ -1,5 +1,5 @@
-import { Users, Briefcase, Snowflake, Cog, Check, ArrowRight } from "lucide-react";
-import { Car, formatINR } from "@/data/cars";
+import { Users, Briefcase, Snowflake, Cog, Check, ArrowRight, BadgeCheck } from "lucide-react";
+import { Car } from "@/data/cars";
 
 export default function CarCard({
   car,
@@ -70,11 +70,11 @@ export default function CarCard({
 
         <div className="mt-auto flex items-end justify-between border-t border-slate-100 pt-4">
           <div>
-            <p className="text-lg font-bold text-slate-900">
-              {formatINR(car.pricePerDay)}
-              <span className="text-sm font-normal text-slate-500">/day</span>
+            <p className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700">
+              <BadgeCheck aria-hidden size={15} />
+              Driver included
             </p>
-            <p className="text-xs text-slate-500">+ {formatINR(car.perKm)}/km · driver included</p>
+            <p className="text-xs text-slate-500">Live quote on enquiry · varies with availability</p>
           </div>
           {onBook && (
             <button

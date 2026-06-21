@@ -16,14 +16,15 @@ export interface CabRoute extends GeoPoint {
   note: string;
 }
 
+// Order: nearest/most-popular outward from Siliguri — Darjeeling, Gangtok first.
 export const CAB_ROUTES: CabRoute[] = [
-  { name: "Bagdogra Airport", lat: 26.6812, lng: 88.3286, distanceKm: 16, hours: "40 min", note: "Airport pickup" },
-  { name: "Mirik", lat: 26.887, lng: 88.1869, distanceKm: 52, hours: "2.5 hrs", note: "Lake & tea gardens" },
   { name: "Darjeeling", lat: 27.036, lng: 88.2627, distanceKm: 68, hours: "3 hrs", note: "Toy-train hills" },
+  { name: "Gangtok, Sikkim", lat: 27.3389, lng: 88.6065, distanceKm: 114, hours: "4.5 hrs", note: "Permits arranged" },
   { name: "Kalimpong", lat: 27.0586, lng: 88.469, distanceKm: 70, hours: "3 hrs", note: "Quiet hill town" },
+  { name: "Mirik", lat: 26.887, lng: 88.1869, distanceKm: 52, hours: "2.5 hrs", note: "Lake & tea gardens" },
+  { name: "Bagdogra Airport", lat: 26.6812, lng: 88.3286, distanceKm: 16, hours: "40 min", note: "Airport pickup" },
   { name: "Dooars (Lataguri)", lat: 26.76, lng: 88.79, distanceKm: 80, hours: "3 hrs", note: "Wildlife & forests" },
   { name: "Lava & Lolegaon", lat: 27.099, lng: 88.6655, distanceKm: 110, hours: "4 hrs", note: "Pine forest ridge" },
-  { name: "Gangtok, Sikkim", lat: 27.3389, lng: 88.6065, distanceKm: 114, hours: "4.5 hrs", note: "Permits arranged" },
   { name: "Pelling, Sikkim", lat: 27.3007, lng: 88.2393, distanceKm: 130, hours: "5 hrs", note: "Kanchenjunga views" },
 ];
 

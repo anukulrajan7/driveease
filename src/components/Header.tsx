@@ -2,28 +2,73 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { Phone, Headset, Menu, X, ArrowRight, FileCheck, ShieldCheck, MapPin, MessageCircle, Car } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import {
+  Phone,
+  Headset,
+  Menu,
+  X,
+  ArrowRight,
+  FileCheck,
+  ShieldCheck,
+  MapPin,
+  MessageCircle,
+  Car,
+  ChevronDown,
+} from "lucide-react";
 import Logo from "./Logo";
 import { site } from "@/data/content";
 import { waLink } from "@/lib/whatsapp";
+import { SERVICES } from "@/data/services";
+import { SERVICE_ICONS } from "@/lib/serviceIcons";
 
 const WA = waLink("Hi Siliguri Holidays! I'd like to plan a trip / book a cab.");
 
+/** Flat links; "Services" is a mega menu, so the bar stays uncluttered. */
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/tours", label: "Tours" },
-  { href: "/car-rental", label: "Car Rental" },
   { href: "/destinations", label: "Destinations" },
+  { href: "/travel-info", label: "Plan your trip" },
   { href: "/blog", label: "Blog" },
 ];
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); // mobile drawer
+  const [mega, setMega] = useState(false); // desktop services mega
+  const [mobileServices, setMobileServices] = useState(false);
   const pathname = usePathname();
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
+  const servicesActive = pathname.startsWith("/services") || pathname.startsWith("/car-rental");
+
+  // Close any open menu when the route changes (intentional reset on nav).
+  /* eslint-disable react-hooks/set-state-in-effect */
+  useEffect(() => {
+    setOpen(false);
+    setMega(false);
+    setMobileServices(false);
+  }, [pathname]);
+  /* eslint-enable react-hooks/set-state-in-effect */
+
+  // Escape closes the mega menu.
+  useEffect(() => {
+    if (!mega) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMega(false);
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [mega]);
+
+  const openMega = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setMega(true);
+  };
+  const scheduleClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setMega(false), 120);
+  };
 
   return (
     <header className="sticky top-0 z-50">
@@ -54,7 +99,7 @@ export default function Header() {
             </Link>
             <span className="inline-flex items-center gap-1.5 font-semibold text-accent-400">
               <ShieldCheck aria-hidden size={13} />
-              Local hosts · permits sorted
+              24×7 · doorstep pickup
             </span>
           </div>
         </div>
@@ -68,26 +113,101 @@ export default function Header() {
           </Link>
 
           <nav className="hidden items-center gap-1 md:flex" aria-label="Main">
-            {NAV_LINKS.map((link) => (
+            <Link
+              href="/"
+              aria-current={isActive("/") ? "page" : undefined}
+              className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                isActive("/") ? "bg-brand-50 text-brand-700" : "text-slate-600 hover:bg-slate-50 hover:text-brand-700"
+              }`}
+            >
+              Home
+            </Link>
+            <Link
+              href="/tours"
+              aria-current={isActive("/tours") ? "page" : undefined}
+              className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                isActive("/tours") ? "bg-brand-50 text-brand-700" : "text-slate-600 hover:bg-slate-50 hover:text-brand-700"
+              }`}
+            >
+              Tours
+            </Link>
+
+            {/* Services mega menu */}
+            <div className="relative" onMouseEnter={openMega} onMouseLeave={scheduleClose}>
+              <button
+                type="button"
+                aria-haspopup="true"
+                aria-expanded={mega}
+                onClick={() => setMega((v) => !v)}
+                className={`inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                  servicesActive || mega ? "bg-brand-50 text-brand-700" : "text-slate-600 hover:bg-slate-50 hover:text-brand-700"
+                }`}
+              >
+                Services
+                <ChevronDown aria-hidden size={14} className={`transition-transform ${mega ? "rotate-180" : ""}`} />
+              </button>
+
+              {mega && (
+                <div
+                  className="absolute left-1/2 top-full z-50 mt-2 w-[640px] max-w-[92vw] -translate-x-1/2 rounded-2xl border border-slate-200 bg-white p-4 shadow-xl shadow-slate-900/10"
+                  role="menu"
+                >
+                  <div className="grid gap-2 sm:grid-cols-2">
+                    {SERVICES.map((s) => {
+                      const Icon = SERVICE_ICONS[s.iconKey];
+                      const href = s.externalHref ?? `/services/${s.slug}`;
+                      return (
+                        <Link
+                          key={s.slug}
+                          href={href}
+                          role="menuitem"
+                          className="group flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-slate-50"
+                        >
+                          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-brand-50 text-brand-700 transition-colors group-hover:bg-brand-600 group-hover:text-white">
+                            <Icon aria-hidden size={18} />
+                          </span>
+                          <span>
+                            <span className="block text-sm font-semibold text-slate-900 group-hover:text-brand-700">
+                              {s.title}
+                            </span>
+                            <span className="mt-0.5 block text-xs leading-snug text-slate-500 line-clamp-2">
+                              {s.short}
+                            </span>
+                          </span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                  <Link
+                    href="/services"
+                    className="mt-2 flex items-center justify-center gap-1.5 rounded-xl bg-slate-50 py-2.5 text-sm font-semibold text-brand-700 transition-colors hover:bg-brand-50"
+                  >
+                    See all services & enquire
+                    <ArrowRight aria-hidden size={15} />
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {NAV_LINKS.slice(2).map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 aria-current={isActive(link.href) ? "page" : undefined}
                 className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                  isActive(link.href)
-                    ? "bg-brand-50 text-brand-700"
-                    : "text-slate-600 hover:bg-slate-50 hover:text-brand-700"
+                  isActive(link.href) ? "bg-brand-50 text-brand-700" : "text-slate-600 hover:bg-slate-50 hover:text-brand-700"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
+
             <a
               href={WA}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Chat on WhatsApp"
-              className="ml-3 grid h-10 w-10 place-items-center rounded-full border border-emerald-500/30 text-[#25D366] transition-colors hover:bg-emerald-50"
+              className="ml-2 grid h-10 w-10 place-items-center rounded-full border border-emerald-500/30 text-[#25D366] transition-colors hover:bg-emerald-50"
             >
               <MessageCircle aria-hidden size={18} />
             </a>
@@ -128,15 +248,37 @@ export default function Header() {
                   </Link>
                 </li>
               ))}
+
+              {/* Services accordion */}
               <li>
-                <Link
-                  href="/travel-info"
-                  className="block rounded-xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-50"
-                  onClick={() => setOpen(false)}
+                <button
+                  type="button"
+                  aria-expanded={mobileServices}
+                  onClick={() => setMobileServices((v) => !v)}
+                  className={`flex w-full items-center justify-between rounded-xl px-4 py-3 text-sm font-medium transition-colors ${
+                    servicesActive ? "bg-brand-50 text-brand-700" : "text-slate-700 hover:bg-slate-50"
+                  }`}
                 >
-                  Travel info & permits
-                </Link>
+                  Services
+                  <ChevronDown aria-hidden size={16} className={`transition-transform ${mobileServices ? "rotate-180" : ""}`} />
+                </button>
+                {mobileServices && (
+                  <ul className="ml-3 mt-1 space-y-0.5 border-l border-slate-200 pl-3">
+                    {SERVICES.map((s) => (
+                      <li key={s.slug}>
+                        <Link
+                          href={s.externalHref ?? `/services/${s.slug}`}
+                          className="block rounded-lg px-3 py-2.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-brand-700"
+                          onClick={() => setOpen(false)}
+                        >
+                          {s.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
+
               <li className="mt-2 grid grid-cols-2 gap-2">
                 <Link
                   href="/tours"

@@ -6,6 +6,7 @@ import { cars, getCarBySlug } from "@/data/cars";
 import { Input, Select, Textarea } from "@/components/ui";
 import CarCard from "@/components/CarCard";
 import { sendToWhatsApp } from "@/lib/whatsapp";
+import { storeLead } from "@/lib/leads";
 
 const TRIP_TYPES = [
   "Airport transfer",
@@ -92,6 +93,18 @@ export default function CarRentalForm() {
       `Route: ${form.pickup.trim()}${form.drop.trim() ? ` → ${form.drop.trim()}` : ""}\n` +
       `Pickup date: ${form.date}` +
       (form.message.trim() ? `\nNotes: ${form.message.trim()}` : "");
+    storeLead({
+      enquiryType: "Car rental",
+      reference: ref,
+      name: form.name.trim(),
+      phone: form.phone.trim(),
+      email: form.email.trim(),
+      vehicle: carName,
+      trip_type: form.tripType,
+      route: `${form.pickup.trim()}${form.drop.trim() ? ` → ${form.drop.trim()}` : ""}`,
+      date: form.date,
+      message,
+    });
     sendToWhatsApp(message);
 
     const params = new URLSearchParams({

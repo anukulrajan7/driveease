@@ -249,7 +249,7 @@ export default async function TourDetailPage({
           <div className="flex flex-wrap items-end justify-between gap-2">
             <h2 className="text-xl font-bold text-slate-900">Where you&apos;ll travel</h2>
             <p className="text-sm text-slate-500">
-              ~{haversineKm(ORIGIN, coord)} km from {ORIGIN.name}
+              ~{haversineKm(ORIGIN, coord)} km from {ORIGIN.name} (as the crow flies)
             </p>
           </div>
           <div className="mt-4 overflow-hidden rounded-2xl border border-slate-200 shadow-sm">

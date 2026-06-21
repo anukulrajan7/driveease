@@ -112,6 +112,22 @@ export function destinationJsonLd(destination: Destination) {
   };
 }
 
+/** A service offering (car rental, transfers, etc.) provided by the agency. */
+export function serviceJsonLd(s: { slug: string; title: string; short: string; image: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${abs(`/services/${s.slug}`)}#service`,
+    name: s.title,
+    serviceType: s.title,
+    description: s.short,
+    image: s.image,
+    areaServed: "Siliguri and North East India",
+    url: abs(`/services/${s.slug}`),
+    provider: { "@id": `${SITE_URL}/#organization` },
+  };
+}
+
 export function faqJsonLd(faqs: { question: string; answer: string }[]) {
   return {
     "@context": "https://schema.org",

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PermitChecker from "@/components/PermitChecker";
+import SeasonMatrix from "@/components/SeasonMatrix";
+import FestivalCalendar from "@/components/FestivalCalendar";
 
 export const metadata: Metadata = {
   title: "Travel info & permits",
@@ -25,6 +27,23 @@ export default function TravelInfoPage() {
       <div className="mt-10">
         <PermitChecker />
       </div>
+
+      <div className="mt-6">
+        <SeasonMatrix />
+      </div>
+
+      {/* Festival calendar */}
+      <section className="mt-12">
+        <p className="text-xs font-bold uppercase tracking-widest text-accent-600">Time it right</p>
+        <h2 className="mt-1 text-2xl font-serif font-bold text-slate-900">Festival calendar</h2>
+        <p className="mt-2 max-w-2xl text-sm text-slate-600">
+          Some of the year&apos;s best reasons to visit. Tap any festival to open the destination
+          guide and start planning around the dates.
+        </p>
+        <div className="mt-6">
+          <FestivalCalendar />
+        </div>
+      </section>
 
       <div className="mt-12 space-y-6">
         <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
@@ -100,39 +119,6 @@ export default function TravelInfoPage() {
           </ul>
         </div>
 
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-          <h2 className="text-xl font-bold text-slate-900">When to go</h2>
-          <p className="mt-2 text-sm text-slate-500">
-            North East India has three very different travel seasons.
-          </p>
-          <ul className="mt-4 space-y-2.5 text-sm text-slate-700">
-            <li className="flex gap-2">
-              <span className="mt-0.5 shrink-0 text-brand-600" aria-hidden>✓</span>
-              <span>
-                <span className="font-medium">October to April is the sweet spot</span> for most
-                routes — clear skies, open mountain passes, and comfortable temperatures across
-                Arunachal, Nagaland, Manipur, and Assam.
-              </span>
-            </li>
-            <li className="flex gap-2">
-              <span className="mt-0.5 shrink-0 text-brand-600" aria-hidden>✓</span>
-              <span>
-                <span className="font-medium">Monsoon (June–September)</span> transforms Meghalaya
-                — living root bridges and Nohkalikai Falls are at their most dramatic. But the same
-                rains make North Sikkim roads and Sela Pass genuinely dangerous; those tours pause
-                for the season.
-              </span>
-            </li>
-            <li className="flex gap-2">
-              <span className="mt-0.5 shrink-0 text-brand-600" aria-hidden>✓</span>
-              <span>
-                <span className="font-medium">Early December = Hornbill Festival.</span> Ten days
-                of Naga tribes, music, and morungs in Kisama village. Book at least 8 weeks ahead —
-                accommodation across Kohima fills fast.
-              </span>
-            </li>
-          </ul>
-        </div>
       </div>
 
       <div className="mt-12 rounded-2xl bg-brand-700 px-8 py-10 text-center text-white">

@@ -1,10 +1,16 @@
 import Link from "next/link";
-import { Mountain, PawPrint, Landmark, Footprints, Waves, Star, ArrowRight } from "lucide-react";
+import { Mountain, PawPrint, Landmark, Footprints, Waves, Star, ArrowRight, ShieldCheck, Users, MapPin, ChevronDown, Car } from "lucide-react";
 import { tours, CATEGORIES, TourCategory } from "@/data/tours";
-import { destinations, posts, offers, testimonials, site, formatPostDate } from "@/data/content";
+import { destinations, posts, testimonials, site, formatPostDate } from "@/data/content";
 import TourCard from "@/components/TourCard";
-import OffersStrip from "@/components/OffersStrip";
 import HeroSearch from "@/components/HeroSearch";
+import HeroVideo from "@/components/HeroVideo";
+import { NE_HERO_POSTER, NE_HERO_CLIPS, SEVEN_SISTERS } from "@/data/media";
+import QuickCarBook from "@/components/QuickCarBook";
+import Reviews from "@/components/Reviews";
+import CustomCursor from "@/components/CustomCursor";
+import Globe from "@/components/Globe";
+import { ORIGIN, DESTINATION_COORDS, haversineKm } from "@/data/geo";
 import Reveal from "@/components/Reveal";
 import CountUpStat from "@/components/CountUpStat";
 
@@ -27,27 +33,37 @@ export default function HomePage() {
 
   return (
     <>
+      {/* Cursor glow — hero only */}
+      <CustomCursor scopeId="hero" />
+
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-slate-900">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1800&q=70"
-          alt=""
-          aria-hidden
-          className="animate-ken-burns absolute inset-0 -z-10 h-full w-full object-cover opacity-50"
-        />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-slate-900/40" />
-        <div className="hero-stagger mx-auto max-w-6xl px-4 py-24 text-center sm:px-6 sm:py-32">
+      <section id="hero" className="relative isolate flex min-h-[88vh] items-center overflow-hidden bg-slate-900">
+        <HeroVideo poster={NE_HERO_POSTER} clips={NE_HERO_CLIPS} />
+        {/* legibility + colour wash + drifting aurora */}
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-slate-900/85 via-slate-900/45 to-slate-900/55" />
+        <div aria-hidden className="hero-aurora pointer-events-none absolute inset-0 -z-10" />
+
+        <div className="hero-stagger mx-auto w-full max-w-6xl px-4 py-24 text-center sm:px-6 sm:py-32">
           <p className="text-sm font-semibold uppercase tracking-widest text-brand-300">
-            {site.tagline}
+            Siliguri Holidays — {site.tagline}
           </p>
           <h1 className="mx-auto mt-3 max-w-4xl font-serif text-4xl font-bold tracking-tight text-white sm:text-6xl sm:leading-[1.1]">
             Misty hills, living bridges, and lands the maps forgot.
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-slate-200">
-            Handpicked tours across the Seven Sisters — Meghalaya to Manipur — with local hosts,
-            permits sorted, and transparent pricing.
+            From Siliguri — gateway to the East — handpicked North East tours and a trusted car
+            rental fleet. Local hosts, permits sorted, transparent pricing.
           </p>
+
+          {/* Real places marquee — the Seven Sisters + Sikkim */}
+          <ul className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs font-medium uppercase tracking-wider text-slate-300/90">
+            {SEVEN_SISTERS.map((place, i) => (
+              <li key={place} className="inline-flex items-center gap-3">
+                {i > 0 && <span aria-hidden className="text-brand-400">•</span>}
+                {place}
+              </li>
+            ))}
+          </ul>
 
           <HeroSearch />
 
@@ -66,24 +82,106 @@ export default function HomePage() {
               );
             })}
           </div>
+
+          <p className="mt-6 text-sm text-slate-300">
+            Landing at Bagdogra?{" "}
+            <Link
+              href="/car-rental"
+              className="font-semibold text-brand-300 underline-offset-4 hover:underline"
+            >
+              Rent a car or book an airport cab →
+            </Link>
+          </p>
         </div>
+
+        <Link
+          href="#explore"
+          aria-label="Scroll to explore"
+          className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 sm:block"
+        >
+          <ChevronDown aria-hidden size={28} className="animate-scroll-bob text-white/70" />
+        </Link>
       </section>
 
-      {/* Offers */}
-      <section id="offers" className="mx-auto max-w-6xl px-4 pt-14 sm:px-6 md:pt-20">
+      {/* Why Siliguri Holidays */}
+      <section id="explore" className="mx-auto max-w-6xl scroll-mt-20 px-4 pt-14 sm:px-6 md:pt-20">
         <Reveal>
-          <div className="flex items-end justify-between gap-4">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-accent-600">Save more</p>
-              <h2 className="mt-1 font-serif text-2xl font-bold sm:text-3xl">Offers & deals</h2>
-              <p className="mt-1 text-slate-600">Copy a code, apply it at booking.</p>
-            </div>
-            <Link href="/offers" className="shrink-0 text-sm font-semibold text-brand-700 hover:underline">
-              View all →
-            </Link>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {[
+              {
+                Icon: MapPin,
+                title: "Local hosts, real access",
+                desc: "Guides who grew up here — the homestays, trails, and festivals you won't find on a map.",
+              },
+              {
+                Icon: ShieldCheck,
+                title: "Permits & logistics sorted",
+                desc: "Inner-line permits, transport, and stays handled end-to-end. You just show up.",
+              },
+              {
+                Icon: Users,
+                title: "Small groups only",
+                desc: "Intimate departures so every trip stays personal, flexible, and low-impact.",
+              },
+            ].map(({ Icon, title, desc }) => (
+              <div
+                key={title}
+                className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              >
+                <span className="grid h-11 w-11 place-items-center rounded-xl bg-brand-50 text-brand-700">
+                  <Icon aria-hidden size={20} />
+                </span>
+                <h3 className="mt-3 font-semibold text-slate-900">{title}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-slate-600">{desc}</p>
+              </div>
+            ))}
           </div>
-          <div className="mt-6">
-            <OffersStrip offers={offers} />
+        </Reveal>
+      </section>
+
+      {/* Car travel band */}
+      <section className="mx-auto max-w-6xl px-4 pt-14 sm:px-6 md:pt-20">
+        <Reveal>
+          <div className="relative isolate overflow-hidden rounded-3xl bg-slate-900 px-6 py-10 sm:px-10 md:py-14">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=1600&q=70"
+              alt=""
+              aria-hidden
+              className="absolute inset-0 -z-10 h-full w-full object-cover opacity-30"
+            />
+            <div className="absolute inset-0 -z-10 bg-gradient-to-r from-slate-900/90 to-slate-900/55" />
+            <div className="grid items-center gap-8 lg:grid-cols-[1fr_400px]">
+              <div>
+                <p className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-brand-300">
+                  <Car aria-hidden size={15} /> Car travel
+                </p>
+                <h2 className="mt-2 font-serif text-2xl font-bold text-white sm:text-3xl">
+                  Need wheels, not a whole tour?
+                </h2>
+                <p className="mt-2 max-w-xl text-slate-200">
+                  Bagdogra airport transfers, Darjeeling and Sikkim day trips, or a multi-day road
+                  trip — sedans to 12-seater Tempo Travellers, all with verified hill drivers and
+                  transparent per-km pricing.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <Link
+                    href="/car-rental"
+                    className="group inline-flex items-center gap-2 rounded-full bg-accent-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-accent-600/30 transition-all hover:-translate-y-0.5 hover:bg-accent-600"
+                  >
+                    Explore car rental
+                    <ArrowRight aria-hidden size={16} className="transition-transform group-hover:translate-x-0.5" />
+                  </Link>
+                  <Link
+                    href="/car-rental#book"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition-all hover:bg-white/20"
+                  >
+                    See full fleet
+                  </Link>
+                </div>
+              </div>
+              <QuickCarBook />
+            </div>
           </div>
         </Reveal>
       </section>
@@ -164,6 +262,44 @@ export default function HomePage() {
         </section>
       )}
 
+      {/* 3D reach globe */}
+      <section className="relative overflow-hidden bg-slate-950">
+        <div aria-hidden className="hero-aurora pointer-events-none absolute inset-0 opacity-60" />
+        <div className="mx-auto grid max-w-6xl items-center gap-8 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-2">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-widest text-brand-400">Every trip starts in Siliguri</p>
+            <h2 className="mt-2 font-serif text-3xl font-bold text-white sm:text-4xl">
+              One basecamp, the whole North East
+            </h2>
+            <p className="mt-3 max-w-md text-slate-300">
+              From our doorstep, routes fan out across the Seven Sisters and Sikkim — tea gardens,
+              snow passes, river islands and living-root-bridge country. Tap a destination to start
+              planning.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {destinations.slice(0, 8).map((d) => {
+                const coord = DESTINATION_COORDS[d.slug];
+                return (
+                  <Link
+                    key={d.slug}
+                    href={`/destinations/${d.slug}`}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-sm font-medium text-slate-200 transition-all hover:-translate-y-0.5 hover:border-brand-400/50 hover:text-white"
+                  >
+                    {d.name}
+                    {coord && (
+                      <span className="text-xs text-brand-400">{haversineKm(ORIGIN, coord)} km</span>
+                    )}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+          <div className="relative">
+            <Globe className="mx-auto aspect-square w-full max-w-[460px]" />
+          </div>
+        </div>
+      </section>
+
       {/* Stats band — counts up on scroll */}
       <section className="border-y border-brand-100 bg-brand-50">
         <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-4 py-12 text-center sm:px-6 md:grid-cols-4 md:py-16">
@@ -222,54 +358,8 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* Testimonials */}
-      <section id="testimonials" className="bg-slate-50 py-14 md:py-24">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <Reveal>
-            <div className="text-center">
-              <p className="text-xs font-bold uppercase tracking-widest text-accent-600">Real trips, real people</p>
-              <h2 className="mt-1 font-serif text-2xl font-bold sm:text-3xl">What travellers say</h2>
-              <p className="mt-2 inline-flex items-center gap-1.5 text-sm text-slate-600">
-                <svg aria-hidden width="16" height="16" viewBox="0 0 24 24" className="fill-amber-400">
-                  <path d="M12 2l2.92 6.26 6.87.82-5.08 4.7 1.35 6.78L12 17.27l-6.06 3.29 1.35-6.78-5.08-4.7 6.87-.82L12 2z" />
-                </svg>
-                <strong className="text-slate-900">{avgRating}</strong> average from{" "}
-                {totalReviews.toLocaleString("en-IN")}+ reviews
-              </p>
-            </div>
-          </Reveal>
-          <div className="no-scrollbar edge-fade-x -mx-4 mt-10 flex snap-x snap-mandatory gap-6 overflow-x-auto px-4 sm:mx-0 sm:grid sm:snap-none sm:grid-cols-2 sm:overflow-visible sm:px-0 lg:grid-cols-4">
-            {testimonials.map((t, i) => (
-              <Reveal key={t.name} delay={(i % 4) * 80} className="w-[85%] shrink-0 snap-center sm:w-auto sm:shrink">
-                <figure className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                  <div className="flex items-center gap-1" aria-label="5 star review">
-                    {Array.from({ length: 5 }).map((_, s) => (
-                      <svg key={s} aria-hidden width="14" height="14" viewBox="0 0 24 24" className="fill-amber-400">
-                        <path d="M12 2l2.92 6.26 6.87.82-5.08 4.7 1.35 6.78L12 17.27l-6.06 3.29 1.35-6.78-5.08-4.7 6.87-.82L12 2z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <blockquote className="mt-3 text-sm leading-relaxed text-slate-700">
-                    “{t.quote}”
-                  </blockquote>
-                  <figcaption className="mt-auto flex items-center gap-3 pt-4">
-                    <span
-                      aria-hidden
-                      className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-100 text-sm font-bold text-brand-800"
-                    >
-                      {t.name.charAt(0)}
-                    </span>
-                    <span>
-                      <span className="block text-sm font-semibold text-slate-900">{t.name}</span>
-                      <span className="block text-xs text-slate-500">{t.trip}</span>
-                    </span>
-                  </figcaption>
-                </figure>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Reviews */}
+      <Reviews testimonials={testimonials} avgRating={avgRating} totalReviews={totalReviews} />
 
       {/* CTA */}
       <section className="relative isolate overflow-hidden bg-slate-900">

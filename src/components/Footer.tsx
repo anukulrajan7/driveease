@@ -5,9 +5,9 @@ import Logo from "./Logo";
 
 const EXPLORE_LINKS = [
   { href: "/tours", label: "All Tours" },
+  { href: "/car-rental", label: "Car Rental" },
   { href: "/destinations", label: "Destinations" },
   { href: "/blog", label: "Travel Blog" },
-  { href: "/offers", label: "Offers & Deals" },
   { href: "/tours?category=Wildlife", label: "Wildlife Safaris" },
   { href: "/tours?category=Mountains", label: "Mountain Trips" },
 ];
@@ -145,10 +145,10 @@ export default function Footer() {
 
           <div>
             <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400">
-              Get travel deals
+              Travel inspiration
             </h3>
             <p className="mt-4 text-sm text-slate-400">
-              Trip ideas, festival dates, and member-only offers. One email a month.
+              Trip ideas, festival dates, and new departures. One email a month.
             </p>
             <form className="mt-4">
               <label htmlFor="newsletter-email" className="sr-only">
@@ -182,17 +182,13 @@ export default function Footer() {
           </p>
           <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
             <ShieldCheck aria-hidden size={14} className="text-emerald-500" />
-            <span className="text-slate-400">Secure payments</span>
+            <span className="text-slate-400">Trusted local operators</span>
             <span aria-hidden className="text-slate-700">·</span>
-            <span>Visa</span>
+            <span>Permits handled</span>
             <span aria-hidden className="text-slate-700">·</span>
-            <span>Mastercard</span>
+            <span>Free cancellation</span>
             <span aria-hidden className="text-slate-700">·</span>
-            <span>UPI</span>
-            <span aria-hidden className="text-slate-700">·</span>
-            <span>RuPay</span>
-            <span aria-hidden className="text-slate-700">·</span>
-            <span>No-cost EMI</span>
+            <span>24/7 on-trip support</span>
           </p>
         </div>
       </div>

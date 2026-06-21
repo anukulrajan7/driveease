@@ -20,7 +20,7 @@ export default function Logo({ light = false }: { light?: boolean }) {
     <span className="flex items-center gap-2.5">
       <LogoMark />
       <span className={`text-xl font-bold tracking-tight ${light ? "text-white" : "text-slate-900"}`}>
-        Drive<span className="text-brand-600">Ease</span>
+        Siliguri<span className="text-brand-600"> Holidays</span>
       </span>
     </span>
   );

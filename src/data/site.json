@@ -1,17 +1,19 @@
 {
-  "name": "DriveEase",
-  "tagline": "Discover North East India",
-  "description": "Handpicked North East India tours, destination guides, and travel stories — planned end to end with local hosts so you can just pack and go.",
+  "name": "Siliguri Holidays",
+  "tagline": "Your gateway to the East",
+  "description": "Siliguri Holidays plans North East India tours and runs a trusted Siliguri car rental fleet — airport transfers, hill-station cabs, and multi-day road trips with verified local drivers, permits sorted, and transparent pricing.",
   "contact": {
-    "email": "hello@driveease.example",
+    "email": "hello@siliguriholidays.example",
     "phone": "+91 98765 43210",
-    "hours": "24×7 trip support"
+    "whatsapp": "919876543210",
+    "hours": "24×7 trip & cab support",
+    "address": "Sevoke Road, Siliguri, West Bengal 734001"
   },
   "stats": [
     { "value": "75,000+", "label": "Happy travellers" },
-    { "value": "120+", "label": "Curated NE tours" },
+    { "value": "120+", "label": "Tours & cab routes" },
     { "value": "4.8/5", "label": "Average rating" },
     { "value": "24×7", "label": "On-trip support" }
   ],
-  "awards": ["North East India's Most Loved Tour Platform 2025", "Travellers' Choice — Himalayan Holidays"]
+  "awards": ["North East India's Most Loved Travel Brand 2025", "Travellers' Choice — Himalayan Holidays"]
 }

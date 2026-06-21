@@ -8,6 +8,12 @@ import BookingWidget from "@/components/BookingWidget";
 import TourCard from "@/components/TourCard";
 import MobileBookBar from "@/components/MobileBookBar";
 import AltitudeAdvisory from "@/components/AltitudeAdvisory";
+import PlaceVideo from "@/components/PlaceVideo";
+import TripMap from "@/components/TripMap";
+import JsonLd from "@/components/JsonLd";
+import { clipForDestination } from "@/data/media";
+import { ORIGIN, DESTINATION_COORDS, haversineKm } from "@/data/geo";
+import { abs, tourProductJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
 const ADVISORIES: Record<string, { maxElevation: string; note: string }> = {
   "tawang-monastery-expedition": {
@@ -36,7 +42,19 @@ export async function generateMetadata({
   const { slug } = await params;
   const tour = getTourBySlug(slug);
   if (!tour) return { title: "Tour not found" };
-  return { title: tour.title, description: tour.shortDescription };
+  const canonical = `/tours/${tour.slug}`;
+  return {
+    title: tour.title,
+    description: tour.shortDescription,
+    alternates: { canonical },
+    openGraph: {
+      type: "website",
+      title: tour.title,
+      description: tour.shortDescription,
+      url: abs(canonical),
+      images: [{ url: tour.image, alt: tour.title }],
+    },
+  };
 }
 
 export default async function TourDetailPage({
@@ -50,6 +68,7 @@ export default async function TourDetailPage({
 
   const destination = getDestinationBySlug(tour.destinationSlug);
   const relatedPosts = getPostsByDestination(tour.destinationSlug).slice(0, 2);
+  const coord = DESTINATION_COORDS[tour.destinationSlug];
 
   const seen = new Set<string>([tour.slug]);
   const relatedTours = tours
@@ -63,6 +82,15 @@ export default async function TourDetailPage({
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 pb-24 sm:px-6 lg:pb-8">
+      <JsonLd
+        data={[
+          tourProductJsonLd(tour),
+          breadcrumbJsonLd([
+            { name: "Tours", path: "/tours" },
+            { name: tour.title, path: `/tours/${tour.slug}` },
+          ]),
+        ]}
+      />
       <nav aria-label="Breadcrumb" className="text-sm text-slate-500">
         <Link href="/tours" className="hover:text-brand-700 hover:underline">
           Tours
@@ -70,14 +98,13 @@ export default async function TourDetailPage({
         / <span className="text-slate-700">{tour.title}</span>
       </nav>
 
-      <div className="mt-4 overflow-hidden rounded-2xl bg-slate-200">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={tour.image}
-          alt={`${tour.title} – ${tour.destination}`}
-          className="h-64 w-full object-cover sm:h-96"
-        />
-      </div>
+      <PlaceVideo
+        src={clipForDestination(tour.destinationSlug).src}
+        poster={tour.image}
+        label={tour.destination}
+        caption={`${tour.durationDays}-day ${tour.category.toLowerCase()} trip`}
+        className="mt-4"
+      />
 
       <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_360px]">
         <div>
@@ -216,6 +243,21 @@ export default async function TourDetailPage({
           <BookingWidget tour={tour} />
         </aside>
       </div>
+
+      {coord && (
+        <section className="mt-12">
+          <div className="flex flex-wrap items-end justify-between gap-2">
+            <h2 className="text-xl font-bold text-slate-900">Where you&apos;ll travel</h2>
+            <p className="text-sm text-slate-500">
+              ~{haversineKm(ORIGIN, coord)} km from {ORIGIN.name}
+            </p>
+          </div>
+          <div className="mt-4 overflow-hidden rounded-2xl border border-slate-200 shadow-sm">
+            <TripMap origin={ORIGIN} points={[coord]} selected={coord.name} className="h-[340px] w-full" />
+            <p className="bg-white px-4 py-2 text-xs text-slate-500">Map data © OpenStreetMap contributors.</p>
+          </div>
+        </section>
+      )}
 
       <MobileBookBar tour={tour} />
     </div>

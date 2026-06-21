@@ -29,6 +29,8 @@ export default function CountUpStat({ value, label }: { value: string; label: st
         : Math.round(n).toLocaleString("en-IN");
 
     if (reduced) {
+      // Reduced motion: render the final value immediately, no count-up animation.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setDisplay(format(parsed.num) + parsed.suffix);
       return;
     }

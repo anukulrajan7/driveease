@@ -1,6 +1,5 @@
 import destinationsJson from "./destinations.json";
 import postsJson from "./posts.json";
-import offersJson from "./offers.json";
 import testimonialsJson from "./testimonials.json";
 import siteJson from "./site.json";
 
@@ -51,44 +50,27 @@ export interface Post {
   sections: PostSection[];
 }
 
-export interface Offer {
-  code: string;
-  title: string;
-  description: string;
-  tag: string;
-  /** 0 means the offer doesn't change the price (e.g. EMI offers). */
-  discountPercent: number;
-  maxDiscount: number;
-}
-
-export function getOfferByCode(code: string): Offer | undefined {
-  return offers.find((o) => o.code.toUpperCase() === code.trim().toUpperCase());
-}
-
-/** Discount in ₹ for a given subtotal, honouring the offer's cap. */
-export function offerDiscount(offer: Offer, subtotal: number): number {
-  if (offer.discountPercent <= 0) return 0;
-  return Math.min(Math.round((subtotal * offer.discountPercent) / 100), offer.maxDiscount);
-}
-
 export interface Testimonial {
   name: string;
   trip: string;
   quote: string;
+  location?: string;
+  rating?: number;
+  source?: string;
+  date?: string;
 }
 
 export interface SiteConfig {
   name: string;
   tagline: string;
   description: string;
-  contact: { email: string; phone: string; hours: string };
+  contact: { email: string; phone: string; whatsapp?: string; hours: string; address?: string };
   stats: { value: string; label: string }[];
   awards: string[];
 }
 
 export const destinations = destinationsJson as Destination[];
 export const posts = postsJson as Post[];
-export const offers = offersJson as Offer[];
 export const testimonials = testimonialsJson as Testimonial[];
 export const site = siteJson as SiteConfig;
 

@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { Tour, formatINR, discountPercent } from "@/data/tours";
+import { Tour } from "@/data/tours";
 import { Input, Select } from "@/components/ui";
 
 export default function BookingWidget({ tour }: { tour: Tour }) {
@@ -14,8 +14,6 @@ export default function BookingWidget({ tour }: { tour: Tour }) {
   today.setDate(today.getDate() + 1);
   const minDate = today.toISOString().split("T")[0];
 
-  const discount = discountPercent(tour);
-
   const handleBook = () => {
     const params = new URLSearchParams();
     if (date) params.set("date", date);
@@ -25,13 +23,10 @@ export default function BookingWidget({ tour }: { tour: Tour }) {
 
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-md">
-      <p className="text-xs text-slate-400">
-        <s>{formatINR(tour.originalPricePerPerson)}</s>{" "}
-        <span className="font-bold text-accent-600">{discount}% off</span>
-      </p>
-      <p>
-        <span className="text-2xl font-bold text-slate-900">{formatINR(tour.pricePerPerson)}</span>
-        <span className="text-sm text-slate-500"> / person</span>
+      <p className="text-xs font-bold uppercase tracking-widest text-accent-600">Plan your trip</p>
+      <p className="mt-1 text-xl font-bold text-slate-900">Check dates & availability</p>
+      <p className="mt-1 text-sm text-slate-500">
+        Tell us your dates and group size — we&apos;ll tailor a quote for you.
       </p>
 
       <div className="mt-4 space-y-3">
@@ -65,17 +60,12 @@ export default function BookingWidget({ tour }: { tour: Tour }) {
         </div>
       </div>
 
-      <div className="mt-4 flex items-center justify-between border-t border-slate-200 pt-4 text-sm">
-        <span className="text-slate-600">Estimated total</span>
-        <span className="font-semibold text-slate-900">{formatINR(tour.pricePerPerson * travelers)}</span>
-      </div>
-
       <button
         type="button"
         onClick={handleBook}
-        className="mt-4 w-full rounded-xl bg-brand-600 py-3 text-base font-semibold text-white transition-colors hover:bg-brand-700"
+        className="mt-5 w-full rounded-xl bg-brand-600 py-3 text-base font-semibold text-white transition-colors hover:bg-brand-700"
       >
-        Book Now
+        Request to Book
       </button>
 
       <div className="mt-3 flex items-center justify-center gap-1.5 text-xs text-slate-600">

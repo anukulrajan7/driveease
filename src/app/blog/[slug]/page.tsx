@@ -6,8 +6,10 @@ import {
   getPostBySlug,
   formatPostDate,
 } from "@/data/content";
-import { getToursByDestination, formatINR } from "@/data/tours";
+import { getToursByDestination } from "@/data/tours";
 import NewsletterCTA from "@/components/NewsletterCTA";
+import JsonLd from "@/components/JsonLd";
+import { abs, articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
@@ -21,7 +23,21 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return { title: "Post not found" };
-  return { title: post.title, description: post.excerpt };
+  const canonical = `/blog/${post.slug}`;
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: { canonical },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt,
+      url: abs(canonical),
+      images: [{ url: post.image, alt: post.title }],
+      publishedTime: post.date,
+      authors: [post.author.name],
+    },
+  };
 }
 
 export default async function BlogPostPage({
@@ -40,6 +56,15 @@ export default async function BlogPostPage({
 
   return (
     <div className="mx-auto max-w-6xl px-4 pt-8 pb-16 sm:px-6 md:pb-24">
+      <JsonLd
+        data={[
+          articleJsonLd(post),
+          breadcrumbJsonLd([
+            { name: "Blog", path: "/blog" },
+            { name: post.title, path: `/blog/${post.slug}` },
+          ]),
+        ]}
+      />
       <nav aria-label="Breadcrumb" className="text-sm text-slate-500">
         <Link href="/blog" className="hover:text-brand-700 hover:underline">
           Blog
@@ -125,11 +150,11 @@ export default async function BlogPostPage({
                         {tour.title}
                       </p>
                       <p className="text-sm text-slate-500">
-                        {tour.durationDays} days
+                        {tour.destination} · {tour.durationDays} days
                       </p>
                     </div>
-                    <span className="shrink-0 font-bold text-brand-600">
-                      {formatINR(tour.pricePerPerson)}
+                    <span className="shrink-0 text-sm font-semibold text-brand-600">
+                      View →
                     </span>
                   </Link>
                 </li>

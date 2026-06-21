@@ -5,7 +5,7 @@ import { Input, Textarea } from "@/components/ui";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with the DriveEase team — by phone, email, or the contact form. We reply within 24 hours.",
+    "Get in touch with the Siliguri Holidays team — by phone, email, or the contact form. We reply within 24 hours.",
 };
 
 export default function ContactPage() {

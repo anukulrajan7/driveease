@@ -90,7 +90,7 @@ export default function PermitChecker() {
           </div>
           <p className="mt-3 text-sm leading-relaxed text-slate-600">{selected.details}</p>
           <p className="mt-4 text-xs font-medium text-brand-700">
-            We handle permit paperwork for every DriveEase booking.
+            We handle permit paperwork for every Siliguri Holidays booking.
           </p>
         </div>
       )}

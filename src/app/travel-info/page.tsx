@@ -5,7 +5,7 @@ import PermitChecker from "@/components/PermitChecker";
 export const metadata: Metadata = {
   title: "Travel info & permits",
   description:
-    "Permit requirements, altitude advice, connectivity tips, and seasonal guidance for North East India travel with DriveEase.",
+    "Permit requirements, altitude advice, connectivity tips, and seasonal guidance for North East India travel with Siliguri Holidays.",
 };
 
 export default function TravelInfoPage() {
@@ -39,7 +39,7 @@ export default function TravelInfoPage() {
               <span>
                 <span className="font-medium">Acclimatisation nights are built in.</span> Dirang
                 (before Sela) and Lachen (before Gurudongmar) are overnights in every relevant
-                DriveEase itinerary — not add-ons.
+                Siliguri Holidays itinerary — not add-ons.
               </span>
             </li>
             <li className="flex gap-2">

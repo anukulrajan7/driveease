@@ -5,7 +5,7 @@ import { site } from "@/data/content";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "We are local hosts across the Seven Sisters. Learn how DriveEase plans North East India tours with permits handled, small groups, and transparent pricing.",
+    "We are local hosts across the Seven Sisters. Learn how Siliguri Holidays plans North East India tours with permits handled, small groups, and transparent pricing.",
 };
 
 const values = [
@@ -38,9 +38,9 @@ export default function AboutPage() {
       {/* Story */}
       <div className="mt-8 space-y-5 text-slate-700 leading-relaxed">
         <p>
-          DriveEase started as a small WhatsApp group of friends who kept getting asked the same
-          question: <em>"How do I actually visit Meghalaya without wasting a week figuring out
-          permits?"</em> The seven states of North East India — the Seven Sisters — are unlike
+          Siliguri Holidays started as a small WhatsApp group of friends who kept getting asked the same
+          question: <em>&ldquo;How do I actually visit Meghalaya without wasting a week figuring out
+          permits?&rdquo;</em> The seven states of North East India — the Seven Sisters — are unlike
           anywhere else in the country. They share more biodiversity with Southeast Asia than with
           the subcontinent, they have their own festivals, their own languages, and some of the
           world&apos;s most extraordinary landscapes. They also have rules: Inner Line Permits,
@@ -48,11 +48,19 @@ export default function AboutPage() {
           wrong means turned back at a checkpoint.
         </p>
         <p>
-          We built DriveEase so that the complexity stays on our side. Our hosts live in Shillong,
-          Kohima, Itanagar, Imphal, Gangtok, and a dozen smaller towns in between. They know which
-          road washes out in October, which homestay family cooks the best smoked pork, and exactly
-          which district office to call on a Friday afternoon when a permit needs expediting. We
-          handle all of that before you book your flight.
+          We built Siliguri Holidays so that the complexity stays on our side. We are based in
+          Siliguri — the gateway to the entire North East, Darjeeling, Sikkim and Bhutan — where
+          Bagdogra airport and the New Jalpaiguri railhead bring almost every traveller in. Our
+          hosts live in Shillong, Kohima, Itanagar, Imphal, Gangtok, and a dozen smaller towns in
+          between. They know which road washes out in October, which homestay family cooks the best
+          smoked pork, and exactly which district office to call on a Friday afternoon when a permit
+          needs expediting. We handle all of that before you book your flight.
+        </p>
+        <p>
+          Alongside our tours we run a dedicated <strong>Siliguri car rental fleet</strong> — sedans,
+          SUVs, Innova Crystas and Tempo Travellers with verified, hill-tested drivers. Whether you
+          need a quick Bagdogra airport pickup, a Darjeeling–Gangtok–Kalimpong loop, or a vehicle for
+          the whole family, the same team that plans your trip puts you in the right car.
         </p>
         <p>
           We keep groups small — twelve people maximum on most trips — because that is the size that

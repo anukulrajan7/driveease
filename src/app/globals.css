@@ -6,7 +6,7 @@
 }
 
 /*
- * DriveEase design tokens (North East India theme).
+ * Siliguri Holidays design tokens (North East India theme).
  * brand  = forest green: tea gardens & misty hills (structure, links, primary CTAs)
  * accent = dawn orange: "land of the dawn-lit mountains" (action, deals, savings)
  * emerald/rose stay semantic-only (included/excluded, errors).
@@ -38,6 +38,26 @@ html {
 
 body {
   font-family: var(--font-sans), system-ui, sans-serif;
+  /* Discourage text copy/selection across the site */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+/* …but form fields must stay selectable/typable */
+input,
+textarea,
+select,
+[contenteditable="true"] {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  user-select: text;
+}
+
+/* don't let images be dragged out either */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 ::selection {
@@ -84,6 +104,94 @@ section[id] {
   animation: ken-burns 18s ease-out both;
 }
 
+/* Drifting "aurora" glow over the hero video — cheap, GPU-friendly motion */
+@keyframes aurora-drift {
+  0%   { transform: translate3d(-8%, -6%, 0) scale(1.1); opacity: 0.55; }
+  50%  { transform: translate3d(8%, 6%, 0) scale(1.25);  opacity: 0.8; }
+  100% { transform: translate3d(-8%, -6%, 0) scale(1.1); opacity: 0.55; }
+}
+.hero-aurora {
+  background:
+    radial-gradient(40% 50% at 20% 20%, rgba(34, 197, 94, 0.35), transparent 70%),
+    radial-gradient(45% 55% at 80% 30%, rgba(249, 115, 22, 0.28), transparent 70%);
+  animation: aurora-drift 16s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Each montage clip fades in as it starts */
+@keyframes video-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.hero-video-fade {
+  animation: video-fade-in 1.2s ease-in both;
+}
+
+/* Reviews auto-scroll marquee — loops seamlessly, pauses on hover */
+@keyframes review-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.review-track {
+  animation: review-scroll 45s linear infinite;
+}
+.review-marquee:hover .review-track {
+  animation-play-state: paused;
+}
+
+/* Floating scroll cue */
+@keyframes scroll-bob {
+  0%, 100% { transform: translateY(0); opacity: 0.7; }
+  50%      { transform: translateY(6px); opacity: 1; }
+}
+.animate-scroll-bob {
+  animation: scroll-bob 1.8s ease-in-out infinite;
+}
+
+/* ---------- Custom cursor (desktop, hover-capable only) ---------- */
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 34px;
+  width: 34px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(34, 197, 94, 0.7);
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0;
+  will-change: transform;
+  transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+.cursor-ring--active {
+  height: 54px;
+  width: 54px;
+  background: rgba(34, 197, 94, 0.12);
+  border-color: rgba(249, 115, 22, 0.85);
+}
+@media (hover: none) {
+  .cursor-ring { display: none; }
+}
+
+/* ---------- Map marker pulse ---------- */
+@keyframes map-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.5); }
+  70%  { box-shadow: 0 0 0 14px rgba(249, 115, 22, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0); }
+}
+.map-pulse { animation: map-pulse 2s ease-out infinite; }
+.map-distance-tip {
+  background: #0f172a;
+  color: #fff;
+  border: 0;
+  border-radius: 9999px;
+  padding: 2px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
+}
+.map-distance-tip::before { display: none; }
+
 /* Scroll reveal — toggled by the <Reveal> component */
 .reveal {
   opacity: 0;
@@ -121,9 +229,15 @@ a:active {
     scroll-behavior: auto;
   }
   .hero-stagger > *,
-  .animate-ken-burns {
+  .animate-ken-burns,
+  .hero-aurora,
+  .hero-video-fade,
+  .review-track,
+  .animate-scroll-bob,
+  .map-pulse {
     animation: none;
   }
+  .cursor-ring { display: none; }
   .reveal {
     opacity: 1;
     transform: none;

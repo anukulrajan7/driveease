@@ -1,10 +1,10 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { Tour, formatINR, SERVICE_FEE_RATE } from "@/data/tours";
-import { getOfferByCode, offerDiscount, Offer } from "@/data/content";
+import { useState } from "react";
+import { Tour } from "@/data/tours";
 import { Input, Select, Textarea } from "@/components/ui";
+import { sendToWhatsApp } from "@/lib/whatsapp";
 
 interface FormState {
   name: string;
@@ -16,12 +16,6 @@ interface FormState {
 }
 
 type Errors = Partial<Record<keyof FormState, string>>;
-
-type CouponState =
-  | { status: "idle" }
-  | { status: "emi"; offer: Offer }
-  | { status: "applied"; offer: Offer; discount: number }
-  | { status: "error" };
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -49,12 +43,10 @@ export default function BookingForm({
   tour,
   initialDate,
   initialTravelers,
-  initialCoupon,
 }: {
   tour: Tour;
   initialDate?: string;
   initialTravelers?: number;
-  initialCoupon?: string;
 }) {
   const router = useRouter();
   const [form, setForm] = useState<FormState>({
@@ -68,57 +60,9 @@ export default function BookingForm({
   const [errors, setErrors] = useState<Errors>({});
   const [submitting, setSubmitting] = useState(false);
 
-  const [couponOpen, setCouponOpen] = useState(!!initialCoupon);
-  const [couponInput, setCouponInput] = useState(initialCoupon ?? "");
-  const [couponState, setCouponState] = useState<CouponState>({ status: "idle" });
-
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   const minDate = tomorrow.toISOString().split("T")[0];
-
-  const subtotal = tour.pricePerPerson * form.travelers;
-  const serviceFee = Math.round(subtotal * SERVICE_FEE_RATE);
-  const discount = couponState.status === "applied" ? couponState.discount : 0;
-  const total = subtotal + serviceFee - discount;
-
-  const applyCode = (code: string) => {
-    const offer = getOfferByCode(code);
-    if (!offer) {
-      setCouponState({ status: "error" });
-      return;
-    }
-    if (offer.discountPercent === 0) {
-      setCouponState({ status: "emi", offer });
-      return;
-    }
-    const amt = offerDiscount(offer, subtotal);
-    setCouponState({ status: "applied", offer, discount: amt });
-  };
-
-  useEffect(() => {
-    if (initialCoupon) {
-      applyCode(initialCoupon);
-    }
-    // only run on mount
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // Recompute discount when travelers change while a code is applied
-  useEffect(() => {
-    setCouponState((prev) => {
-      if (prev.status !== "applied") return prev;
-      return { status: "applied", offer: prev.offer, discount: offerDiscount(prev.offer, subtotal) };
-    });
-  }, [subtotal]);
-
-  const handleApply = () => {
-    applyCode(couponInput);
-  };
-
-  const handleRemove = () => {
-    setCouponState({ status: "idle" });
-    setCouponInput("");
-  };
 
   const set = <K extends keyof FormState>(key: K, value: FormState[K]) => {
     setForm((f) => ({ ...f, [key]: value }));
@@ -146,7 +90,19 @@ export default function BookingForm({
     }
     setSubmitting(true);
 
-    const ref = `DE-${Math.random().toString(36).slice(2, 8).toUpperCase()}`;
+    const ref = `SH-${Math.random().toString(36).slice(2, 8).toUpperCase()}`;
+    const message =
+      `🧭 *New tour enquiry* — Siliguri Holidays\n` +
+      `Ref: ${ref}\n` +
+      `Tour: ${tour.title}\n` +
+      `Name: ${form.name.trim()}\n` +
+      `Phone: ${form.phone.trim()}\n` +
+      `Email: ${form.email.trim()}\n` +
+      `Departure: ${form.date}\n` +
+      `Travellers: ${form.travelers}` +
+      (form.requests.trim() ? `\nRequests: ${form.requests.trim()}` : "");
+    sendToWhatsApp(message);
+
     const params = new URLSearchParams({
       ref,
       tour: tour.slug,
@@ -155,10 +111,6 @@ export default function BookingForm({
       date: form.date,
       travelers: String(form.travelers),
     });
-    if (couponState.status === "applied") {
-      params.set("coupon", couponState.offer.code);
-      params.set("discount", String(couponState.discount));
-    }
     router.push(`/confirmation?${params.toString()}`);
   };
 
@@ -261,68 +213,8 @@ export default function BookingForm({
           </div>
         </div>
 
-        {/* Coupon section */}
-        <div className="mt-5">
-          {!couponOpen ? (
-            <button
-              type="button"
-              onClick={() => setCouponOpen(true)}
-              className="text-sm text-brand-600 underline-offset-2 hover:underline"
-            >
-              Have a promo code?
-            </button>
-          ) : (
-            <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-              <p className="mb-2 text-sm font-medium text-slate-700">Promo code</p>
-              <div className="flex gap-2">
-                <Input
-                  type="text"
-                  value={couponInput}
-                  onChange={(e) => {
-                    setCouponInput(e.target.value.toUpperCase());
-                    setCouponState({ status: "idle" });
-                  }}
-                  placeholder="Enter code"
-                  className="flex-1 font-mono uppercase tracking-wide"
-                  aria-label="Promo code"
-                />
-                <button
-                  type="button"
-                  onClick={handleApply}
-                  className="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
-                >
-                  Apply
-                </button>
-              </div>
-
-              {couponState.status === "error" && (
-                <p className="mt-2 text-xs text-rose-600">That code didn&apos;t work.</p>
-              )}
-              {couponState.status === "emi" && (
-                <p className="mt-2 text-xs text-slate-600">
-                  EMI offer noted — no price change. You&apos;ll see EMI options at payment.
-                </p>
-              )}
-              {couponState.status === "applied" && (
-                <div className="mt-2 flex items-center justify-between">
-                  <p className="text-xs font-semibold text-emerald-700">
-                    ✓ {couponState.offer.code} applied — you save {formatINR(couponState.discount)}
-                  </p>
-                  <button
-                    type="button"
-                    onClick={handleRemove}
-                    className="ml-3 text-xs text-rose-500 hover:underline"
-                  >
-                    Remove
-                  </button>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-
         {/* Trust cluster */}
-        <div className="mt-5 flex flex-col gap-2 rounded-xl bg-slate-50 px-4 py-3">
+        <div className="mt-6 flex flex-col gap-2 rounded-xl bg-slate-50 px-4 py-3">
           <div className="flex items-center gap-2">
             <StarRating rating={tour.rating} />
             <span className="text-sm text-slate-700">
@@ -331,7 +223,7 @@ export default function BookingForm({
             </span>
           </div>
           <p className="text-xs text-slate-500">
-            🔒 Secure checkout &middot; Free cancellation up to 7 days
+            🔒 No payment now &middot; Free cancellation up to 7 days
           </p>
         </div>
 
@@ -340,15 +232,15 @@ export default function BookingForm({
           disabled={submitting}
           className="mt-6 w-full rounded-xl bg-brand-600 py-3 text-base font-semibold text-white transition-colors hover:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {submitting ? "Confirming…" : `Confirm Booking · ${formatINR(total)}`}
+          {submitting ? "Sending…" : "Send Booking Request"}
         </button>
         <p className="mt-3 text-center text-xs text-slate-500">
-          This is a demo — no payment will be taken.
+          We&apos;ll get back to you within 24 hours with a tailored quote. No payment is taken now.
         </p>
       </form>
 
       <aside className="h-fit rounded-2xl border border-slate-200 bg-slate-50 p-6 lg:sticky lg:top-24">
-        <h2 className="text-lg font-bold">Booking summary</h2>
+        <h2 className="text-lg font-bold">Your request</h2>
         <div className="mt-3 flex gap-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -366,27 +258,24 @@ export default function BookingForm({
 
         <dl className="mt-5 space-y-2 border-t border-slate-200 pt-4 text-sm">
           <div className="flex justify-between">
-            <dt className="text-slate-600">
-              {formatINR(tour.pricePerPerson)} × {form.travelers}{" "}
-              {form.travelers === 1 ? "traveller" : "travellers"}
-            </dt>
-            <dd className="font-medium text-slate-900">{formatINR(subtotal)}</dd>
+            <dt className="text-slate-600">Travellers</dt>
+            <dd className="font-medium text-slate-900">
+              {form.travelers} {form.travelers === 1 ? "traveller" : "travellers"}
+            </dd>
           </div>
           <div className="flex justify-between">
-            <dt className="text-slate-600">Service fee (5%)</dt>
-            <dd className="font-medium text-slate-900">{formatINR(serviceFee)}</dd>
+            <dt className="text-slate-600">Duration</dt>
+            <dd className="font-medium text-slate-900">{tour.durationDays} days</dd>
           </div>
-          {couponState.status === "applied" && (
-            <div className="flex justify-between text-emerald-700">
-              <dt>Coupon {couponState.offer.code}</dt>
-              <dd className="font-medium">− {formatINR(couponState.discount)}</dd>
-            </div>
-          )}
-          <div className="flex justify-between border-t border-slate-200 pt-3 text-base">
-            <dt className="font-bold text-slate-900">Total</dt>
-            <dd className="font-bold text-slate-900">{formatINR(total)}</dd>
+          <div className="flex justify-between">
+            <dt className="text-slate-600">Group size</dt>
+            <dd className="font-medium text-slate-900">max {tour.maxGroupSize}</dd>
           </div>
         </dl>
+
+        <p className="mt-5 rounded-xl bg-brand-50 px-4 py-3 text-xs leading-relaxed text-brand-800">
+          Our team will confirm availability and send you a personalised quote — no upfront payment required.
+        </p>
       </aside>
     </div>
   );

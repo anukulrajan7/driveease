@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { Tour, formatINR, discountPercent } from "@/data/tours";
+import { MapPin, CalendarDays, ArrowRight } from "lucide-react";
+import { Tour } from "@/data/tours";
 import Rating from "./Rating";
 
 export default function TourCard({ tour }: { tour: Tour }) {
-  const discount = discountPercent(tour);
-
   return (
     <Link
       href={`/tours/${tour.slug}`}
@@ -29,34 +28,27 @@ export default function TourCard({ tour }: { tour: Tour }) {
       </div>
 
       <div className="flex flex-1 flex-col p-4">
-        <div className="flex items-center justify-between gap-2 text-sm text-slate-500">
-          <span>
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500">
+          <span className="inline-flex items-center gap-1">
+            <MapPin aria-hidden size={13} className="text-brand-500" />
             {tour.destination}, {tour.country}
           </span>
-          <span>
-            {tour.durationDays - 1}N/{tour.durationDays}D
+          <span className="inline-flex items-center gap-1">
+            <CalendarDays aria-hidden size={13} className="text-brand-500" />
+            {tour.durationDays - 1}N / {tour.durationDays}D
           </span>
         </div>
-        <h3 className="mt-1 text-lg font-semibold text-slate-900 group-hover:text-brand-700">
+        <h3 className="mt-2 text-lg font-semibold text-slate-900 group-hover:text-brand-700">
           {tour.title}
         </h3>
         <p className="mt-1 line-clamp-2 text-sm text-slate-600">{tour.shortDescription}</p>
 
-        <div className="mt-auto flex items-end justify-between pt-4">
-          <div>
-            <Rating rating={tour.rating} reviewsCount={tour.reviewsCount} />
-            <p className="mt-1 text-xs font-semibold text-accent-600">
-              You save {formatINR(tour.originalPricePerPerson - tour.pricePerPerson)}
-            </p>
-          </div>
-          <p className="text-right">
-            <span className="block text-xs text-slate-400">
-              <s>{formatINR(tour.originalPricePerPerson)}</s>{" "}
-              <span className="font-bold text-accent-600 no-underline">{discount}% off</span>
-            </span>
-            <span className="text-lg font-bold text-slate-900">{formatINR(tour.pricePerPerson)}</span>
-            <span className="block text-xs text-slate-500">per person</span>
-          </p>
+        <div className="mt-auto flex items-center justify-between border-t border-slate-100 pt-4">
+          <Rating rating={tour.rating} reviewsCount={tour.reviewsCount} />
+          <span className="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 transition-transform group-hover:translate-x-0.5">
+            View details
+            <ArrowRight aria-hidden size={15} />
+          </span>
         </div>
       </div>
     </Link>

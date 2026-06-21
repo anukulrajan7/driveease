@@ -1,11 +1,10 @@
 import type { MetadataRoute } from "next";
 import { tours } from "@/data/tours";
 import { destinations, posts } from "@/data/content";
-
-const BASE = "https://driveease.example";
+import { SITE_URL as BASE } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes: MetadataRoute.Sitemap = ["", "/tours", "/destinations", "/blog", "/offers", "/about", "/contact"].map(
+  const staticRoutes: MetadataRoute.Sitemap = ["", "/tours", "/car-rental", "/destinations", "/blog", "/about", "/contact"].map(
     (path) => ({
       url: `${BASE}${path}`,
       changeFrequency: "weekly",

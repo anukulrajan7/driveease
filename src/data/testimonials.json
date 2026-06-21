@@ -1,22 +1,56 @@
 [
   {
-    "name": "Priya S.",
+    "name": "Priya Sharma",
     "trip": "Meghalaya Waterfalls & Root Bridges",
+    "location": "Bengaluru",
+    "rating": 5,
+    "source": "Google",
+    "date": "2026-03-18",
     "quote": "The trek down to the double-decker root bridge was the hardest, best thing we've done. Our host knew every village on the way."
   },
   {
     "name": "Rahul & Megha",
     "trip": "Gangtok & North Sikkim Explorer",
+    "location": "Pune",
+    "rating": 5,
+    "source": "TripAdvisor",
+    "date": "2026-02-25",
     "quote": "Yumthang valley in bloom, permits all sorted before we landed — we didn't touch a single form. Stress-free from start to finish."
   },
   {
-    "name": "Arjun K.",
+    "name": "Arjun Khanna",
     "trip": "Tawang Monastery Expedition",
+    "location": "Delhi",
+    "rating": 5,
+    "source": "Google",
+    "date": "2026-01-30",
     "quote": "Sela Pass at sunrise and the morning prayers at Tawang monastery — the pacing of this itinerary shows they actually know the mountains."
   },
   {
-    "name": "Sneha T.",
+    "name": "Sneha Thomas",
     "trip": "Kaziranga Rhino Safari",
+    "location": "Kochi",
+    "rating": 5,
+    "source": "Google",
+    "date": "2026-04-02",
     "quote": "We saw eleven rhinos and a tiger crossing the jeep track. The naturalist made it feel like a wildlife documentary we were inside of."
+  },
+  {
+    "name": "Imran Ali",
+    "trip": "Bagdogra → Darjeeling cab",
+    "location": "Kolkata",
+    "rating": 5,
+    "source": "WhatsApp",
+    "date": "2026-05-11",
+    "quote": "Landed at Bagdogra, driver was waiting with my name, clean Innova, and we were in Darjeeling for sunset. Fare was exactly what they quoted."
+  },
+  {
+    "name": "Aarti Patel",
+    "trip": "Ziro Valley Culture Trail",
+    "location": "Ahmedabad",
+    "rating": 4,
+    "source": "TripAdvisor",
+    "date": "2026-03-05",
+    "quote": "Apatani villages, paddy-fish fields, and a homestay that felt like family. Knocked one star only because I wished it were two days longer!"
   }
 ]

@@ -15,9 +15,9 @@ export default async function BookPage({
   searchParams,
 }: {
   params: Promise<{ slug: string }>;
-  searchParams: Promise<{ date?: string; travelers?: string; coupon?: string }>;
+  searchParams: Promise<{ date?: string; travelers?: string }>;
 }) {
-  const [{ slug }, { date, travelers, coupon }] = await Promise.all([params, searchParams]);
+  const [{ slug }, { date, travelers }] = await Promise.all([params, searchParams]);
   const tour = getTourBySlug(slug);
   if (!tour) notFound();
 
@@ -41,7 +41,6 @@ export default async function BookPage({
           tour={tour}
           initialDate={date}
           initialTravelers={travelers ? Number(travelers) : undefined}
-          initialCoupon={coupon}
         />
       </div>
     </div>

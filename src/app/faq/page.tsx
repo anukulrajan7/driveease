@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "FAQs",
   description:
-    "Answers to common questions about booking, cancellation, permits, and what to expect on a DriveEase North East India trip.",
+    "Answers to common questions about booking, cancellation, permits, and what to expect on a Siliguri Holidays North East India trip.",
 };
 
 interface FaqItem {
@@ -56,7 +56,7 @@ const sections: FaqSection[] = [
           "Log in to your account, go to 'My bookings', and select 'Cancel booking'. You can also email us at our support address or call us. Refunds are processed to the original payment method within 5–7 business days after cancellation is confirmed.",
       },
       {
-        question: "What happens if DriveEase cancels my tour?",
+        question: "What happens if Siliguri Holidays cancels my tour?",
         answer:
           "In the rare event that we need to cancel — due to severe weather, road closures, or force majeure — you will receive a full refund or the option to rebook on an alternative date at no extra cost. We will notify you as early as possible.",
       },
@@ -76,7 +76,7 @@ const sections: FaqSection[] = [
           "Arunachal Pradesh, Nagaland, Manipur, and Mizoram require an Inner Line Permit for Indian nationals. Foreign nationals need a Protected Area Permit (PAP) for Arunachal Pradesh and certain zones of Sikkim. ILP rules change periodically — we keep our permit knowledge current.",
       },
       {
-        question: "Does DriveEase handle permit applications?",
+        question: "Does Siliguri Holidays handle permit applications?",
         answer:
           "Yes, for all tours that require permits, we handle the ILP or PAP application on your behalf as part of your booking. You just need to provide a valid government-issued photo ID (Aadhaar, passport, or voter card) and a passport-sized photograph when prompted during checkout.",
       },
@@ -88,7 +88,7 @@ const sections: FaqSection[] = [
       {
         question: "Can foreign nationals join your tours?",
         answer:
-          "Yes. Most DriveEase tours are open to international travellers. We will check the applicable permit requirements for your nationality when you book and guide you through any additional paperwork. Please book at least 21 days in advance if you require a Protected Area Permit.",
+          "Yes. Most Siliguri Holidays tours are open to international travellers. We will check the applicable permit requirements for your nationality when you book and guide you through any additional paperwork. Please book at least 21 days in advance if you require a Protected Area Permit.",
       },
     ],
   },

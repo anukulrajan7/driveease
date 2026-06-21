@@ -6,7 +6,7 @@ import NewsletterCTA from "@/components/NewsletterCTA";
 export const metadata: Metadata = {
   title: "Travel Stories & Guides",
   description:
-    "Practical travel guides, destination itineraries, and food & culture stories from the DriveEase team.",
+    "Practical travel guides, destination itineraries, and food & culture stories from the Siliguri Holidays team.",
 };
 
 export default async function BlogPage({

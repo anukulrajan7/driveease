@@ -48,6 +48,31 @@ const EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
 const KEY = process.env.GOOGLE_PRIVATE_KEY;
 const SHEET_ID = process.env.GOOGLE_SHEET_ID;
 
+/**
+ * Make the private key tolerant of how it gets pasted into env vars:
+ *  - strip accidental surrounding single/double quotes
+ *  - turn literal "\n" into real newlines (the JSON value uses \n)
+ *  - support a base64-encoded key (handy to dodge newline mangling entirely)
+ */
+function normalizePrivateKey(raw: string): string {
+  let k = raw.trim();
+  if (
+    (k.startsWith('"') && k.endsWith('"')) ||
+    (k.startsWith("'") && k.endsWith("'"))
+  ) {
+    k = k.slice(1, -1);
+  }
+  // If it's base64 (no PEM header), decode it.
+  if (!k.includes("BEGIN") && /^[A-Za-z0-9+/=\s]+$/.test(k)) {
+    try {
+      k = Buffer.from(k, "base64").toString("utf8");
+    } catch {
+      /* not base64 — leave as-is */
+    }
+  }
+  return k.replace(/\\n/g, "\n");
+}
+
 export async function POST(request: Request) {
   if (!EMAIL || !KEY || !SHEET_ID) {
     return Response.json(
@@ -66,8 +91,7 @@ export async function POST(request: Request) {
   try {
     const auth = new JWT({
       email: EMAIL,
-      // Vercel stores newlines as the literal "\n" — restore them.
-      key: KEY.replace(/\\n/g, "\n"),
+      key: normalizePrivateKey(KEY),
       scopes: ["https://www.googleapis.com/auth/spreadsheets"],
     });
 

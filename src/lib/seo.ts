@@ -8,7 +8,7 @@ import { site } from "@/data/content";
  * (or set NEXT_PUBLIC_SITE_URL at build time) when going live.
  */
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://siliguriholidays.example"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://siliguriholidays.com"
 ).replace(/\/$/, "");
 
 export const abs = (path = "/"): string =>

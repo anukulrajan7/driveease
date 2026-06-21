@@ -4,23 +4,25 @@
  * Every form (tour, car, corporate, wedding, fare) calls storeLead(). The flow:
  *
  *   1. Enrich   — stamp timestamp, source page, referrer, first-touch UTMs, id.
- *   2. Sheet    — POST to a Google Apps Script web app that appends a row to your
- *                 Google Sheet. This is the SOURCE OF TRUTH you own.
+ *   2. Sheet    — POST to our own /api/lead route, which writes a row to the
+ *                 Google Sheet server-side (service account). The SOURCE OF TRUTH.
  *   3. Notify   — POST to Web3Forms (if a key is set) for an instant email ping.
- *   4. Retry    — if the Sheet write fails (offline, script down), the lead is
- *                 parked in localStorage and retried on the next load / submit.
- *                 Nothing silently vanishes.
+ *   4. Retry    — if the write fails (offline, server hiccup), the lead is parked
+ *                 in localStorage and retried on the next load / submit. Nothing
+ *                 silently vanishes.
  *
  * The WhatsApp deep link is fired by the caller separately and is unaffected.
  *
- * Config (set in .env.local — both optional, the site degrades gracefully):
- *   NEXT_PUBLIC_SHEETS_URL       Apps Script /exec URL (source of truth)
- *   NEXT_PUBLIC_WEB3FORMS_KEY    Web3Forms access key (backup email notifier)
+ * Server config (Vercel → Environment Variables) — see src/app/api/lead/route.ts:
+ *   GOOGLE_SERVICE_ACCOUNT_EMAIL, GOOGLE_PRIVATE_KEY, GOOGLE_SHEET_ID
+ * Optional client: NEXT_PUBLIC_WEB3FORMS_KEY (backup email notifier)
  */
 
 import { saveContact } from "@/lib/customer";
 
-const SHEETS_URL = process.env.NEXT_PUBLIC_SHEETS_URL;
+// Leads post to our own serverless route (same-origin, no CORS). The route
+// writes to Google Sheets server-side via a service account.
+const LEAD_ENDPOINT = "/api/lead";
 const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
 
 const QUEUE_KEY = "sh_lead_queue";
@@ -57,8 +59,8 @@ interface QueuedLead {
   attempts: number;
 }
 
-/** True when the Google Sheet source of truth is configured. */
-export const LEAD_STORAGE_ENABLED = Boolean(SHEETS_URL);
+/** The lead endpoint always exists; whether the Sheet is wired is server-side. */
+export const LEAD_STORAGE_ENABLED = true;
 
 // ── attribution ────────────────────────────────────────────────────────────
 
@@ -114,16 +116,15 @@ function enrich(payload: LeadPayload): EnrichedLead {
 // ── transport ────────────────────────────────────────────────────────────────
 
 /**
- * POST to the Apps Script web app. Uses text/plain so it counts as a CORS
- * "simple request" (no preflight — Apps Script can't answer OPTIONS), and
- * keepalive so the request survives a route change on submit.
+ * POST a lead to our serverless route, which writes it to the Sheet. Same-origin
+ * so there's no CORS; keepalive lets the POST survive a route change on submit.
+ * Returns true only on a 2xx (the row was written).
  */
 async function postToSheet(lead: EnrichedLead): Promise<boolean> {
-  if (!SHEETS_URL) return false;
   try {
-    const res = await fetch(SHEETS_URL, {
+    const res = await fetch(LEAD_ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      headers: { "Content-Type": "application/json" },
       keepalive: true,
       body: JSON.stringify(lead),
     });
@@ -185,7 +186,6 @@ function enqueue(lead: EnrichedLead): void {
  * so the queue can't grow forever. Safe to call on every page load.
  */
 export async function flushLeadQueue(): Promise<void> {
-  if (!SHEETS_URL) return;
   const queue = readQueue();
   if (queue.length === 0) return;
 
@@ -214,8 +214,6 @@ export async function storeLead(payload: LeadPayload): Promise<boolean> {
 
   // Instant email ping in parallel — independent of the Sheet write.
   notifyWeb3Forms(lead);
-
-  if (!SHEETS_URL) return false;
 
   const ok = await postToSheet(lead);
   if (!ok) enqueue(lead);

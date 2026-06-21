@@ -30,8 +30,6 @@ export interface Service {
   externalHref?: string;
 }
 
-const img = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1600&q=70`;
-
 export const SERVICES: Service[] = [
   {
     slug: "car-rental",
@@ -48,7 +46,7 @@ export const SERVICES: Service[] = [
       "Transparent quote before you commit",
     ],
     iconKey: "car",
-    image: img("photo-1544735716-392fe2489ffa"),
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Toyota_Innova_GCC_front.jpg/1280px-Toyota_Innova_GCC_front.jpg",
     externalHref: "/car-rental",
   },
   {
@@ -67,7 +65,7 @@ export const SERVICES: Service[] = [
       "Backup vehicles on standby",
     ],
     iconKey: "corporate",
-    image: img("photo-1519225421980-715cb0215aed"),
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Taxicab_rank_Melbourne_Convention_and_Exhibition_Centre.jpg/1280px-Taxicab_rank_Melbourne_Convention_and_Exhibition_Centre.jpg",
   },
   {
     slug: "hotel-booking",
@@ -84,7 +82,7 @@ export const SERVICES: Service[] = [
       "One point of contact for stay + transport",
     ],
     iconKey: "hotel",
-    image: img("photo-1566073771259-6a8506099945"),
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Tropical_Noir_Chic_Boutique_Hotel_Room_in_Lisbon_%2854940806211%29.jpg/1280px-Tropical_Noir_Chic_Boutique_Hotel_Room_in_Lisbon_%2854940806211%29.jpg",
   },
   {
     slug: "airport-transfer",
@@ -101,7 +99,7 @@ export const SERVICES: Service[] = [
       "24×7 availability for early/late flights",
     ],
     iconKey: "airport",
-    image: img("photo-1436491865332-7a61a109cc05"),
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/LLBG_Turkish_TC-JGO_at_gate_B5.jpg/1280px-LLBG_Turkish_TC-JGO_at_gate_B5.jpg",
   },
   {
     slug: "station-transport",
@@ -118,7 +116,7 @@ export const SERVICES: Service[] = [
       "Round-the-clock booking",
     ],
     iconKey: "station",
-    image: img("photo-1474487548417-781cb71495f3"),
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/New_Delhi_railway_station_Platform_1.jpg/1280px-New_Delhi_railway_station_Platform_1.jpg",
   },
   {
     slug: "holiday-booking",
@@ -135,7 +133,7 @@ export const SERVICES: Service[] = [
       "Flexible, no-payment-now enquiry",
     ],
     iconKey: "holiday",
-    image: img("photo-1454496522488-7a8e488e8606"),
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Sikkim_Village.jpg/1280px-Sikkim_Village.jpg",
   },
 ];
 

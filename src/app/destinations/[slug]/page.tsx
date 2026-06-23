@@ -36,7 +36,6 @@ export async function generateMetadata({
       title: `${destination.name} — ${destination.tagline}`,
       description,
       url: abs(canonical),
-      images: [{ url: destination.image, alt: destination.name }],
     },
   };
 }

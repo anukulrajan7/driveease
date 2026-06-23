@@ -52,7 +52,6 @@ export async function generateMetadata({
       title: tour.title,
       description: tour.shortDescription,
       url: abs(canonical),
-      images: [{ url: tour.image, alt: tour.title }],
     },
   };
 }

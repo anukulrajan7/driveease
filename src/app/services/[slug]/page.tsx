@@ -30,7 +30,6 @@ export async function generateMetadata({
       title: `${service.title} — Siliguri Holidays`,
       description: service.short,
       url: abs(`/services/${service.slug}`),
-      images: [{ url: service.image, alt: service.title }],
     },
   };
 }

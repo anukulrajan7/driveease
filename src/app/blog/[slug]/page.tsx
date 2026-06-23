@@ -33,7 +33,6 @@ export async function generateMetadata({
       title: post.title,
       description: post.excerpt,
       url: abs(canonical),
-      images: [{ url: post.image, alt: post.title }],
       publishedTime: post.date,
       authors: [post.author.name],
     },

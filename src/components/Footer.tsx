@@ -186,7 +186,7 @@ export default function Footer() {
       <div className="border-t border-slate-800">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-5 text-xs text-slate-500 sm:px-6 md:flex-row">
           <p>
-            © {new Date().getFullYear()} {site.name}. Demo project — bookings are not real.
+            © {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
           <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
             <ShieldCheck aria-hidden size={14} className="text-emerald-500" />

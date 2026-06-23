@@ -16,5 +16,6 @@ export default async function Image({ params }: { params: Promise<{ slug: string
     eyebrow: "Our services",
     title: service?.title ?? "Travel service",
     subtitle: (service?.short ?? "").slice(0, 120),
+    image: service?.image,
   });
 }

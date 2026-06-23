@@ -16,5 +16,6 @@ export default async function Image({ params }: { params: Promise<{ slug: string
     eyebrow: tour ? `${tour.category} · ${tour.durationDays} days` : "Tour package",
     title: tour?.title ?? "North East India tour",
     subtitle: (tour?.shortDescription ?? "").slice(0, 120),
+    image: tour?.image,
   });
 }

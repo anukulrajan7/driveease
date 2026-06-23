@@ -1,6 +1,7 @@
 import type { Tour } from "@/data/tours";
 import type { Destination, Post } from "@/data/content";
 import { site } from "@/data/content";
+import { ORIGIN } from "@/data/geo";
 
 /**
  * Single source of truth for the production origin. Used by metadataBase,
@@ -56,23 +57,72 @@ export const CONTENT_LAST_UPDATED = new Date("2026-06-23T00:00:00Z");
 export const abs = (path = "/"): string =>
   path.startsWith("http") ? path : `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
 
-/** Org + WebSite identity. Rendered once in the root layout. */
+/**
+ * Org + WebSite identity. Rendered once in the root layout. Modelled as both a
+ * TravelAgency and a local business with geo, hours and service area so it is
+ * eligible for the Google local pack and knowledge panel.
+ */
 export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "TravelAgency",
+    "@type": ["TravelAgency", "LocalBusiness"],
     "@id": `${SITE_URL}/#organization`,
     name: site.name,
     url: SITE_URL,
     description: site.description,
     email: site.contact.email,
     telephone: site.contact.phone,
-    areaServed: "North East India",
+    image: `${SITE_URL}/icon-512.png`,
+    logo: `${SITE_URL}/icon-512.png`,
+    priceRange: "₹₹",
+    areaServed: [
+      "Siliguri",
+      "Darjeeling",
+      "Gangtok",
+      "Sikkim",
+      "Kalimpong",
+      "Dooars",
+      "North East India",
+    ],
     address: {
       "@type": "PostalAddress",
-      addressRegion: "North East India",
+      streetAddress: "Sevoke Road",
+      addressLocality: "Siliguri",
+      addressRegion: "West Bengal",
+      postalCode: "734001",
       addressCountry: "IN",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: ORIGIN.lat,
+      longitude: ORIGIN.lng,
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "00:00",
+      closes: "23:59",
+    },
+  };
+}
+
+/** A specific Siliguri-origin cab route as a bookable Service. */
+export function taxiRouteJsonLd(route: {
+  slug: string;
+  place: string;
+  fullName: string;
+  distanceKm: number;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${abs(`/car-rental/${route.slug}`)}#service`,
+    name: `Siliguri to ${route.place} taxi`,
+    serviceType: "Taxi & car rental service",
+    description: `Siliguri to ${route.fullName} cab — ${route.distanceKm} km with a verified local driver, doorstep pickup and transparent pricing.`,
+    areaServed: ["Siliguri", route.place],
+    url: abs(`/car-rental/${route.slug}`),
+    provider: { "@id": `${SITE_URL}/#organization` },
   };
 }
 

@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { tours } from "@/data/tours";
 import { destinations, posts } from "@/data/content";
 import { SERVICES } from "@/data/services";
+import { TAXI_ROUTES } from "@/data/routes";
 import { SITE_URL as BASE, CONTENT_LAST_UPDATED } from "@/lib/seo";
 
 // `lastModified` is the only sitemap signal Google actively uses; priority and
@@ -32,6 +33,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: CONTENT_LAST_UPDATED,
       changeFrequency: "monthly" as const,
       priority: 0.7,
+    })),
+    ...TAXI_ROUTES.map((r) => ({
+      url: `${BASE}/car-rental/${r.slug}`,
+      lastModified: CONTENT_LAST_UPDATED,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
     })),
     ...tours.map((t) => ({
       url: `${BASE}/tours/${t.slug}`,

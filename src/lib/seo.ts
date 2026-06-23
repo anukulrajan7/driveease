@@ -44,6 +44,15 @@ export const SITE_KEYWORDS: string[] = [
   "Siliguri cab booking",
 ];
 
+/**
+ * Date the tour/destination/service catalog content was last meaningfully
+ * revised. Used as `lastmod` in the sitemap for pages that have no per-item
+ * date. Bump this when you meaningfully edit packages, pricing, or copy — NOT
+ * on every deploy. Google distrusts (and then ignores) lastmod that changes
+ * without the page actually changing.
+ */
+export const CONTENT_LAST_UPDATED = new Date("2026-06-23T00:00:00Z");
+
 export const abs = (path = "/"): string =>
   path.startsWith("http") ? path : `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
 

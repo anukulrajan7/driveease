@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Mountain, PawPrint, Landmark, Footprints, Waves, Star, ArrowRight, ShieldCheck, Users, MapPin, ChevronDown, Car } from "lucide-react";
 import { tours, CATEGORIES, TourCategory } from "@/data/tours";
@@ -14,6 +15,17 @@ import { ORIGIN, DESTINATION_COORDS, haversineKm } from "@/data/geo";
 import Reveal from "@/components/Reveal";
 import CountUpStat from "@/components/CountUpStat";
 import FestivalCalendar from "@/components/FestivalCalendar";
+
+// Homepage-specific title (absolute → bypasses the "%s | Siliguri Holidays"
+// template) packed with the two primary intents: tours + car rental.
+export const metadata: Metadata = {
+  title: {
+    absolute: "Siliguri Holidays — North East India Tour Packages & Siliguri Car Rental",
+  },
+  description:
+    "Plan North East India tours from Siliguri — Sikkim, Darjeeling, Dooars, Meghalaya & Kaziranga packages — plus a trusted Siliguri car rental fleet: Bagdogra airport transfers, hill-station cabs and multi-day road trips with verified local drivers.",
+  alternates: { canonical: "/" },
+};
 
 const CATEGORY_ICONS: Record<TourCategory, typeof Mountain> = {
   Mountains: Mountain,

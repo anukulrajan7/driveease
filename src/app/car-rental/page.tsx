@@ -13,9 +13,27 @@ import HeroVideo from "@/components/HeroVideo";
 import { NE_HERO_POSTER, NE_HERO_CLIPS } from "@/data/media";
 
 export const metadata: Metadata = {
-  title: "Car Rental in Siliguri",
+  title: "Siliguri Car Rental — Cabs, Airport Transfers & Hill-Station Taxis",
   description:
-    "Siliguri car rental with verified drivers — Darjeeling, Gangtok & Sikkim cabs, airport & station transfers, corporate & wedding fleet, hotel and holiday bookings. Doorstep pickup, 24×7 support, no payment now.",
+    "Siliguri car rental with verified drivers — Darjeeling, Gangtok & Sikkim cabs, Bagdogra airport & NJP station transfers, corporate & wedding fleet, hotel and holiday bookings. Doorstep pickup, 24×7 support, no payment now.",
+  keywords: [
+    "Siliguri car rental",
+    "Siliguri taxi service",
+    "Bagdogra airport taxi",
+    "NJP to Darjeeling taxi",
+    "Siliguri to Gangtok cab",
+    "Siliguri to Darjeeling cab",
+    "Tempo Traveller hire Siliguri",
+    "Siliguri cab booking",
+  ],
+  alternates: { canonical: "/car-rental" },
+  openGraph: {
+    type: "website",
+    title: "Siliguri Car Rental — Cabs, Airport Transfers & Hill-Station Taxis",
+    description:
+      "Verified drivers, doorstep pickup, transparent per-km fares. Bagdogra & NJP transfers, Darjeeling/Gangtok/Sikkim cabs, Tempo Travellers.",
+    url: "/car-rental",
+  },
 };
 
 const HERO_TRUST = ["Verified drivers", "Doorstep pickup", "Permits sorted", "24×7 support"];

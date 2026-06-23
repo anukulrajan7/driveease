@@ -8,7 +8,13 @@ import MobileContactBar from "@/components/MobileContactBar";
 import LeadQueueFlusher from "@/components/LeadQueueFlusher";
 import JsonLd from "@/components/JsonLd";
 import { site } from "@/data/content";
-import { SITE_URL, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+import {
+  SITE_URL,
+  SITE_KEYWORDS,
+  GOOGLE_SITE_VERIFICATION,
+  organizationJsonLd,
+  websiteJsonLd,
+} from "@/lib/seo";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -31,15 +37,25 @@ export const metadata: Metadata = {
     template: `%s | ${site.name}`,
   },
   description: site.description,
+  keywords: SITE_KEYWORDS,
+  verification: { google: GOOGLE_SITE_VERIFICATION },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
   openGraph: {
     siteName: site.name,
     type: "website",
     locale: "en_IN",
+    url: SITE_URL,
     title: `${site.name} — ${site.tagline}`,
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
+    title: `${site.name} — ${site.tagline}`,
+    description: site.description,
   },
 };
 

@@ -11,6 +11,39 @@ export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://siliguriholidays.com"
 ).replace(/\/$/, "");
 
+/**
+ * Google Search Console "HTML tag" verification token. The DNS TXT method
+ * (verified at the registrar) is independent of this; this covers the
+ * URL-prefix property and acts as a second proof of ownership. Override with
+ * NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION if Search Console issues a new token.
+ */
+export const GOOGLE_SITE_VERIFICATION =
+  process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ??
+  "YcNAr9A--HRuC1H8STXdkudlJwbJs0jn2KeGflJ7Zoc";
+
+/**
+ * Primary commercial keywords. Google no longer ranks on the meta keywords
+ * tag, but it documents intent and still feeds some crawlers (Bing, etc.).
+ * Real ranking comes from titles, content, and the JSON-LD below.
+ */
+export const SITE_KEYWORDS: string[] = [
+  "Siliguri Holidays",
+  "Siliguri tour packages",
+  "North East India tour packages",
+  "Siliguri car rental",
+  "Siliguri taxi service",
+  "Bagdogra airport taxi",
+  "NJP to Darjeeling taxi",
+  "Siliguri to Gangtok cab",
+  "Sikkim tour packages",
+  "Darjeeling tour packages",
+  "Gangtok tour from Siliguri",
+  "Dooars tour packages",
+  "Kalimpong tour packages",
+  "North East India travel agency",
+  "Siliguri cab booking",
+];
+
 export const abs = (path = "/"): string =>
   path.startsWith("http") ? path : `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
 
